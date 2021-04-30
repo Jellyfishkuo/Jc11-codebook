@@ -7,12 +7,10 @@ on:
     branches: [ master ]
     paths-ignore:
      - 'README.md'
-     - 'codebook.pdf'
   pull_request:
     branches: [ master ]
     paths-ignore:
      - 'README.md'
-     - 'codebook.pdf'
 
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
