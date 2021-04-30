@@ -32,7 +32,7 @@ git clone https://github.com/HJackH/CodeBook-Sample.git
 * push to your new repository
 ```
 cd CodeBook-Sample
-rm .git
+rm -rf .git
 git init
 git commit -m "init files"
 git branch -M main
