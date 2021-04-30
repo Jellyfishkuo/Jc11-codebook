@@ -18,3 +18,20 @@
         \lstinputlisting{route/to/your/code}
         \input{route/to/your/theorem.tex}
 ```
+
+
+### How to use
+
+* creating a new repository without init on GitHub
+
+* clong this repository
+> git clone https://github.com/HJackH/CodeBook-Sample.git
+
+* push to your new repository
+> cd CodeBook-Sample
+> rm .git
+> git init
+> git commit -m "init files"
+> git branch -M main
+> git remote add origin https://github.com/Yourname/new-repository.git
+> git push -u origin main
