@@ -40,7 +40,8 @@ jobs:
           docker run --rm -v $(pwd):/storage ghcr.io/hjackh/codebook-builder \
           /bin/bash -c "texliveonfly codebook.tex --compiler=xelatex ; latexmk -pdfxe codebook.tex"
 
-      - uses: stefanzweifel/git-auto-commit-action@v4
+      - name: Push codebook
+        uses: stefanzweifel/git-auto-commit-action@v4
         with:
           # Optional but recommended
           # Defaults to "Apply automatic changes"
