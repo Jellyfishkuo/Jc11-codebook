@@ -22,7 +22,7 @@
 
 ## How to use
 
-* creating a new repository without init on GitHub
+* create a new repository without init on GitHub
 
 * clong this repository
 ```
