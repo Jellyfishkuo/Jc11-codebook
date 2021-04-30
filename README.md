@@ -24,7 +24,7 @@
 
 * create a new repository without init on GitHub
 
-* clong this repository
+* clone this repository
 ```
 git clone https://github.com/HJackH/CodeBook-Sample.git
 ```
