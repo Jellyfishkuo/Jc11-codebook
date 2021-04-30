@@ -20,7 +20,7 @@
 ```
 
 
-### How to use
+## How to use
 
 * creating a new repository without init on GitHub
 
