@@ -1,0 +1,48 @@
+name: codebook
+
+# Controls when the action will run. 
+on:
+  # Triggers the workflow on push or pull request events but only for the master branch
+  push:
+    branches: [ master ]
+    paths-ignore:
+     - 'README.md'
+     - 'codebook.pdf'
+  pull_request:
+    branches: [ master ]
+    paths-ignore:
+     - 'README.md'
+     - 'codebook.pdf'
+
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+
+# A workflow run is made up of one or more jobs that can run sequentially or in parallel
+jobs:
+  # This workflow contains a single job called "build"
+  build:
+    # The type of runner that the job will run on
+    runs-on: ubuntu-latest
+
+    # Steps represent a sequence of tasks that will be executed as part of the job
+    steps:
+      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+      - name: Check Out Code
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+
+      - name: Pull codebook-builder
+        run: docker pull ghcr.io/hjackh/codebook-builder:latest
+        
+      - name: Build codebook
+        run: |
+          docker run --rm -v $(pwd):/storage ghcr.io/hjackh/codebook-builder \
+          /bin/bash -c "texliveonfly codebook.tex --compiler=xelatex ; latexmk -pdfxe codebook.tex"
+
+      - uses: stefanzweifel/git-auto-commit-action@v4
+        with:
+          # Optional but recommended
+          # Defaults to "Apply automatic changes"
+          commit_message: auto build codebook.pdf
+          file_pattern: codebook.pdf
