@@ -4,13 +4,15 @@ name: codebook
 on:
   # Triggers the workflow on push or pull request events but only for the master branch
   push:
-    branches: [ master ]
+    branches: [ main ]
     paths-ignore:
      - 'README.md'
+     - 'codebook.pdf'
   pull_request:
-    branches: [ master ]
+    branches: [ main ]
     paths-ignore:
      - 'README.md'
+     - 'codebook.pdf'
 
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
