@@ -34,6 +34,7 @@ git clone https://github.com/HJackH/CodeBook-Sample.git
 cd CodeBook-Sample
 rm -rf .git
 git init
+git add .
 git commit -m "init files"
 git branch -M main
 git remote add origin https://github.com/Yourname/new-repository.git
