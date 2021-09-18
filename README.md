@@ -22,6 +22,24 @@
 
 ## How to use
 
+### easy
+
+1. copy git link
+
+<img src="https://i.imgur.com/9xEftSA.png" alt="drawing" width="300"/>
+
+2. click `Import repository`
+
+<img src="https://i.imgur.com/QiaSRcf.png" alt="drawing" width="300"/>
+
+3. paste git link, set your repository name
+
+<img src="https://i.imgur.com/T7wQkEZ.png" alt="drawing" width="500"/>
+
+
+
+### old
+
 * create a new repository without init on GitHub
 
 * clone this repository
