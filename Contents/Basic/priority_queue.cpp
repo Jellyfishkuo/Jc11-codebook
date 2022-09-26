@@ -1,4 +1,3 @@
-[priority_queue]
 priority_queue <int> pq;
 
 pq.push(x);
