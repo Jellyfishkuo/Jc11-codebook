@@ -1,4 +1,4 @@
-[Type]              [size]   [range]
+[Type]            [size]     [range]
 char                1        127 to -128
 signed char         1        127 to -128
 unsigned char       1        0 to 255
