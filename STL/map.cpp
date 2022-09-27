@@ -27,7 +27,7 @@ swap()：交換兩個map
 count()：回傳指定元素出現的次數
 find()：查找一個元素
 
-
+//實作範例
 #include <bits/stdc++.h>
 using namespace std;
 
@@ -62,4 +62,20 @@ int main(){
        cout<<"Do not Find"<<endl;
 
     return 0;
+}
+
+//map統計數字
+#include<bits/stdc++.h>
+using namespace std;
+
+int main(){
+	ios::sync_with_stdio(0),cin.tie(0);
+	long long n,x;
+	cin>>n;
+	map <int,int> mp;
+	while(n--){
+		cin>>x;
+		++mp[x];
+	}
+	for(auto i:mp) cout<<i.first<<" "<<i.second<<endl;
 }
