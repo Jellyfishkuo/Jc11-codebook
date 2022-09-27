@@ -6,6 +6,6 @@ while True:
       arr.append(int(input())) # 依序將數字存入串列
     arr.sort()                 # 串列排序
     for i in arr:
-      print(i)                 # 依序印出串列中每個項目
+      print(i)              # 依序印出串列中每個項目
   except:
     break
