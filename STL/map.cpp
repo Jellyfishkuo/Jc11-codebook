@@ -1,25 +1,30 @@
-#include <bits/stdc++.h>
-using namespace std;
-
 元素存取
 operator[]：存取指定的[i]元素的資料
+
 迭代器
 begin()：回傳指向map頭部元素的迭代器
 end()：回傳指向map末尾的迭代器
 rbegin()：回傳一個指向map尾部的反向迭代器
 rend()：回傳一個指向map頭部的反向迭代器
+
 容量
 empty()：檢查容器是否為空，空則回傳true
 size()：回傳元素數量
 max\_size()：回傳可以容納的最大元素個數
+
 修改器
 clear()：刪除所有元素
 insert()：插入元素
 erase()：刪除一個元素
 swap()：交換兩個map
+
 查找
 count()：回傳指定元素出現的次數
 find()：查找一個元素
+
+
+#include <bits/stdc++.h>
+using namespace std;
 
 int main(){
 
