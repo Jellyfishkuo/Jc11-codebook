@@ -1,3 +1,4 @@
+map：存放 key-value pairs 的映射資料結構，會按 key 由小到大排序。
 元素存取
 operator[]：存取指定的[i]元素的資料
 
@@ -6,6 +7,10 @@ begin()：回傳指向map頭部元素的迭代器
 end()：回傳指向map末尾的迭代器
 rbegin()：回傳一個指向map尾部的反向迭代器
 rend()：回傳一個指向map頭部的反向迭代器
+
+遍歷整個map時，利用iterator操作：
+取key：it->first 或 (*it).first
+取value：it->second 或 (*it).second
 
 容量
 empty()：檢查容器是否為空，空則回傳true
