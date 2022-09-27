@@ -27,13 +27,15 @@ int main() {
 	}
 }
 
-/*input
+/*
+input
 5 5
 1 3 4 7 9
 3 1 9 7 -2
 */
 
-/*output
+/*
+output
 2
 1
 5
