@@ -5,7 +5,7 @@ example 1
 
 給出一個長度為 n 的數組，
 編程輸出每 k 個連續的數中的最大值和最小值。
-
+//寫法一
 #include <bits/stdc++.h>
 #define maxn 1000100
 using namespace std;
@@ -49,6 +49,46 @@ int main() {
   getmax();
   cout<<'\n';
   return 0;
+}
+
+//寫法2
+#include <iostream>
+#include <cstring>
+#include <deque>
+using namespace std;
+int a[1000005];
+ 
+int main() {
+    ios_base::sync_with_stdio(0);
+    int n, k;
+    while(cin>>n>>k) {
+        for(int i=0; i<n; i++) cin >> a[i];
+        deque<int> dq;
+        for(int i=0; i<n; i++){
+            while(dq.size() && dq.front()<=i-k)
+                dq.pop_front();
+            while(dq.size() && a[dq.back()]>a[i]) 
+                dq.pop_back();
+            dq.push_back(i);
+            if(i==k-1) cout<<a[dq.front()];
+            if(i>k-1) cout<<' '<<a[dq.front()];
+        }
+        if(k>n) cout<<a[dq.front()];
+        cout<<'\n';
+        while(dq.size()) dq.pop_back();
+        for(int i=0; i<n; i++){
+            while(dq.size() && dq.front()<=i-k)
+                dq.pop_front();
+            while(dq.size() && a[dq.back()]<a[i]) 
+                dq.pop_back();
+            dq.push_back(i);
+            if(i==k-1) cout<<a[dq.front()];
+            if(i>k-1)  cout<<' '<<a[dq.front()];
+        }
+        if(k>n) cout<<a[dq.front()];
+        cout<<'\n';
+    }
+    return 0;
 }
 
 
