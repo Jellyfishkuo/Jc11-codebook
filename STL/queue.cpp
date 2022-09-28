@@ -5,7 +5,8 @@ queue：佇列，資料有「先進先出」 (first in first out, FIFO)的特性
 把元素 x 加進 queue：
     q.push(x);
 取值：
-    x = q.front();
+    x = q.front(); //頭
+    x = q.back();  //尾
 移除已經讀取的值：
     q.pop();
 判斷是否為空的queue：
