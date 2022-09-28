@@ -23,7 +23,7 @@ void getmin() {
     while (head <= tail && a[q[tail]] >= a[i]) tail--;
     q[++tail] = i;
     while (q[head] <= i - k) head++;
-    printf("%d ", a[q[head]]);
+    cout<<a[q[head]]<<" ";
   }
 }
 
@@ -65,7 +65,8 @@ using namespace std;
 #define maxn 2000009
 #define maxm
 inline ll read() {
-    ll x=0,f=1;char ch=getchar();
+    ll x=0,f=1;
+    char ch=getchar();
     while(ch<'0'||ch>'9'){
 		if(ch=='-') f=-1;
 		ch=getchar();
@@ -84,7 +85,7 @@ int main() {
     head=1,tail=0;//起始位置為1 因為插入是q[++tail]所以要初始化為0
     for(int i=1;i<=n;i++)//每次隊首的元素就是當前的答案 
     {
-        printf("%d\n",a[q[head]]);
+        cout<<a[q[head]]<<endl;
         while(i-q[head]+1>m&&head<=tail)//維護隊首 
             head++;
         while(a[i]<a[q[tail]]&&head<=tail)//維護隊尾 
