@@ -6,6 +6,7 @@
 提出想法後可以先試圖尋找有沒有能推翻原本的想法的反例，
 確認無誤再實作。
 
+
 //problem
 有一個 N×1 的稻田，有些稻田現在有種植作物，
 為了避免被動物破壞，需要放置稻草人，
@@ -38,3 +39,111 @@ int main(){
 //problem
 給定 N 個數，每次將兩個數 a,b 合併成 a+b，
 只到最後只剩一個數，合併成本為兩數和，問最小合併成本為多少。
+
+//solution
+每次將最小的兩數合併起來。
+
+//code
+#include <bits/stdc++.h>
+using namespace std;
+int main()
+{
+    int n, x;
+    while (cin >> n, n)
+    {
+        priority_queue< int, vector<int>, greater<int> > q;
+        while (n--)
+        {
+            cin >> x;
+            q.push(x);
+        }
+        long long ans = 0;
+        while (q.size() > 1)
+        {
+            x = q.top();
+            q.pop();
+            x += q.top();
+            q.pop();
+            q.push(x);
+            ans += x;
+        }
+        cout << ans << endl;
+    }
+}
+
+
+//problem
+有 n 個部下，每個部下要花 Bi 分鐘交待任務，
+再花 Ji 分鐘執行任務，一次只能對一位部下交代任務，
+但可以多人同時執行任務，問最少要花多少時間完成任務。
+
+//solution
+執行時間長的人先交代任務
+
+//code
+#include <bits/stdc++.h>
+using namespace std;
+struct Data{
+    int b, j;
+    bool operator<(const Data &rhs) 
+        const { return j > rhs.j; }
+};
+
+int main(){
+    int n, ti = 0;
+    Data a[1005];
+    while (cin >> n, n){
+        for (int i = 0; i < n; ++i)
+            cin >> a[i].b >> a[i].j;
+        sort(a, a + n);
+        int ans = 0, sum = 0;
+        for (int i = 0; i < n; ++i){
+            sum += a[i].b;
+            ans = max(ans, sum + a[i].j);
+        }
+        cout << "Case " << ++ti << ": " << ans << '\n';
+    }
+}
+
+
+//problem
+給定一個數字 N(≤10^100)，需要刪除 K 個數字，
+請問刪除 K 個數字後最小的數字為何?
+
+//solution
+刪除滿足第 i 位數大於第 i+1 位數的最左邊第 i 位數，
+扣除高位數的影響較扣除低位數的大。
+
+//code
+int main()
+{
+    string s;
+    int k;
+    cin >> s >> k;
+    for (int i = 0; i < k; ++i)
+    {
+        if ((int)s.size() == 0)
+            break;
+        int pos = (int)s.size() - 1;
+        for (int j = 0; j < (int)s.size() - 1; ++j)
+        {
+            if (s[j] > s[j + 1])
+            {
+                pos = j;
+                break;
+            }
+        }
+        s.erase(pos, 1);
+    }
+    while ((int)s.size() > 0 && s[0] == '0')
+        s.erase(0, 1);
+    if ((int)s.size())
+        cout << s << '\n';
+    else
+        cout << 0 << '\n';
+}
+
+
+區間覆蓋長度
+//problem
+給定 n 條線段區間為 [Li,Ri]，請問這些線段的覆蓋所覆蓋的長度?
