@@ -123,7 +123,8 @@ int main() {
     n=read(), m=read();
     for(int i=1;i<=n;i++) a[i]=read();
     head=1,tail=0;//起始位置為1 因為插入是q[++tail]所以要初始化為0
-    for(int i=1;i<=n;i++)//每次隊首的元素就是當前的答案 
+    for(int i=1;i<=n;i++)
+      //每次隊首的元素就是當前的答案 
     {
         cout<<a[q[head]]<<endl;
         while(i-q[head]+1>m&&head<=tail)//維護隊首 
