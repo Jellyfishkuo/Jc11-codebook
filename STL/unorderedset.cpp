@@ -1,3 +1,8 @@
+unordered_set 的實作方式通常是用雜湊表(hash table)，
+資料插入和查詢的時間複雜度很低，為常數級別O(1)，
+相對的代價是消耗較多的記憶體，空間複雜度較高，
+無自動排序功能。
+
 初始化
 unordered_set<int> myunordered_set{1, 2, 3, 4, 5}; 
 

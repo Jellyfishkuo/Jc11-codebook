@@ -1,3 +1,5 @@
+#python大數排序
+
 while True:
   try:
     n = int(input())           # 有幾筆數字需要排序

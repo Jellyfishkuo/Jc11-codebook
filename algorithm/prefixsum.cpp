@@ -1,7 +1,7 @@
 // 前綴和
-// 陣列前n項的和。
-// b[i] = a[0] + a[1] + a[2] + … + a[i]
-// 區間和 [l, r]：b[r]-b[l-1] (要保留b[l]所以-1)
+陣列前n項的和。
+b[i] = a[0] + a[1] + a[2] + … + a[i]
+區間和 [l, r]：b[r]-b[l-1] (要保留b[l]所以-1)
 
 #include <bits/stdc++.h>
 using namespace std;
