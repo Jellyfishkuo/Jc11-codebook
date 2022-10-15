@@ -12,7 +12,7 @@ b[r+1] -= v; (b[r+1~n] 減去v (b[r] 仍保留v) )
 #include <bits/stdc++.h>
 using namespace std;
 int a[1000], b[1000];
-//a: 前綴和數列, b: 差分數列
+// a: 前綴和數列, b: 差分數列
 int main(){
     int n, l, r, v;
     cin >> n;

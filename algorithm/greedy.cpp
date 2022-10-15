@@ -50,17 +50,14 @@ using namespace std;
 int main()
 {
     int n, x;
-    while (cin >> n, n)
-    {
+    while (cin >> n, n){
         priority_queue<int,vector<int>,greater<int>> q;
-        while (n--)
-        {
+        while (n--){
             cin >> x;
             q.push(x);
         }
         long long ans = 0;
-        while (q.size() > 1)
-        {
+        while (q.size() > 1){
             x = q.top();
             q.pop();
             x += q.top();
@@ -122,15 +119,11 @@ int main()
     string s;
     int k;
     cin >> s >> k;
-    for (int i = 0; i < k; ++i)
-    {
-        if ((int)s.size() == 0)
-            break;
+    for (int i = 0; i < k; ++i){
+        if ((int)s.size() == 0) break;
         int pos = (int)s.size() - 1;
-        for (int j = 0; j < (int)s.size() - 1; ++j)
-        {
-            if (s[j] > s[j + 1])
-            {
+        for (int j = 0; j < (int)s.size() - 1; ++j){
+            if (s[j] > s[j + 1]){
                 pos = j;
                 break;
             }
@@ -139,10 +132,8 @@ int main()
     }
     while ((int)s.size() > 0 && s[0] == '0')
         s.erase(0, 1);
-    if ((int)s.size())
-        cout << s << '\n';
-    else
-        cout << 0 << '\n';
+    if ((int)s.size()) cout << s << '\n';
+    else cout << 0 << '\n';
 }
 
 
@@ -163,8 +154,7 @@ struct Line
     int L, R;
     bool operator<(const Line &rhs) const
     {
-        if (L != rhs.L)
-            return L < rhs.L;
+        if (L != rhs.L) return L < rhs.L;
         return R < rhs.R;
     }
 };
@@ -254,22 +244,18 @@ struct Line
         }
 };
 
-int main()
-{
+int main(){
     int t;
     cin >> t;
     Line a[30];
-    while (t--)
-    {
+    while (t--){
         int n = 0;
         while (cin>>a[n].L>>a[n].R, a[n].L||a[n].R)
             ++n;
         sort(a, a + n);
         int ans = 1, R = a[0].R;
-        for (int i = 1; i < n; i++)
-        {
-            if (a[i].L >= R)
-            {
+        for (int i = 1; i < n; i++){
+            if (a[i].L >= R){
                 ++ans;
                 R = a[i].R;
             }
@@ -306,22 +292,18 @@ struct Line
         }
 };
 
-int main()
-{
+int main(){
     int t;
     cin >> t;
     Line a[30];
-    while (t--)
-    {
+    while (t--){
         int n = 0;
         while (cin>>a[n].L>>a[n].R, a[n].L||a[n].R)
             ++n;
         sort(a, a + n);
         int ans = 1, R = a[0].R;
-        for (int i = 1; i < n; i++)
-        {
-            if (a[i].L >= R)
-            {
+        for (int i = 1; i < n; i++){
+            if (a[i].L >= R){
                 ++ans;
                 R = a[i].R;
             }
@@ -350,8 +332,7 @@ struct Work
         }
 };
 
-int main()
-{
+int main(){
     int n;
     Work a[10000];
     cin >> n;
@@ -359,8 +340,7 @@ int main()
         cin >> a[i].t >> a[i].d;
     sort(a, a + n);
     int maxL = 0, sumT = 0;
-    for (int i = 0; i < n; ++i)
-    {
+    for (int i = 0; i < n; ++i){
         sumT += a[i].t;
         maxL = max(maxL, sumT - a[i].d);
     }
@@ -397,8 +377,7 @@ struct Work{
         }
 };
 
-int main()
-{
+int main(){
     int n = 0;
     Work a[10000];
     priority_queue<int> pq;
@@ -406,12 +385,10 @@ int main()
         ++n;
     sort(a, a + n);
     int sumT = 0, ans = n;
-    for (int i = 0; i < n; ++i)
-    {
+    for (int i = 0; i < n; ++i){
         pq.push(a[i].t);
         sumT += a[i].t;
-        if(a[i].d<sumT)
-        {
+        if(a[i].d<sumT){
             int x = pq.top();
             pq.pop();
             sumT -= x;
@@ -449,24 +426,20 @@ struct Work
         }
 };
 
-int main()
-{
+int main(){
     int n;
     Work a[100005];
     bitset<100005> ok;
-    while (cin >> n)
-    {
+    while (cin >> n){
         ok.reset();
         for (int i = 0; i < n; ++i)
             cin >> a[i].d >> a[i].p;
         sort(a, a + n);
         int ans = 0;
-        for (int i = 0; i < n; ++i)
-        {
+        for (int i = 0; i < n; ++i){
             int j = a[i].d;
             while (j--)
-                if (!ok[j])
-                {
+                if (!ok[j]){
                     ans += a[i].p;
                     ok[j] = true;
                     break;
@@ -486,8 +459,7 @@ int main()
 將工作由大到小排序，每項工作交給最快空閒的機器。
 
 //code
-int main()
-{
+int main(){
     int n, m;
     int a[10000];
     cin >> n >> m;
@@ -496,13 +468,11 @@ int main()
     sort(a, a + n,greater<int>());
     int ans = 0;
     priority_queue<int,vector<int>,greater<int>>pq;
-    for (int i = 0; i < m && i < n; ++i)
-    {
+    for (int i = 0; i < m && i < n; ++i){
         ans = max(ans, a[i]);
         pq.push(a[i]);
     }
-    for (int i = m; i < n; ++i)
-    {
+    for (int i = m; i < n; ++i){
         int x = pq.top();
         pq.pop();
         x += a[i];
@@ -511,7 +481,3 @@ int main()
     }
     cout << ans << '\n';
 }
-
-
-
-
