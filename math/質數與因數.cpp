@@ -1,4 +1,5 @@
 質數
+
 一般篩法 O(NloglogN) 
 vector<int> p;
 bitset<MAXN> is_notp;
@@ -17,6 +18,7 @@ void PrimeTable(int n)
         }
     }
 }
+
 線性篩法 O(N)
 vector<int> p;
 bitset<MAXN> is_notp;
@@ -40,14 +42,15 @@ void PrimeTable(int n)
 }
 
 因數
+
 最大公因數 O(log(min(a,b))) 
 int GCD(int a, int b)
 {
-    if (b == 0)
-        return a;
+    if (b == 0) return a;
     return GCD(b, a % b);
 }
 質因數分解
+
 void primeFactorization(int n)
 {
     for (int i = 0; i < (int)p.size(); ++i)
@@ -58,16 +61,13 @@ void primeFactorization(int n)
             continue;
         cout << p[i] << ' ';
         while (n % p[i] == 0)
-        {
             n /= p[i];
-        }
     }
     if (n != 1)
-    {
         cout << n << ' ';
-    }
     cout << '\n';
 }
+
 歌德巴赫猜想
 solution : 把偶數 N(6≤N≤10^6) 寫成兩個質數的和。
 #include <iostream>

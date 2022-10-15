@@ -1,4 +1,5 @@
-map：存放 key-value pairs 的映射資料結構，會按 key 由小到大排序。
+map：存放 key-value pairs 的映射資料結構，
+     會按 key 由小到大排序。
 元素存取
 operator[]：存取指定的[i]元素的資料
 
