@@ -18,7 +18,8 @@ public:
     HugeInt operator+(const HugeInt& other)const{
         HugeInt result("");
         for(int i=0;i<40;i++){
-            result.integer[i]+=integer[i]+other.integer[i];
+            result.integer[i]+=
+                integer[i]+other.integer[i];
             if(result.integer[i]>=10){
                 result.integer[i]-=10;
                 result.integer[i+1]++;
@@ -30,7 +31,8 @@ public:
     HugeInt operator-(const HugeInt& other)const{
         HugeInt result("");
         for(int i=0;i<40;i++){
-            result.integer[i]+=integer[i]-other.integer[i];
+            result.integer[i]+=
+                integer[i]-other.integer[i];
             if(result.integer[i]<0){
                 result.integer[i]+=10;
                 result.integer[i+1]--;
@@ -43,7 +45,8 @@ public:
         HugeInt result("");
         for(int i=0;i<40;i++)
             for(int j=0;j<40;j++)
-                result.integer[i+j]+=integer[i]*other.integer[j];
+                result.integer[i+j]+=
+                    integer[i]*other.integer[j];
         for(int i=0;i<40;i++){
             result.integer[i+1]+=result.integer[i]/10;
             result.integer[i]%=10;
@@ -82,7 +85,8 @@ public:
         for(int i=39;i>=0;i--){
             remainder=remainder*num;
             remainder.integer[0]=integer[i];
-            while(remainder>other) remainder=remainder-other;
+            while(remainder>other) 
+                remainder=remainder-other;
             if(remainder==other) remainder=value;
         }
         return remainder;
@@ -90,35 +94,42 @@ public:
 
     bool operator>(const HugeInt& other)const{
         for(int i=39;i>=0;i--){
-            if(integer[i]>other.integer[i]) return true;
-            else if(integer[i]<other.integer[i]) return false;
+            if(integer[i]>other.integer[i]) 
+                return true;
+            else if(integer[i]<other.integer[i]) 
+                return false;
         }
         return false;
     }
 
     bool operator<(const HugeInt& other)const{
         for(int i=39;i>=0;i--){
-            if(integer[i]<other.integer[i]) return true;
-            else if(integer[i]>other.integer[i]) return false;
+            if(integer[i]<other.integer[i]) 
+                return true;
+            else if(integer[i]>other.integer[i]) 
+                return false;
         }
         return false;
     }
 
     bool operator==(const HugeInt& other)const{
         for(int i=39;i>=0;i--)
-            if(integer[i]!=other.integer[i]) return false;
+            if(integer[i]!=other.integer[i]) 
+                return false;
         return true;
     }
 
     bool operator>=(const HugeInt& other)const{
         for(int i=39;i>=0;i--)
-            if(integer[i]<other.integer[i]) return false;
+            if(integer[i]<other.integer[i]) 
+                return false;
         return true;
     }
 
     bool operator<=(const HugeInt& other)const{
         for(int i=39;i>=0;i--)
-            if(integer[i]>other.integer[i]) return false;
+            if(integer[i]>other.integer[i]) 
+                return false;
         return true;
     }
 
@@ -126,18 +137,22 @@ public:
         return !(*this==other);
     }
 
-    friend istream& operator>>(istream& in, HugeInt& hugeInt){
+    friend istream& operator>>(istream& in, 
+                            HugeInt& hugeInt){
         string s;
         in>>s;
         hugeInt=HugeInt(s);
         return in;
     }
 
-    friend ostream& operator<<(ostream& out,const HugeInt& hugeInt){
+    friend ostream& operator<<(ostream& out,
+                    const HugeInt& hugeInt){
         bool isLeadingZero=true;
         for(int i=39;i>=0;i--){
-            if(hugeInt.integer[i]) isLeadingZero=false;
-            if(!isLeadingZero) out<<hugeInt.integer[i];
+            if(hugeInt.integer[i]) 
+                isLeadingZero=false;
+            if(!isLeadingZero) 
+                out<<hugeInt.integer[i];
         }
         if(isLeadingZero) out<<0;
         return out;
@@ -149,7 +164,8 @@ public:
         else cout<<a<<" = "<<b<<endl;
         cout<<a<<" + "<<b<<" = "<<a+b<<endl;
         if(a>b) cout<<a<<" - "<<b<<" = "<<a-b<<endl;
-        else if(a<b) cout<<a<<" - "<<b<<" = -"<<b-a<<endl;
+        else if(a<b) 
+            cout<<a<<" - "<<b<<" = -"<<b-a<<endl;
         else cout<<a<<" - "<<b<<" = "<<a-b<<endl;
         cout<<a<<" * "<<b<<" = "<<a*b<<endl;
         cout<<a<<" / "<<b<<" = "<<a/b<<endl;
