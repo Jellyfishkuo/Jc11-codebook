@@ -43,7 +43,8 @@ int main() {
     for(int i=0;i<n;i++){
         cout<<i+1<<":("<<r[i].length<<","<<r[i].width;
         cout<<") area= "<<r[i].getA();
-        cout<<fixed<<setprecision(3)<<" diagonal= "<<r[i].getD()<<endl;
+        cout<<fixed<<setprecision(3)
+            <<" diagonal= "<<r[i].getD()<<endl;
     }
     delete[] r;
     return 0;
