@@ -1,45 +1,21 @@
 質數
 
-一般篩法 O(NloglogN) 
-vector<int> p;
-bitset<MAXN> is_notp;
-void PrimeTable(int n)
-{
-    is_notp.reset();
-    is_notp[0] = is_notp[1] = 1;
-    for (int i = 2; i <= n; i++)
-    {
-        if (is_notp[i])
-            continue;
-        p.push_back(i);
-        for (int j = i * i; j <= n; j += i)
-        {
-            is_notp[j] = 1;
+埃氏篩法
+int Eratosthenes(int maxn){
+    int p=0;
+    memset(isprime,1,sizeof(isprime));
+    isprime[0]=isprime[1]=0;
+    for(int i=2; i<=maxn; ++i){
+        if(isprime[i]){
+            prime[p++]=i;
+            for(int j=i*i;j<=maxn;j+=i)
+                isprime[j]=0;
         }
     }
+    return p;
 }
 
-線性篩法 O(N)
-vector<int> p;
-bitset<MAXN> is_notp;
-void PrimeTable(int n)
-{
-    is_notp.reset();
-    is_notp[0] = is_notp[1] = 1;
-    for (int i = 2; i <= n; ++i)
-    {
-        if (!is_notp[i])
-            p.push_back(i);
-        for (int j = 0; j < (int)p.size(); ++j)
-        {
-            if (i * p[j] > n)
-                break;
-            is_notp[i * p[j]] = 1;
-            if (i % p[j] == 0)
-                break;
-        }
-    }
-}
+
 
 因數
 
