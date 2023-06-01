@@ -1,18 +1,12 @@
 質數
 
 埃氏篩法
-int Eratosthenes(int maxn){
-    int p=0;
-    memset(isprime,1,sizeof(isprime));
-    isprime[0]=isprime[1]=0;
-    for(int i=2; i<=maxn; ++i){
-        if(isprime[i]){
-            prime[p++]=i;
-            for(int j=i*i;j<=maxn;j+=i)
-                isprime[j]=0;
-        }
-    }
-    return p;
+int n;
+vector<int> isprime(n+1,1);
+isprime[0]=isprime[1]=0;
+for(int i=2;i*i<=n;i++){
+    if(isprime[i])
+        for(int j=i*i;j<=n;j+=i) isprime[j]=0;
 }
 
 
