@@ -3,7 +3,6 @@
 #include<algorithm>
 #include<math.h>
 using namespace std;
-
 class R {
     private:
         double area,diagonal;
@@ -23,13 +22,11 @@ class R {
             return diagonal;
         }
 };
-
 bool cmp(R r1, R r2) {
     if(r1.getA() == r2.getA())
         return r1.getD()>r2.getD();
     return r1.getA()<r2.getA();
 }
-
 int main() {
     int n;
     cin>>n;
