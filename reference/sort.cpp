@@ -30,7 +30,6 @@ void customSort(vector<T>& arr) {
     int n=arr.size();
     quickSort(arr,0,n-1);
 }
-
 int main(){
     vector<int> numbers={5, 2, 8, 1, 3};
     cout<<"Before sorting: ";
@@ -42,9 +41,3 @@ int main(){
         cout<<num<<" ";
     return 0;
 }
-
-
-<<<<<<< HEAD
-=======
-
->>>>>>> f179ce62247c7baa93dac9cfa6fec6b3347e9e05

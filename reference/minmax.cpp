@@ -2,7 +2,6 @@
 #include <vector>
 #include <algorithm>
 using namespace std;
-
 int main() {
     vector<int> num 
         = {4, 2, 8, 5, 1, 9, 6, 3, 7};
