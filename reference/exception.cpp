@@ -6,7 +6,7 @@ double divide(int numerator, int denominator) {
     if (denominator == 0) {
         throw runtime_error("Division by zero!");
     }
-    return static_cast<double> numerator/denominator;
+    return static_cast<double> (numerator)/denominator;
 }
 int main() {
     int a, b;
