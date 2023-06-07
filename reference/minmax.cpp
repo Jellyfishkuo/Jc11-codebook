@@ -13,7 +13,3 @@ int main(){
         <<*minmaxElement.second<<endl;
 }
 
-
-
-
-
