@@ -9,5 +9,6 @@ int main(){
     cout<<"sorted vector :\n";
     for(auto x:num) cout<<x<<" ";
     cout<<endl;
-    cout<<*minmaxElement.first<<" "<<*minmaxElement.second<<endl;
+    cout<<*minmaxElement.first<<" "
+        <<*minmaxElement.second<<endl;
 }
