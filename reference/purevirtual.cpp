@@ -1,11 +1,9 @@
 #include <iostream>
 using namespace std;
-
 class Shape{
 public:
     virtual double getArea() const=0;
 };
-
 class Circle:public Shape{
 private:
     double radius;
@@ -26,7 +24,6 @@ public:
         return length * width;
     }
 };
-
 int main() {
     Circle circle(5.0);
     Rectangle rectangle(4.0, 6.0);

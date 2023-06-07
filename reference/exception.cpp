@@ -8,7 +8,6 @@ double divide(int numerator, int denominator) {
     }
     return static_cast<double> numerator/denominator;
 }
-
 int main() {
     int a, b;
     cout << "Enter two numbers: ";
@@ -90,15 +89,12 @@ public:
         int line, const string& message)
             : fileName(file), lineNumber(line),
                  errorMessage(message) {}
-
     const string& getFile() const{
         return fileName;
     }
-
     int getLine() const{
         return lineNumber;
     }
-
     const char* what() const throw(){
         return errorMessage.c_str();
     }
