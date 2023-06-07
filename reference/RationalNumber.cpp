@@ -14,62 +14,62 @@ int gcd(int a,int b){
 class Rational{
 
 public:
-    int molecular,denominator;
+    int mol,den;
     Rational(int m=1,int d=2){
-        molecular=m;
-        denominator=d;
+        mol=m;
+        den=d;
     }
 
     friend ostream& operator<<(ostream& os, const Rational& r){
-        if(r.molecular==0) os<<0;
-        else if(r.molecular==1&&r.denominator==1) os<<1;
-        else os<<"("<<r.molecular<<"/ "<<r.denominator<<")";
+        if(r.mol==0) os<<0;
+        else if(r.mol==1&&r.den==1) os<<1;
+        else os<<"("<<r.mol<<"/ "<<r.den<<")";
         return os;
     }
 
     friend istream& operator>>(istream& is, Rational& r){
         char slash;
-        is>>r.molecular>>slash>>r.denominator;
+        is>>r.mol>>slash>>r.den;
         return is;
     }
 
     Rational operator+(const Rational& other){
         Rational result;
-        result.molecular=molecular*other.denominator+other.molecular*denominator;
-        result.denominator=denominator*other.denominator;
-        int commonDivisor=gcd(result.molecular,result.denominator);
-        result.molecular/=commonDivisor;
-        result.denominator/=commonDivisor;
+        result.mol=mol*other.den+other.mol*den;
+        result.den=den*other.den;
+        int com=gcd(result.mol,result.den);
+        result.mol/=com;
+        result.den/=com;
         return result;
     }
 
     Rational operator-(const Rational& other) {
         Rational result;
-        result.molecular=molecular*other.denominator-other.molecular*denominator;
-        result.denominator=denominator*other.denominator;
-        int commonDivisor=gcd(result.molecular,result.denominator);
-        result.molecular/=commonDivisor;
-        result.denominator/=commonDivisor;
+        result.mol=mol*other.den-other.mol*den;
+        result.den=den*other.den;
+        int com=gcd(result.mol,result.den);
+        result.mol/=com;
+        result.den/=com;
         return result;
     }
 
     Rational operator*(const Rational& other) {
         Rational result;
-        result.molecular=molecular*other.molecular;
-        result.denominator=denominator*other.denominator;
-        int commonDivisor=gcd(result.molecular,result.denominator);
-        result.molecular/=commonDivisor;
-        result.denominator/=commonDivisor;
+        result.mol=mol*other.mol;
+        result.den=den*other.den;
+        int com=gcd(result.mol,result.den);
+        result.mol/=com;
+        result.den/=com;
         return result;
     }
 
     Rational operator/(const Rational& other) {
         Rational result;
-        result.molecular=molecular*other.denominator;
-        result.denominator=denominator*other.molecular;
-        int commonDivisor=gcd(result.molecular,result.denominator);
-        result.molecular/=commonDivisor;
-        result.denominator/=commonDivisor;
+        result.mol=mol*other.den;
+        result.den=den*other.mol;
+        int com=gcd(result.mol,result.den);
+        result.mol/=com;
+        result.den/=com;
         return result;
     }
 };
@@ -79,11 +79,11 @@ int main(){
     Rational r1,r2;
     while(cin>>op){
         cin>>g>>r1>>g>>g>>r2>>g;
-        if(r1.molecular%r1.denominator) cout<<r1;
-        else cout<<r1.molecular/r1.denominator;
+        if(r1.mol%r1.den) cout<<r1;
+        else cout<<r1.mol/r1.den;
         cout<<" "<<op<<" ";
-        if(r2.molecular%r2.denominator) cout<<r2;
-        else cout<<r2.molecular/r2.denominator;
+        if(r2.mol%r2.den) cout<<r2;
+        else cout<<r2.mol/r2.den;
         cout<<" = ";
         switch(op){
             case '+':
