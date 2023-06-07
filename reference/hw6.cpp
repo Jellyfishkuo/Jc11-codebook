@@ -137,16 +137,16 @@ public:
         return !(*this==other);
     }
 
-    friend istream& operator>>(istream& in, 
-                            HugeInt& hugeInt){
+    friend istream& operator>>
+        (istream& in,HugeInt& hugeInt){
         string s;
         in>>s;
         hugeInt=HugeInt(s);
         return in;
     }
 
-    friend ostream& operator<<(ostream& out,
-                    const HugeInt& hugeInt){
+    friend ostream& operator<<
+        (ostream& out,const HugeInt& hugeInt){
         bool isLeadingZero=true;
         for(int i=39;i>=0;i--){
             if(hugeInt.integer[i]) 

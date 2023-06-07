@@ -16,8 +16,9 @@ int main() {
     try {
         double result = divide(a, b);
         cout << "Result: " << result << endl;
-    } catch (const exception& ex) {
-        cout << "Exception: " << ex.what() << endl;
+    } 
+    catch (const exception& ex) {
+        cout<<"Exception: "<<ex.what()<<endl;
     }
     return 0;
 }
@@ -30,8 +31,8 @@ class MyException : public exception{
 private:
     string errorMessage;
 public:
-    MyException(const string& message) : errorMessage(message) {}
-
+    MyException(const string& message):
+        errorMessage(message) {}
     const char* what() const throw(){
         return errorMessage.c_str();
     }
@@ -70,7 +71,7 @@ int main(){
     }
     catch (const MyException& ex){
         cout << "Exception: Error Code " 
-            << ex.getCode() << " - " << ex.what() << endl;
+            <<ex.getCode()<<" - "<<ex.what()<<endl;
     }
     return 0;
 }
@@ -85,8 +86,10 @@ private:
     int lineNumber;
     string errorMessage;
 public:
-    MyException(const string& file, int line, const string& message)
-        : fileName(file), lineNumber(line), errorMessage(message) {}
+    MyException(const string& file,
+        int line, const string& message)
+            : fileName(file), lineNumber(line),
+                 errorMessage(message) {}
 
     const string& getFile() const{
         return fileName;
@@ -102,7 +105,8 @@ public:
 };
 int main(){
     try{
-        throw MyException(__FILE__, __LINE__, "Custom exception occurred!");
+        throw MyException(__FILE__, __LINE__,
+            "Custom exception occurred!");
     }
     catch (const MyException& ex){
         cout << "Exception: " << ex.what() << endl;
