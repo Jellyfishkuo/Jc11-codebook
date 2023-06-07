@@ -91,7 +91,7 @@ public:
         }
         return remainder;
     }
-
+    
     bool operator>(const HugeInt& other)const{
         for(int i=39;i>=0;i--){
             if(integer[i]>other.integer[i]) 
@@ -101,7 +101,6 @@ public:
         }
         return false;
     }
-
     bool operator<(const HugeInt& other)const{
         for(int i=39;i>=0;i--){
             if(integer[i]<other.integer[i]) 
@@ -111,32 +110,27 @@ public:
         }
         return false;
     }
-
     bool operator==(const HugeInt& other)const{
         for(int i=39;i>=0;i--)
             if(integer[i]!=other.integer[i]) 
                 return false;
         return true;
     }
-
     bool operator>=(const HugeInt& other)const{
         for(int i=39;i>=0;i--)
             if(integer[i]<other.integer[i]) 
                 return false;
         return true;
     }
-
     bool operator<=(const HugeInt& other)const{
         for(int i=39;i>=0;i--)
             if(integer[i]>other.integer[i]) 
                 return false;
         return true;
     }
-
     bool operator!=(const HugeInt& other)const{
         return !(*this==other);
     }
-
     friend istream& operator>>
         (istream& in,HugeInt& hugeInt){
         string s;
@@ -144,7 +138,6 @@ public:
         hugeInt=HugeInt(s);
         return in;
     }
-
     friend ostream& operator<<
         (ostream& out,const HugeInt& hugeInt){
         bool isLeadingZero=true;
@@ -157,7 +150,6 @@ public:
         if(isLeadingZero) out<<0;
         return out;
     }
-
     void print(HugeInt a,HugeInt b){
         if(a>b) cout<<a<<" > "<<b<<endl;
         else if(a<b) cout<<a<<" < "<<b<<endl;

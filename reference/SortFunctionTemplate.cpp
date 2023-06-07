@@ -1,7 +1,6 @@
 #include<iostream>
 #include<vector>
 using namespace std;
-
 template<typename T>
 int p(vector<T>& arr,int low,int high){
     T pivot=arr[high];
@@ -14,7 +13,6 @@ int p(vector<T>& arr,int low,int high){
     swap(arr[i+1],arr[high]);
     return 1+i;
 }
-
 template<typename T>
 void qsort(vector<T>& arr, int low,int high){
     if(low<high){
@@ -23,13 +21,11 @@ void qsort(vector<T>& arr, int low,int high){
         qsort(arr,pindex+1,high);
     }
 }
-
 template<typename T>
 void mysort(vector<T>& arr){
     int n=arr.size();
     qsort(arr,0,n-1);
 }
-
 template<typename T>
 void solve(vector<T>& arr){
     mysort(arr);
@@ -41,7 +37,6 @@ void solve(vector<T>& arr){
     cout<<endl;
     arr.clear();
 }
-
 int main(){
     int n,x;
     double d;
@@ -64,16 +59,13 @@ int main(){
         cin>>n;
         vector<char> vc;
         for(int i=0;i<n;i++){
-            cin>>c;
-            vc.push_back(c);
+            cin>>c,vc.push_back(c);
         }
         solve(vc);
         cin>>n>>ws;
         vector<string> vs;
-        for(int i=0;i<n;i++){
-            getline(cin,s);
-            vs.push_back(s);
-        }
+        for(int i=0;i<n;i++)
+            getline(cin,s),vs.push_back(s);
         mysort(vs);
         for(auto a:vs) cout<<a<<endl;
         vs.clear();
