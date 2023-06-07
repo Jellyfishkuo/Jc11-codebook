@@ -9,12 +9,11 @@ int main() {
     int target = 5;
     vector<int>::iterator it=
         lower_bound(num.begin(),num.end(),target);
-    if (it!=num.end()&&*it==target) {
+    if(it!=num.end()&&*it==target) {
         int index=distance(num.begin(), it);
         cout<<target<<" 在 "<<index<<endl;
     } 
-    else
-        cout<<target<<" 未找到！"<<endl;    
+    else cout<<target<<" 未找到！"<<endl;    
     pair<vector<int>::iterator, vector<int>::iterator> 
         minmaxElement = minmax_element(num.begin(), num.end());
     cout<<"最小元素："<<*(minmaxElement.first)<<endl;
