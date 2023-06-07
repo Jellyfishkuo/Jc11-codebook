@@ -12,3 +12,8 @@ int main(){
     cout<<*minmaxElement.first<<" "
         <<*minmaxElement.second<<endl;
 }
+
+
+
+
+
