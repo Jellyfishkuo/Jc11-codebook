@@ -1,15 +1,24 @@
-#include<bits/stdc++.h>
+#include <iostream>
+#include <vector>
+#include <algorithm>
 using namespace std;
 
-int main(){
-    vector<int> num={5,3,3,3,6,6,74,3,-124,246,2456,-345};
-    sort(num.begin(),num.end());
-    pair<vector<int>::iterator,vector<int>::iterator> 
-        minmaxElement=minmax_element(num.begin(),num.end());
-    cout<<"sorted vector :\n";
-    for(auto x:num) cout<<x<<" ";
-    cout<<endl;
-    cout<<*minmaxElement.first<<" "
-        <<*minmaxElement.second<<endl;
+int main() {
+    vector<int> num 
+        = {4, 2, 8, 5, 1, 9, 6, 3, 7};
+    sort(num.begin(), num.end());
+    int target = 5;
+    vector<int>::iterator it=
+        lower_bound(num.begin(),num.end(),target);
+    if (it!=num.end()&&*it==target) {
+        int index=distance(num.begin(), it);
+        cout<<target<<" 在 "<<index<<endl;
+    } 
+    else
+        cout<<target<<" 未找到！"<<endl;    
+    pair<vector<int>::iterator, vector<int>::iterator> 
+        minmaxElement = minmax_element(num.begin(), num.end());
+    cout<<"最小元素："<<*(minmaxElement.first)<<endl;
+    cout<<"最大元素："<<*(minmaxElement.second)<<endl;
+    return 0;
 }
-
