@@ -1,20 +1,5 @@
 set： 集合，去除重複的元素，資料由小到大排序。
 
-宣告：
-    set <int> st;
-
-把元素 x 加進 set：
-    st.insert(x);
-
-檢查元素 x 是否存在 set 中：
-    st.count(x);
-
-刪除元素 x：
-    st.erase(x); // 可傳入值或iterator
-
-清空集合中的所有元素：
-    st.clear();
-
 取值： 使用iterator
     x = *st.begin();  
             // set中的第一個元素(最小的元素)。

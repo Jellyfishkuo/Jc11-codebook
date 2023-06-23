@@ -69,41 +69,6 @@ int main()
     }
 }
 
-Commando War
-//problem
-有 n 個部下，每個部下要花 Bi 分鐘交待任務，
-再花 Ji 分鐘執行任務，一次只能對一位部下交代任務，
-但可以多人同時執行任務，問最少要花多少時間完成任務。
-
-//solution
-執行時間長的人先交代任務
-
-//code
-#include <bits/stdc++.h>
-using namespace std;
-struct Data{
-    int b, j;
-    bool operator<(const Data &rhs) const {
-        return j > rhs.j;
-    }
-};
-
-int main(){
-    int n, ti = 0;
-    Data a[1005];
-    while (cin >> n, n){
-        for (int i = 0; i < n; ++i)
-            cin >> a[i].b >> a[i].j;
-        sort(a, a + n);
-        int ans = 0, sum = 0;
-        for (int i = 0; i < n; ++i){
-            sum += a[i].b;
-            ans = max(ans, sum + a[i].j);
-        }
-        cout<<"Case "<<++ti<<": "<<ans<<'\n';
-    }
-}
-
 刪數字問題
 //problem
 給定一個數字 N(≤10^100)，需要刪除 K 個數字，

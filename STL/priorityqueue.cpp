@@ -1,8 +1,5 @@
-priority_queue： 優先隊列，資料預設由大到小排序， 即優先權高的資料會先被取出。
-宣告：
-    priority_queue <int> pq;
-把元素 x 加進 priority_queue：
-    pq.push(x);
+priority_queue： 優先隊列，資料預設由大到小排序。
+
 讀取優先權最高的值：
     x = pq.top();
     pq.pop();                 //讀取後刪除
