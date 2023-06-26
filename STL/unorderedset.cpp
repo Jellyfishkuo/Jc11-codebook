@@ -18,7 +18,6 @@ myunordered_set.insert(1);
 #include <iostream>
 #include <unordered_set>
 using namespace std;
-
 int main() {
     unordered_set<int> myunordered_set = {3, 1};
     myunordered_set.insert(2);
@@ -26,12 +25,9 @@ int main() {
     myunordered_set.insert(4);
     myunordered_set.insert(5);
     myunordered_set.insert(4);
-
-    for (const auto &s : myunordered_set) {
+    for (const auto &s : myunordered_set)
         cout << s << " ";
-    }
     cout << "\n";
-
     return 0;
 }
 
@@ -43,16 +39,12 @@ output
 unordered_set 刪除指定元素
 #include <iostream>
 #include <unordered_set>
-
 int main() {
     unordered_set<int> myunordered_set{2, 4, 6, 8};
-
     myunordered_set.erase(2);
-    for (const auto &s : myunordered_set) {
+    for (const auto &s : myunordered_set)
         cout << s << " ";
-    }
     cout << "\n";
-
     return 0;
 }
 /*
@@ -80,12 +72,9 @@ cout << myunordered_set.count(8) << "\n"; // 0
 int main() {
     unordered_set<int> myunordered_set;
     myunordered_set.clear();
-
-    if (myunordered_set.empty()) {
-        cout << "empty\n";
-    } else {
-        cout << "not empty, size is "<< myunordered_set.size() <<"\n";
-    }
-
+    if(myunordered_set.empty())
+        cout<<"empty\n";
+    else 
+        cout<<"not empty, size is "<<myunordered_set.size()<<"\n";
     return 0;
 }

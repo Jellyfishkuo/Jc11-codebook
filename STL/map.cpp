@@ -33,7 +33,6 @@ find()：查找一個元素
 using namespace std;
 
 int main(){
-
     //declaration container and iterator
     map<string, string> mp;
     map<string, string>::iterator iter;
@@ -41,7 +40,6 @@ int main(){
 
     //insert element
     mp.insert(pair<string, string>("r000", "student_zero"));
-
     mp["r123"] = "student_first";
     mp["r456"] = "student_second";
 
@@ -54,29 +52,10 @@ int main(){
     //find and erase the element
     iter = mp.find("r123");
     mp.erase(iter);
-
     iter = mp.find("r123");
-
     if(iter != mp.end())
        cout<<"Find, the value is "<<iter->second<<endl;
     else
        cout<<"Do not Find"<<endl;
-
     return 0;
-}
-
-//map統計數字
-#include<bits/stdc++.h>
-using namespace std;
-
-int main(){
-	ios::sync_with_stdio(0),cin.tie(0);
-	long long n,x;
-	cin>>n;
-	map <int,int> mp;
-	while(n--){
-		cin>>x;
-		++mp[x];
-	}
-	for(auto i:mp) cout<<i.first<<" "<<i.second<<endl;
 }
