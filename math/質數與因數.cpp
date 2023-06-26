@@ -9,6 +9,25 @@ for(int i=2;i*i<=n;i++){
         for(int j=i*i;j<=n;j+=i) isprime[j]=0;
 }
 
+歐拉篩O(n)
+#define MAXN 47000 // sqrt(2^31) = 46,340...
+
+bool isPrime[MAXN];
+int prime[MAXN];
+int primeSize = 0;
+
+void getPrimes(){
+    memset(isPrime, true, sizeof(isPrime));
+    isPrime[0] = isPrime[1] = false;
+    for (int i = 2; i < MAXN; i++){
+        if (isPrime[i]) prime[primeSize++] = i;
+        for (int j = 0; j < primeSize && i * prime[j] <= MAXN; ++j){
+            isPrime[i * prime[j]] = false;
+            if (i % prime[j] == 0) break;
+        }
+    }
+}
+
 
 
 因數
