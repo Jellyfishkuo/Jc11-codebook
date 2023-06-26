@@ -19,13 +19,16 @@ bool bfs(int from, int to){
     while(!q.empty()){
         currentNode=q.front();
         q.pop();
-        for(int nextNode=1;nextNode<=nodeNum;++nextNode){
+        for(int nextNode=1;nextNode<=nodeNum
+                                ;++nextNode){
             if((levelGraph[nextNode]==0)&&
                 graph[currentNode][nextNode]>0){
-                levelGraph[nextNode]=levelGraph[currentNode]+1;
+                levelGraph[nextNode]=
+                    levelGraph[currentNode]+1;
                 q.push(nextNode);
             }
-            if((nextNode==to)&&(graph[currentNode][nextNode]>0))
+            if((nextNode==to)&&
+                (graph[currentNode][nextNode]>0))
                 return true;
         }
     }
@@ -39,7 +42,8 @@ int dfs(int from, int to, int bottleNeck){
         if((graph[from][nextNode]>0)&&
             (levelGraph[from]==levelGraph[nextNode]-1)&&
             canReachSink[nextNode]){
-            flow=dfs(nextNode,to,min(graph[from][nextNode],bottleNeck));
+            flow=dfs(nextNode,to,
+                min(graph[from][nextNode],bottleNeck));
             graph[from][nextNode]-=flow; //貪心
             graph[nextNode][from]+=flow; //反悔路
             outFlow+=flow;
