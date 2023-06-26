@@ -6,34 +6,6 @@
 提出想法後可以先試圖尋找有沒有能推翻原本的想法的反例，
 確認無誤再實作。
 
-Scarecrow
-//problem
-有一個 N×1 的稻田，有些稻田現在有種植作物，
-為了避免被動物破壞，需要放置稻草人，
-稻草人可以保護該塊稻田和左右兩塊稻田，
-請問最少需要多少稻草人才能保護所有稻田?
-
-//solutoin
-從左到右掃描稻田，如果第 i 塊稻田有作物，
-就把稻草人放到第 i+1 塊稻田，
-這樣能保護第 i,i+1,i+2 塊稻田，
-接著從第 i+3 塊稻田繼續掃描。
-
-//code
-#include <bits/stdc++.h>
-using namespace std;
-int main(){
-    string s;
-    int i, n, t, tc = 1;
-    cin >> t;
-    while (t--){
-        cin >> n >> s;
-        int nc = 0;
-        for (i = 0; i < n; i++)
-            if (s[i] == '.')i += 2, nc++;
-        cout<<"Case "<<tc++<<": "<<nc<<endl;
-    }
-}
 
 霍夫曼樹的變形題
 //problem
