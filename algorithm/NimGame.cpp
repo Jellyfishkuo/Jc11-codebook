@@ -52,6 +52,7 @@ int main(){
     }
     return 0;
 }
+
 /*
  input
 4  1 0 1 100
@@ -62,5 +63,4 @@ int main(){
 Game 1: 0 2 3
 Game 2: 0 1 1
 Game 3: -1 -1 -1
-
 */

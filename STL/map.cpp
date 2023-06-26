@@ -45,7 +45,8 @@ int main(){
 
     //traversal
     for(iter=mp.begin();iter!=mp.end();iter++)
-        cout<<iter->first<<" "<<iter->second<<endl;
+        cout<<iter->first<<" "
+                    <<iter->second<<endl;
     for(iter_r=mp.rbegin();iter_r!=mp.rend();iter_r++)
         cout<<iter_r->first<<" "<<iter_r->second<<endl;
 
@@ -54,7 +55,8 @@ int main(){
     mp.erase(iter);
     iter=mp.find("r123");
     if(iter!=mp.end())
-       cout<<"Find, the value is "<<iter->second<<endl;
+       cout<<"Find, the value is "
+                <<iter->second<<endl;
     else cout<<"Do not Find"<<endl;
     return 0;
 }
