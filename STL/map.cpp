@@ -38,23 +38,23 @@ int main(){
     map<string, string>::reverse_iterator iter_r;
 
     //insert element
-    mp.insert(pair<string, string>("r000", "student_zero"));
+    mp.insert(pair<string, string>
+            ("r000", "student_zero"));
     mp["r123"] = "student_first";
     mp["r456"] = "student_second";
 
     //traversal
-    for(iter = mp.begin(); iter != mp.end(); iter++)
+    for(iter=mp.begin();iter!=mp.end();iter++)
         cout<<iter->first<<" "<<iter->second<<endl;
-    for(iter_r = mp.rbegin(); iter_r != mp.rend(); iter_r++)
+    for(iter_r=mp.rbegin();iter_r!=mp.rend();iter_r++)
         cout<<iter_r->first<<" "<<iter_r->second<<endl;
 
     //find and erase the element
-    iter = mp.find("r123");
+    iter=mp.find("r123");
     mp.erase(iter);
-    iter = mp.find("r123");
-    if(iter != mp.end())
+    iter=mp.find("r123");
+    if(iter!=mp.end())
        cout<<"Find, the value is "<<iter->second<<endl;
-    else
-       cout<<"Do not Find"<<endl;
+    else cout<<"Do not Find"<<endl;
     return 0;
 }
