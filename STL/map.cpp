@@ -31,7 +31,6 @@ find()：查找一個元素
 //實作範例
 #include <bits/stdc++.h>
 using namespace std;
-
 int main(){
     //declaration container and iterator
     map<string, string> mp;

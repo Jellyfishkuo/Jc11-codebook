@@ -11,11 +11,9 @@ for(int i=2;i*i<=n;i++){
 
 歐拉篩O(n)
 #define MAXN 47000 // sqrt(2^31) = 46,340...
-
 bool isPrime[MAXN];
 int prime[MAXN];
 int primeSize = 0;
-
 void getPrimes(){
     memset(isPrime, true, sizeof(isPrime));
     isPrime[0] = isPrime[1] = false;
@@ -29,7 +27,6 @@ void getPrimes(){
 }
 
 
-
 因數
 
 最大公因數 O(log(min(a,b))) 
@@ -41,21 +38,15 @@ int GCD(int a, int b)
 
 質因數分解
 
-void primeFactorization(int n)
-{
-    for (int i = 0; i < (int)p.size(); ++i)
-    {
-        if (p[i] * p[i] > n)
-            break;
-        if (n % p[i])
-            continue;
+void primeFactorization(int n){
+    for(int i=0;i<(int)p.size();++i){
+        if(p[i] * p[i] > n) break;
+        if(n % p[i]) continue;
         cout << p[i] << ' ';
-        while (n % p[i] == 0)
-            n /= p[i];
+        while(n % p[i] == 0) n /= p[i];
     }
-    if (n != 1)
-        cout << n << ' ';
-    cout << '\n';
+    if(n!=1) cout<<n<<' ';
+    cout<<'\n';
 }
 
 歌德巴赫猜想
@@ -65,7 +56,6 @@ solution : 把偶數 N (6≤N≤10^6) 寫成兩個質數的和。
 using namespace std;
 #define N 20000000
 int ox[N], p[N], pr;
-
 void PrimeTable(){
     ox[0] = ox[1] = 1;
     pr = 0;
