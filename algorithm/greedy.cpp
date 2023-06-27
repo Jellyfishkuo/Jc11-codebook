@@ -7,40 +7,6 @@
 確認無誤再實作。
 
 
-霍夫曼樹的變形題
-//problem
-給定 N 個數，每次將兩個數 a,b 合併成 a+b，
-只到最後只剩一個數，合併成本為兩數和，
-問最小合併成本為多少。
-
-//solution
-每次將最小的兩數合併起來。
-
-//code
-#include <bits/stdc++.h>
-using namespace std;
-int main()
-{
-    int n, x;
-    while (cin >> n, n){
-        priority_queue<int,vector<int>,greater<int>> q;
-        while (n--){
-            cin >> x;
-            q.push(x);
-        }
-        long long ans = 0;
-        while (q.size() > 1){
-            x = q.top();
-            q.pop();
-            x += q.top();
-            q.pop();
-            q.push(x);
-            ans += x;
-        }
-        cout << ans << endl;
-    }
-}
-
 刪數字問題
 //problem
 給定一個數字 N(≤10^100)，需要刪除 K 個數字，
@@ -51,69 +17,25 @@ int main()
 扣除高位數的影響較扣除低位數的大。
 
 //code
-int main()
-{
+int main(){
     string s;
     int k;
-    cin >> s >> k;
-    for (int i = 0; i < k; ++i){
-        if ((int)s.size() == 0) break;
-        int pos = (int)s.size() - 1;
-        for (int j = 0; j < (int)s.size() - 1; ++j){
-            if (s[j] > s[j + 1]){
-                pos = j;
+    cin>>s>>k;
+    for(int i=0;i<k;++i){
+        if((int)s.size()==0) break;
+        int pos =(int)s.size()-1;
+        for(int j=0;j<(int)s.size()-1;++j){
+            if(s[j]>s[j+1]){
+                pos=j;
                 break;
             }
         }
-        s.erase(pos, 1);
+        s.erase(pos,1);
     }
-    while ((int)s.size() > 0 && s[0] == '0')
-        s.erase(0, 1);
-    if ((int)s.size()) cout << s << '\n';
-    else cout << 0 << '\n';
-}
-
-
-區間覆蓋長度
-//problem
-給定 n 條線段區間為 [Li,Ri]，
-請問這些線段的覆蓋所覆蓋的長度?
-
-//solution
-先將所有區間依照左界由小到大排序，
-左界相同依照右界由小到大排序，
-用一個變數 R 紀錄目前最大可以覆蓋到的右界。
-如果目前區間左界 ≤R，代表該區間可以和前面的線段合併。
-
-//code
-struct Line
-{
-    int L, R;
-    bool operator<(const Line &rhs) const
-    {
-        if (L != rhs.L) return L < rhs.L;
-        return R < rhs.R;
-    }
-};
-
-int main(){
-    int n;
-    Line a[10005];
-    while (cin >> n){
-        for (int i = 0; i < n; i++)
-            cin >> a[i].L >> a[i].R;
-        sort(a, a + n);
-        int ans = 0, L = a[0].L, R = a[0].R;
-        for (int i = 1; i < n; i++){
-            if (a[i].L < R) R = max(R, a[i].R);
-            else{
-                ans += R - L;
-                L = a[i].L;
-                R = a[i].R;
-            }
-        }
-        cout << ans + (R - L) << '\n';
-    }
+    while((int)s.size()>0&&s[0]=='0')
+        s.erase(0,1);
+    if((int)s.size()) cout<<s<<'\n';
+    else cout<<0<<'\n';
 }
 
 
@@ -140,26 +62,26 @@ int main(){
 int main(){
     int n, r;
     int a[1005];
-    cin >> n >> r;
-    for (int i=1;i<=n;++i) cin>>a[i];
-    int i = 1, ans = 0;
-    while (i <= n){
-        int R=min(i+r-1, n), L=max(i-r+1, 0)
+    cin>>n>>r;
+    for(int i=1;i<=n;++i) cin>>a[i];
+    int i=1,ans=0;
+    while(i<=n){
+        int R=min(i+r-1,n),L=max(i-r+1,0)
         int nextR=-1;
-        for (int j = R; j >= L; --j){
-            if (a[j]){
-                nextR = j;
+        for(int j=R;j>=L;--j){
+            if(a[j]){
+                nextR=j;
                 break;
             }
         }
-        if (nextR == -1){
-            ans = -1;
+        if(nextR==-1){
+            ans=-1;
             break;
         }
         ++ans;
-        i = nextR + r;
+        i=nextR+r;
     }
-    cout << ans << '\n';
+    cout<<ans<<'\n';
 }
 
 
@@ -173,79 +95,30 @@ int main(){
 每次取到一個不重疊的線段，答案 +1。
 
 //code
-struct Line
-{
-    int L, R;
-    bool operator<(const Line &rhs) const {
-         return R < rhs.R; 
+struct Line{
+    int L,R;
+    bool operator<(const Line &rhs)const{
+         return R<rhs.R; 
         }
 };
 
 int main(){
     int t;
-    cin >> t;
+    cin>>t;
     Line a[30];
-    while (t--){
-        int n = 0;
-        while (cin>>a[n].L>>a[n].R, a[n].L||a[n].R)
+    while(t--){
+        int n=0;
+        while(cin>>a[n].L>>a[n].R,a[n].L||a[n].R)
             ++n;
-        sort(a, a + n);
-        int ans = 1, R = a[0].R;
-        for (int i = 1; i < n; i++){
-            if (a[i].L >= R){
+        sort(a,a+n);
+        int ans=1,R=a[0].R;
+        for(int i=1;i<n;i++){
+            if(a[i].L>=R){
                 ++ans;
-                R = a[i].R;
+                R=a[i].R;
             }
         }
-        cout << ans << '\n';
-    }
-}
-
-
-區間選點問題
-//problem
-給你 n 條線段區間為 [Li,Ri]，
-請問至少要取幾個點才能讓每個區間至少包含一個點?
-
-//solution
-將區間依照右界由小到大排序，R=第一個區間的右界，
-遍歷所有區段，如果當前區間左界>R ，
-代表必須多選一個點 (ans+=1)，並將 R=當前區間右界。
-
-//problem
-給定 N 個座標，要在 x 軸找到最小的點，
-讓每個座標至少和一個點距離 ≤ D。
-
-//solution
-以每個點 (xi,yi) 為圓心半徑為 D 的圓 C，
-求出 C 和 x 軸的交點 Li,Ri，題目轉變成區間選點問題。
-
-//code
-struct Line
-{
-    int L, R;
-    bool operator<(const Line &rhs) const { 
-        return R < rhs.R;
-        }
-};
-
-int main(){
-    int t;
-    cin >> t;
-    Line a[30];
-    while (t--){
-        int n = 0;
-        while (cin>>a[n].L>>a[n].R, a[n].L||a[n].R)
-            ++n;
-        sort(a, a + n);
-        int ans = 1, R = a[0].R;
-        for (int i = 1; i < n; i++){
-            if (a[i].L >= R){
-                ++ans;
-                R = a[i].R;
-            }
-        }
-        cout << ans << '\n';
+        cout<<ans<<'\n';
     }
 }
 
@@ -261,27 +134,26 @@ int main(){
 按照到期時間從早到晚處理。
 
 //code
-struct Work
-{
+struct Work{
     int t, d;
-    bool operator<(const Work &rhs) const {
-        return d < rhs.d;
+    bool operator<(const Work &rhs)const{
+        return d<rhs.d;
         }
 };
 
 int main(){
     int n;
     Work a[10000];
-    cin >> n;
-    for (int i = 0; i < n; ++i)
-        cin >> a[i].t >> a[i].d;
-    sort(a, a + n);
-    int maxL = 0, sumT = 0;
-    for (int i = 0; i < n; ++i){
-        sumT += a[i].t;
-        maxL = max(maxL, sumT - a[i].d);
+    cin>>n;
+    for(int i=0;i<n;++i)
+        cin>>a[i].t>>a[i].d;
+    sort(a,a+n);
+    int maxL=0,sumT=0;
+    for(int i=0;i<n;++i){
+        sumT+=a[i].t;
+        maxL=max(maxL,sumT-a[i].d);
     }
-    cout << maxL << '\n';
+    cout<<maxL<<'\n';
 }
 
 
@@ -300,8 +172,8 @@ int main(){
 //problem
 給定烏龜的重量和可承受重量，問最多可以疊幾隻烏龜?
 
+//solution
 和最少延遲數量問題是相同的問題，只要將題敘做轉換。
-
 工作處裡時長 → 烏龜重量
 工作期限 → 烏龜可承受重量
 多少工作不延期 → 可以疊幾隻烏龜
@@ -309,30 +181,30 @@ int main(){
 //code
 struct Work{
     int t, d;
-    bool operator<(const Work &rhs) const { 
-        return d < rhs.d; 
+    bool operator<(const Work &rhs)const{ 
+        return d<rhs.d; 
         }
 };
 
 int main(){
-    int n = 0;
+    int n=0;
     Work a[10000];
     priority_queue<int> pq;
-    while(cin >> a[n].t >> a[n].d)
+    while(cin>>a[n].t>>a[n].d)
         ++n;
-    sort(a, a + n);
-    int sumT = 0, ans = n;
-    for (int i = 0; i < n; ++i){
+    sort(a,a+n);
+    int sumT=0,ans=n;
+    for(int i=0;i<n;++i){
         pq.push(a[i].t);
-        sumT += a[i].t;
+        sumT+=a[i].t;
         if(a[i].d<sumT){
-            int x = pq.top();
+            int x=pq.top();
             pq.pop();
-            sumT -= x;
+            sumT-=x;
             --ans;
         }   
     }
-    cout << ans << '\n';
+    cout<<ans<<'\n';
 }
 
 任務調度問題
@@ -355,11 +227,10 @@ int main(){
 和上題相似，這題變成依照獎勵由大到小排序。
 
 //code
-struct Work
-{
-    int d, p;
-    bool operator<(const Work &rhs) const { 
-        return p > rhs.p; 
+struct Work{
+    int d,p;
+    bool operator<(const Work &rhs)const{ 
+        return p>rhs.p; 
         }
 };
 
@@ -367,54 +238,21 @@ int main(){
     int n;
     Work a[100005];
     bitset<100005> ok;
-    while (cin >> n){
+    while(cin>>n){
         ok.reset();
-        for (int i = 0; i < n; ++i)
-            cin >> a[i].d >> a[i].p;
-        sort(a, a + n);
-        int ans = 0;
-        for (int i = 0; i < n; ++i){
-            int j = a[i].d;
-            while (j--)
-                if (!ok[j]){
-                    ans += a[i].p;
-                    ok[j] = true;
+        for(int i=0;i<n;++i)
+            cin>>a[i].d>>a[i].p;
+        sort(a,a+n);
+        int ans=0;
+        for(int i=0;i<n;++i){
+            int j=a[i].d;
+            while(j--)
+                if(!ok[j]){
+                    ans+=a[i].p;
+                    ok[j]=true;
                     break;
                 }
         }
-        cout << ans << '\n';
+        cout<<ans<<'\n';
     }
-}
-
-多機調度問題
-//problem
-給定 N 項工作，每項工作的需要處理時長為 Ti，
-有 M 台機器可執行多項工作，但不能將工作拆分，
-最快可以在什麼時候完成所有工作?
-
-//solution
-將工作由大到小排序，每項工作交給最快空閒的機器。
-
-//code
-int main(){
-    int n, m;
-    int a[10000];
-    cin >> n >> m;
-    for (int i = 0; i < n; ++i)
-        cin >> a[i];
-    sort(a, a + n,greater<int>());
-    int ans = 0;
-    priority_queue<int,vector<int>,greater<int>>pq;
-    for (int i = 0; i < m && i < n; ++i){
-        ans = max(ans, a[i]);
-        pq.push(a[i]);
-    }
-    for (int i = m; i < n; ++i){
-        int x = pq.top();
-        pq.pop();
-        x += a[i];
-        ans = max(ans, x);
-        pq.push(x);
-    }
-    cout << ans << '\n';
 }
