@@ -4,9 +4,9 @@ int medium[n][n];
 // 由i點到j點的路徑，其中繼點為medium[i][j]。
 
 void floyd_warshall(){
-	for (int i=0;i<n;i++)
-		for (int j=0;j<n;j++){
-			d[i][j] = w[i][j];
+	for(int i=0;i<n;i++)
+		for(int j=0;j<n;j++){
+			d[i][j]=w[i][j];
 			medium[i][j]=-1;	
 			// 預設為沒有中繼點
 		}
@@ -22,9 +22,9 @@ void floyd_warshall(){
 }
 
 // 這支函式並不會印出起點和終點，必須另行印出。
-void find_path(int s, int t){		// 印出最短路徑
-	if (medium[s][t] == -1) return;	// 沒有中繼點就結束
-	find_path(s, medium[s][t]);		// 前半段最短路徑
-	cout << medium[s][t];			// 中繼點
-	find_path(medium[s][t], t);		// 後半段最短路徑
+void find_path(int s,int t){		// 印出最短路徑
+	if(medium[s][t]==-1) return;	// 沒有中繼點就結束
+	find_path(s,medium[s][t]);		// 前半段最短路徑
+	cout<<medium[s][t];			// 中繼點
+	find_path(medium[s][t],t);		// 後半段最短路徑
 }
