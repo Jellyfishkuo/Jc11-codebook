@@ -3,7 +3,7 @@ int d[n][n];
 int medium[n][n];	
 // 由i點到j點的路徑，其中繼點為medium[i][j]。
 
-void floyd_warshall(){
+void floyd_warshall(){ //O(V^3)
 	for(int i=0;i<n;i++)
 		for(int j=0;j<n;j++){
 			d[i][j]=w[i][j];

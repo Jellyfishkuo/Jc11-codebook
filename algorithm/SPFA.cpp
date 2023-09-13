@@ -1,20 +1,37 @@
-void spfa(int s){
-	for(int i=0;i<=n;i++) dis[i]=0x3f3f3f3f;
-	dis[s]=0,vis[s]=1,q[1]=s;  
-	int i,v,head=0,tail=1;
-	while(head<tail){      //隊列非空
-		head++; 
-		v=q[head];         //取隊首元素
-		vis[v]=0;   
-		for(i=0;i<=n;i++)  //對所有頂點
-		   if(a[v][i]>0&&dis[i]>dis[v]+a[v][i]){  
-				dis[i]=dis[v]+a[v][i];//修改最短路
-				if(vis[i]==0){
-					tail++;
-					q[tail]=i;
-					vis[i]=1;
-				}
-		   }
-		
-	}
+struct Edge
+{
+    int t;
+    long long w;
+    Edge(){};
+    Edge(int _t, long long _w) : t(_t), w(_w) {}
+};
+
+bool SPFA(int st) // 平均O(V + E) 最糟O(VE)
+{
+    vector<int> cnt(n, 0);
+    bitset<MXV> inq(0);
+    queue<int> q;
+    q.push(st);
+    dis[st] = 0;
+    inq[st] = true;
+    while (!q.empty())
+    {
+        int cur = q.front();
+        q.pop();
+        inq[cur] = false;
+        for (auto &e : G[cur])
+        {
+            if (dis[e.t] <= dis[cur] + e.w)
+                continue;
+            dis[e.t] = dis[cur] + e.w;
+            if (inq[e.t])
+                continue;
+            ++cnt[e.t];
+            if (cnt[e.t] > n)
+                return false; // negtive cycle
+            inq[e.t] = true;
+            q.push(e.t);
+        }
+    }
+    return true;
 }
