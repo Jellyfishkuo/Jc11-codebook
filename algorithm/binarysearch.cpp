@@ -27,4 +27,3 @@ upper_bound(arr, arr + n, k) - 1;//最右邊 ≤ k 的位置
 lower_bound(arr, arr + n, k) - 1;//最右邊 < k 的位置
 (lower_bound, upper_bound)       //等於 k 的範圍
 equal_range(arr, arr+n, k);
-// ................................................
