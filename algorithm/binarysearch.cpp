@@ -9,9 +9,9 @@ int binary_search(int target) {     // For range [ok, ng) or (ng, ok]
     return ok;
 }
 
-lower_bound(arr, arr + n, k);       //最左邊 ≥ k 的位置
-upper_bound(arr, arr + n, k);       //最左邊 > k 的位置
-upper_bound(arr, arr + n, k) - 1;   //最右邊 ≤ k 的位置
-lower_bound(arr, arr + n, k) - 1;   //最右邊 < k 的位置
-(lower_bound, upper_bound)          //等於 k 的範圍
+lower_bound(arr, arr + n, k);    //最左邊 ≥ k 的位置
+upper_bound(arr, arr + n, k);    //最左邊 > k 的位置
+upper_bound(arr, arr + n, k) - 1;//最右邊 ≤ k 的位置
+lower_bound(arr, arr + n, k) - 1;//最右邊 < k 的位置
+(lower_bound, upper_bound)       //等於 k 的範圍
 equal_range(arr, arr+n, k);
