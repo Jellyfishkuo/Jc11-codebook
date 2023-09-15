@@ -42,8 +42,9 @@ int query(int ql, int qr, int l, int r, int i) {
     return sum;
 }
 
-void update(int ql, int qr, int l, int r, int i, int c) {
-// [ql, qr]是查詢區間,[l, r]是當前節點包含的區間,c是變化量
+void update(int ql,int qr,int l,int r,int i,int c) {
+// [ql, qr]是查詢區間,[l, r]是當前節點包含的區間
+// c是變化量
     if (ql <= l && r <= qr) {
         st[i] += (r - l + 1) * c; //求和,此需乘上區間長度
         tag[i] += c;
