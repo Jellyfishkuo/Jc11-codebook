@@ -12,7 +12,7 @@ inline int pull(int l, int r) {
 void build(int l, int r, int i) {
 // 在[l, r]區間建樹，目前根的index為i
     if (l == r) {
-        st[i] = data[i];
+        st[i] = data[l];
         return;
     }
     int mid = l + ((r - l) >> 1);
