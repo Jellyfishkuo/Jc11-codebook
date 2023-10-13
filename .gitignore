@@ -1,2 +1,8 @@
 .vscode
 .vscode\**
+
+*.aux
+*.log
+*.pdf
+*.toc
+*.synctex.gz
