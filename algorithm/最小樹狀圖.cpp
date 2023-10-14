@@ -6,7 +6,8 @@
 
   流程
 1. 對於每個點，選擇它入度最小的那條邊
-2. 如果沒有環，演算法終止；否則進行縮環並更新其他點到環的距離。
+2. 如果沒有環，演算法終止；
+   否則進行縮環並更新其他點到環的距離。
 
 bool solve() {
   ans = 0;
@@ -21,7 +22,7 @@ bool solve() {
         pre[v] = u;
       }
     }
-    f(i, 0, m) if (i != root && in[i] > 1e50) return 0;
+    f(i, 0, m) if(i!=root && in[i]>1e50) return 0;
     int tn = 0;
     memset(id, -1, sizeof id);
     memset(vis, -1, sizeof vis);
@@ -29,12 +30,12 @@ bool solve() {
     f(i, 0, n) {
       ans += in[i];
       v = i;
-      while (vis[v] != i && id[v] == -1 && v != root) {
+      while(vis[v]!=i&&id[v]==-1&&v!=root){
         vis[v] = i;
         v = pre[v];
       }
       if (v != root && id[v] == -1) {
-        for (int u = pre[v]; u != v; u = pre[u]) id[u] = tn;
+        for(int u=pre[v];u!=v;u=pre[u]) id[u]=tn;
         id[v] = tn++;
       }
     }
@@ -77,11 +78,13 @@ Tarjan 的演算法分為收縮與伸展兩個過程。
 我們不妨將這些已經收縮的結點命名為超級結點，
 再繼續這個過程，如果所有的頂點都縮成了超級結點，
 那麼收縮過程就結束了。
-整個收縮過程結束後會得到一棵收縮樹，之後就會對它進行伸展操作。
+整個收縮過程結束後會得到一棵收縮樹，
+之後就會對它進行伸展操作。
 
 堆中的邊總是會形成一條路徑v0 <- v1<- ... <- vk，
 由於圖是強連通的，這個路徑必然存在，
-並且其中的 vi 可能是最初的單一結點，也可能是壓縮後的超級結點。
+並且其中的 vi 可能是最初的單一結點，
+也可能是壓縮後的超級結點。
 
 最初有 v0=a，其中 a 是圖中任意的一個結點，
 每次都選擇一條最小入邊 vk <- u，
@@ -94,7 +97,8 @@ Tarjan 的演算法分為收縮與伸展兩個過程。
 向隊列 P 中放入所有的結點或超級結點，
 並初始選擇任一節點 a，只要佇列不為空，就進行以下步驟：
 
-選擇 a 的最小入邊，保證不存在自環，並找到另一頭的結點 b。
+選擇 a 的最小入邊，保證不存在自環，
+並找到另一頭的結點 b。
 如果結點b沒有被記錄過說明未形成環，
 令 a <- b，繼續目前操作尋找環。
 
@@ -132,7 +136,8 @@ struct Heap {
   int rk, constant;
   Heap *lch, *rch;
 
-  Heap(Edge *_e):e(_e),rk(1),constant(0),lch(NULL),rch(NULL){}
+  Heap(Edge *_e):
+    e(_e),rk(1),constant(0),lch(NULL),rch(NULL){}
 
   void push() {
     if (lch) lch->constant += constant;
@@ -196,7 +201,8 @@ void contract() {
     } while (a == b && Q[a]);
     if (a == b) break;
     if (!mark[a]) continue;
-    //對發現的環進行收縮，以及環內的節點重新編號，總權值更新
+    //對發現的環進行收縮，以及環內的節點重新編號，
+    //總權值更新
     for (a = b, n++; a != n; a = p) {
       id.fa[a] = fa[a] = n;
       if (Q[a]) Q[a]->constant -= ed[a]->w;
