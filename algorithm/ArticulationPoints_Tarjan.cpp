@@ -6,7 +6,8 @@ int N;
 int timer;
 bool visited[105];
 int visTime[105]; // 第一次visit的時間
-int low[105]; // 最小能回到的父節點(不能是自己的parent)的visTime
+int low[105]; 
+// 最小能回到的父節點(不能是自己的parent)的visTime
 int res;
 //求割點數量
 void tarjan(int u, int parent) {
