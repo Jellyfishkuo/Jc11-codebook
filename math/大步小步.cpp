@@ -1,14 +1,6 @@
   題意
 給定 B,N,P，求出 L 滿足 B^L≡N(mod P)。
 
-\begin{itemize}
-$\sum \limits_{i=1}^n i^2 = \frac{n(n+1)(2n+1)}{6}$
-\end{itemize}
-
-
-$\sum \limits_{i=1}^n i^2 = \frac{n(n+1)(2n+1)}{6}$
-
-
   題解
 餘數的循環節長度必定為 P 的因數，因此 B^0≡B^P,B^1≡B^(P+1),…，
 也就是說如果有解則 L<N，枚舉0,1,2,L−1 能得到結果，但會超時。
