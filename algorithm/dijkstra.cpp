@@ -17,7 +17,7 @@ struct Item{
 vector<edge> G[maxn];
 int dist[maxn];
 
-void dijkstra(int s){ // O((V + E)logE)
+void dijkstra(int s){ // O((V + E)log(E))
     memset(dist,INF,sizeof(dist));
     dist[s]=0;
     priority_queue<Item> pq;

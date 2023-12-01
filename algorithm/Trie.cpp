@@ -1,75 +1,75 @@
 #include <bits/stdc++.h>
-#define word_maxn 4000*100+5
-#define str_maxn 300000+5
-#define sigma_num 26
-#define MOD 20071027
 using namespace std;
 
-int dp[str_maxn];
-char S[str_maxn];
-char wd[100+5];
+const int maxn = 300000 + 10;
+const int mod = 20071027;
 
-struct Trie{
-    int ch[word_maxn][sigma_num];
-    int val[word_maxn];
+int dp[maxn];
+int mp[4000*100 + 10][26];
+char str[maxn];
+
+struct Trie {
     int seq;
-    void init(){
-        seq=1;
-        memset(ch,0,sizeof(ch));
-    }
-    void insertion(char *s){
-        int row=0,n=strlen(s);
-        for(int i=0;i<n;i++){
-            int letter_no=s[i]-'a';
-            if(ch[row][letter_no]==0){
-                ch[row][letter_no]=seq;
-                memset(ch[seq],0,sizeof(ch[seq]));
-                val[seq++]=0;
-            }
-            row=ch[row][letter_no];
-        }
-        val[row]=n;
-    }
-    void find_prefix(char *s,int len,vector<int>&vc){
-        int row=0;
-        for(int i=0;i<len;i++){
-            int letter_no=s[i]-'a';
-            if(ch[row][letter_no]==0) return;
-            row=ch[row][letter_no];
-            if(val[row]) vc.push_back(val[row]);
-        }
-    }
-}tr;
+    int val[maxn];
 
-int main(){
-    int Case=1;
-    while(cin>>S){
-        int n;
-        cin>>n;
-        tr.init();
-        for(int i=0;i<n;i++){
-            cin>>wd;
-            tr.insertion(wd);
+    Trie() {
+        seq = 0;
+        memset(val, 0, sizeof(val));
+        memset(mp, 0, sizeof(mp));
+    }
+
+    void insert(char* s, int len) {
+        int r = 0;
+        for(int i=0; i<len; i++) {
+            int c = s[i] - 'a';
+            if(!mp[r][c]) mp[r][c] = ++seq;
+            r = mp[r][c];
         }
-        memset(dp,0,sizeof(dp));
-        int N=strlen(S);
-        dp[N]=1;
-        for(int i=N-1;i>=0;i--){
-            vector<int> vc;
-            tr.find_prefix(S+i,N-i,vc);
-            for(int j=0;j<vc.size();j++)
-                dp[i]=(dp[i]+dp[i+vc[j]])%MOD;
+        val[r] = len;
+        return;
+    }
+
+    int find(int idx, int len) {
+        int result = 0;
+        for(int r=0; idx<len; idx++) {
+            int c = str[idx] - 'a';
+            if(!(r = mp[r][c])) return result;
+            if(val[r]) result = (result + dp[idx + 1]) % mod;
         }
-        cout<<"Case "<<Case++<<": "<<dp[0]<<endl;
+        return result;
+    }
+};
+
+int main() {
+    int n, c = 1;
+
+    while(~scanf("%s%d", str, &n)) {
+        Trie tr;
+        int len = strlen(str);
+        char word[100+10];
+
+        memset(dp, 0, sizeof(dp));
+        dp[len] = 1;
+
+        while(n--) {
+            scanf("%s", word);
+            tr.insert(word, strlen(word));
+        }
+
+        for(int i=len-1; i>=0; i--)
+            dp[i] = tr.find(i, len);
+        printf("Case %d: %d\n", c++, dp[0]);
     }
     return 0;
 }
 
-/*
- input
-abcd
-4
-a b cd ab
- output
-Case 1: 2
+/*************
+ ****Input****
+ * abcd
+ * 4
+ * a b cd ab
+ *************
+ ****Output***
+ * Case 1: 2
+ *************
 */
