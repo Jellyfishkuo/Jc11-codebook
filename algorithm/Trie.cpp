@@ -41,7 +41,7 @@ struct Trie {
 };
 
 int main() {
-    int n, c = 1;
+    int n, tc = 1;
 
     while(~scanf("%s%d", str, &n)) {
         Trie tr;
@@ -58,7 +58,7 @@ int main() {
 
         for(int i=len-1; i>=0; i--)
             dp[i] = tr.find(i, len);
-        printf("Case %d: %d\n", c++, dp[0]);
+        printf("Case %d: %d\n", tc++, dp[0]);
     }
     return 0;
 }
