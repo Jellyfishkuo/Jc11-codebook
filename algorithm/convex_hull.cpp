@@ -1,5 +1,5 @@
 /* ***************************************************
- * 問題：在平面上給定多點所形成的區域，再給定多點(x,y)，
+ * 問題：平面上給定多點所形成的區域，再給定多點(x,y)，
  * 判斷有落點的區域(destroyed)的面積總和。
  * **************************************************/
 #include <bits/stdc++.h>
@@ -13,7 +13,7 @@ struct Point {
 };
 
 int n;
-bool destroyed[maxn] = {};
+bool destroyed[maxn];
 Point arr[maxn];
 vector<Point> polygons[maxn];
 
