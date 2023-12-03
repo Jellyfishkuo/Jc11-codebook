@@ -28,7 +28,8 @@ int main(){
     while(cin>>n,n){
       ans=0;
       for(int i=1;i<=n;i++) cin>>pile[i];
-      for(int i=1;i<=n;i++) if(pile[i]&1) ans^=SG[n-i];
+      for(int i=1;i<=n;i++)
+        if(pile[i]&1) ans^=SG[n-i];
       cout<<"Game "<<++Case<<": ";
       if(!ans) cout<<"-1 -1 -1\n";
       else{

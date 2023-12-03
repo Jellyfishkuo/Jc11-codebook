@@ -11,7 +11,8 @@ using namespace std;
 struct Point{
     double x, y, z;
     Point() {}
-    Point(double _x,double _y,double _z):x(_x),y(_y),z(_z){}
+    Point(double _x,double _y,double _z):
+        x(_x),y(_y),z(_z){}
     void read() { cin>>x>>y>>z; }
     Point operator+(const Point &rhs) const{
         return Point(x+rhs.x,y+rhs.y,z+rhs.z);

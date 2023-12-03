@@ -34,7 +34,8 @@ struct Trie {
         for(int r=0; idx<len; idx++) {
             int c = str[idx] - 'a';
             if(!(r = mp[r][c])) return result;
-            if(val[r]) result = (result + dp[idx + 1]) % mod;
+            if(val[r])
+                result = (result + dp[idx + 1]) % mod;
         }
         return result;
     }
