@@ -44,7 +44,7 @@ int cross(Point& A, Point& B, Point& C) {
     return (u[0] * v[1]) - (u[1] * v[0]);
 }
 
-// size of arr >= 3
+// size of arr = n >= 3
 // st = the stack using vector, m = index of the top
 vector<Point> convex_hull() {
     vector<Point> st(arr, arr+3);
