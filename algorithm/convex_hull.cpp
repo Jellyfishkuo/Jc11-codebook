@@ -37,7 +37,7 @@ void scanAndSortPoints() {
     return;
 }
 
-//  returns u(AB) x v(AC)
+//  returns cross product of u(AB) x v(AC)
 int cross(Point& A, Point& B, Point& C) {
     int u[2] = {B.x - A.x, B.y - A.y};
     int v[2] = {C.x - A.x, C.y - A.y};
