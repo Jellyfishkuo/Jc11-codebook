@@ -74,7 +74,7 @@ bool inPolygon(vector<Point>& vec, Point p) {
 
 /* ***************************************************
  *       | x1   x2   x3   x4   x5         xn |
- *  A =  |    x    x    x    x    x ... x    | x 0.5
+ *   A = |    x    x    x    x    x ... x    | x 0.5
  *       | y1   y2   y3   y4   y5         yn |
  * **************************************************/
 double calculateArea(vector<Point>& v) {
