@@ -76,7 +76,7 @@ bool inPolygon(vector<Point>& vec, Point p) {
    A = - |    x    x    x    x    x ... x    |
        2 | y1   y2   y3   y4   y5         yn |
 double calculateArea(vector<Point>& v) {
-    v.push_back(v[0]);          // v[n] = v[0]
+    v.push_back(v[0]);          // make v[n] = v[0]
     double result = 0.0;
     for(int i=1; i<v.size(); i++)
         result += v[i-1].x*v[i].y - v[i-1].y*v[i].x;
