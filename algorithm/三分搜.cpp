@@ -13,7 +13,10 @@ struct Point{
     Point() {}
     Point(double _x,double _y,double _z):
         x(_x),y(_y),z(_z){}
-    void read() { cin>>x>>y>>z; }
+    friend istream& operator>>(istream& is, Point& p) {
+        is >> p.x >> p.y >> p.z;
+        return is;
+    }
     Point operator+(const Point &rhs) const{
         return Point(x+rhs.x,y+rhs.y,z+rhs.z);
     }
@@ -43,11 +46,7 @@ int main(){
     for(int ti=1;ti<=T;++ti){
         double time;
         Point x1,y1,d1,x2,y2,d2;
-        cin>>time;
-        x1.read();
-        y1.read();
-        x2.read();
-        y2.read();
+        cin>>time>>x1>>y1>>x2>>y2;
         d1=(y1-x1)/time;
         d2=(y2-x2)/time;
         double L=0,R=1e8,m1,m2,f1,f2;
