@@ -6,7 +6,7 @@ struct Point2D {
 
 struct Line2D {
     Point2D s, e;
-    LL a, b, c;                     // L: ax + by = c
+    LL a, b, c;             // L: ax + by = c
     Line2D(Point2D s, Point2D e): s(s), e(e) {
         a = e.y - s.y;
         b = s.x - e.x;
@@ -20,7 +20,7 @@ Point2D intersection2D(Line2D l1, Line2D l2) {
     LL Dx = l1.c * l2.b - l2.c * l1.b;
     LL Dy = l1.a * l2.c - l2.a * l1.c;
 
-    if(D) {          // intersection  
+    if(D) {          // intersection
         double x = 1.0 * Dx / D;
         double y = 1.0 * Dy / D;
     } else {
