@@ -1,85 +1,74 @@
-#include <stdio.h>
-#include <string.h>
-#include <queue>
-#define MAXNODE 105
-#define oo 1e9
-using namespace std;
+const int maxn = 1e5 + 10;
+const int inf = 0x3f3f3f3f;
 
-int nodeNum;
-int graph[MAXNODE][MAXNODE];
-int levelGraph[MAXNODE];
-bool canReachSink[MAXNODE];
+struct Edge {
+    int s, t, cap, flow;
+};
 
-bool bfs(int from, int to){
-    memset(levelGraph,0,sizeof(levelGraph));
-    levelGraph[from]=1;
-    queue<int> q;
-    q.push(from);
-    int currentNode;
-    while(!q.empty()){
-        currentNode=q.front();
+int n, m, S, T;
+int level[maxn], dfs_idx[maxn];
+vector<Edge> E;
+vector<vector<int>> G;
+
+void init() {
+    S = 0;
+    T = n + m;
+    E.clear();
+    G.assign(maxn, vector<int>());
+}
+
+void addEdge(int s, int t, int cap) {
+    E.push_back({s, t, cap, 0});
+    E.push_back({t, s, 0, 0});
+    G[s].push_back(E.size()-2);
+    G[t].push_back(E.size()-1);
+}
+
+bool bfs() {
+    queue<int> q({S});
+
+    memset(level, -1, sizeof(level));
+    level[S] = 0;
+
+    while(!q.empty()) {
+        int cur = q.front();
         q.pop();
-        for(int nextNode=1;nextNode<=nodeNum
-                                ;++nextNode){
-            if((levelGraph[nextNode]==0)&&
-                graph[currentNode][nextNode]>0){
-                levelGraph[nextNode]=
-                    levelGraph[currentNode]+1;
-                q.push(nextNode);
+
+        for(int i : G[cur]) {
+            Edge e = E[i];
+            if(level[e.t]==-1 && e.cap>e.flow) {
+                level[e.t] = level[e.s] + 1;
+                q.push(e.t);
             }
-            if((nextNode==to)&&
-                (graph[currentNode][nextNode]>0))
-                return true;
         }
     }
-    return false;
-}
-int dfs(int from, int to, int bottleNeck){
-    if(from == to) return bottleNeck;
-    int outFlow = 0;
-    int flow;
-    for(int nextNode=1;nextNode<=nodeNum;++nextNode){
-        if((graph[from][nextNode]>0)&&
-            (levelGraph[from]==levelGraph[nextNode]-1)&&
-            canReachSink[nextNode]){
-            flow=dfs(nextNode,to,
-                min(graph[from][nextNode],bottleNeck));
-            graph[from][nextNode]-=flow; //貪心
-            graph[nextNode][from]+=flow; //反悔路
-            outFlow+=flow;
-            bottleNeck-=flow;
-        }
-        if(bottleNeck==0) break;
-    }
-    if(outFlow==0) canReachSink[from]=false;
-    return outFlow;
+    return ~level[T];
 }
 
-int dinic(int from, int to){
-    int maxFlow=0;
-    while(bfs(from, to)){
-        memset(canReachSink,1,sizeof(canReachSink));
-        maxFlow += dfs(from, to, oo);
+int dfs(int cur, int lim) {
+    if(cur==T || lim==0) return lim;
+
+    int result = 0;
+    for(int& i=dfs_idx[cur]; i<G[cur].size() && lim; i++) {
+        Edge& e = E[G[cur][i]];
+        if(level[e.s]+1 != level[e.t]) continue;
+
+        int flow = dfs(e.t, min(lim, e.cap-e.flow));
+        if(flow <= 0) continue;
+
+        e.flow += flow;
+        result += flow;
+        E[G[cur][i]^1].flow -= flow;
+        lim -= flow;
     }
-    return maxFlow;
+    return result;
 }
 
-int main(){
-    int from, to, edgeNum;
-    int NetWorkNum = 1;
-    int maxFlow;
-    while(scanf("%d",&nodeNum)!=EOF&&nodeNum!=0){
-        memset(graph, 0, sizeof(graph));
-        scanf("%d %d %d", &from, &to, &edgeNum);
-        int u, v, w;
-        for (int i = 0; i < edgeNum; ++i){
-            scanf("%d %d %d", &u, &v, &w);
-            graph[u][v] += w;
-            graph[v][u] += w;
-        }
-        maxFlow = dinic(from, to);
-        printf("Network %d\n", NetWorkNum++);
-        printf("The bandwidth is %d.\n\n", maxFlow);
+int dinic() {       // O((V^2)E)
+    int result = 0;
+    while(bfs()) {
+        memset(dfs_idx, 0, sizeof(dfs_idx));
+        result += dfs(S, inf);
     }
-    return 0;
+    return result;
 }
