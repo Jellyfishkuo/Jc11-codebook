@@ -15,7 +15,7 @@ public:
 	/** Adds val to the element at index idx. */
 	void add(int idx, T val) {
 		arr[idx] += val;
-		for (++idx; idx<=size; idx+=(idx&-idx))
+		for (++idx; idx<=size; idx+=(idx & -idx))
             bit[idx] += val;
 	}
 
