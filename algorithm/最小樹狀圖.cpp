@@ -1,60 +1,80 @@
   定義
 有向圖上的最小生成樹（Directed Minimum Spanning Tree）
 稱為最小樹形圖。
-常用的演算法是朱劉演算法（也稱為Edmonds 演算法），
-可以在O(nm)時間內解決最小樹形圖問題。
 
-  流程
-1. 對於每個點，選擇它入度最小的那條邊
-2. 如果沒有環，演算法終止；
-   否則進行縮環並更新其他點到環的距離。
+const int maxn = 60 + 10;
+const int inf = 0x3f3f3f3f;
 
-bool solve() {
-  ans = 0;
-  int u, v, root = 0;
-  for (;;) {
-    f(i, 0, n) in[i] = 1e100;
-    f(i, 0, m) {
-      u = e[i].s;
-      v = e[i].t;
-      if (u != v && e[i].w < in[v]) {
-        in[v] = e[i].w;
-        pre[v] = u;
-      }
+struct Edge {
+    int s, t, cap, cost;
+}; // cap 為頻寬 (optional)
+
+int n, m, c;
+int inEdge[maxn], idx[maxn], pre[maxn], vis[maxn];
+
+// 對於每個點，選擇對它入度最小的那條邊
+// 找環，如果沒有則 return;
+// 進行縮環並更新其他點到環的距離。
+int dirMST(vector<Edge> edges, int low) {
+    int result = 0, root = 0, N = n;
+
+    while(true) {
+        memset(inEdge, 0x3f, sizeof(inEdge));
+
+        // 找所有點的 in edge 放進 inEdge
+        // optional: low 為最小 cap 限制
+        for(const Edge& e : edges) {
+            if(e.cap < low) continue;
+            if(e.s!=e.t && e.cost<inEdge[e.t]) {
+                inEdge[e.t] = e.cost;
+                pre[e.t] = e.s;
+            }
+        }
+
+        for(int i=0; i<N; i++) {
+            if(i!=root && inEdge[i]==inf)
+                return -1; // 除了 root 還有點沒有 in edge
+        }
+
+        int seq = inEdge[root] = 0;
+        memset(idx, -1, sizeof(idx));
+        memset(vis, -1, sizeof(vis));
+
+        // 找所有的 cycle，一起編號為 seq
+        for(int i=0; i<N; i++) {
+            result += inEdge[i];
+            int cur = i;
+            while(vis[cur]!=i && idx[cur]==-1) {
+                if(cur == root) break;
+                vis[cur] = i;
+                cur = pre[cur];
+            }
+            if(cur!=root && idx[cur]==-1) {
+                for(int j=pre[cur]; j!=cur; j=pre[j])
+                    idx[j] = seq;
+                idx[cur] = seq++;
+            }
+        }
+
+        if(seq == 0) return result; // 沒有 cycle
+
+        for(int i=0; i<N; i++)
+            // 沒有被縮點的點
+            if(idx[i] == -1) idx[i] = seq++;
+        
+        // 縮點並重新編號
+        for(Edge& e : edges) {
+            if(idx[e.s] != idx[e.t])
+                e.cost -= inEdge[e.t];
+            e.s = idx[e.s];
+            e.t = idx[e.t];
+        }
+        N = seq;
+        root = idx[root];
     }
-    f(i, 0, m) if(i!=root && in[i]>1e50) return 0;
-    int tn = 0;
-    memset(id, -1, sizeof id);
-    memset(vis, -1, sizeof vis);
-    in[root] = 0;
-    f(i, 0, n) {
-      ans += in[i];
-      v = i;
-      while(vis[v]!=i&&id[v]==-1&&v!=root){
-        vis[v] = i;
-        v = pre[v];
-      }
-      if (v != root && id[v] == -1) {
-        for(int u=pre[v];u!=v;u=pre[u]) id[u]=tn;
-        id[v] = tn++;
-      }
-    }
-    if (tn == 0) break;
-    f(i, 0, n) if (id[i] == -1) id[i] = tn++;
-    f(i, 0, m) {
-      u = e[i].s;
-      v = e[i].t;
-      e[i].s = id[u];
-      e[i].t = id[v];
-      if (e[i].s != e[i].t) e[i].w -= in[v];
-    }
-    n = tn;
-    root = id[root];
-  }
-  return ans;
 }
 
-
+======================================================
 
   Tarjan 的DMST 演算法
 Tarjan 提出了一種能夠在
@@ -108,9 +128,6 @@ Tarjan 的演算法分為收縮與伸展兩個過程。
 更新權值操作就是將環上所有結點的入邊都收集起來，
 並減去環上入邊的邊權。
 
-
-#include <bits/stdc++.h>
-using namespace std;
 typedef long long ll;
 #define maxn 102
 #define INF 0x3f3f3f3f
