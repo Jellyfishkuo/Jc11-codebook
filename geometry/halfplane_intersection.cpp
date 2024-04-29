@@ -1,4 +1,5 @@
-// Q: 給定一張凸包(以排序的點)，找出圖中離凸包外最遠的距離
+// Q: 給定一張凸包(以排序的點)，
+// 找出圖中離凸包外最遠的距離
 
 #include <bits/stdc++.h>
 using namespace std;
@@ -85,7 +86,7 @@ int halfplaneIntersection() {
 
 Point pt[maxn];
 Vector vec[maxn];
-Vector normal[maxn]; // normal[i] = vec[i] 的單位法向量
+Vector normal[maxn];// normal[i] = vec[i] 的單位法向量
 
 double bsearch(double l=0.0, double r=1e4) {
     if(abs(r-l) < 1e-7) return l;

@@ -33,9 +33,9 @@ int dirMST(vector<Edge> edges, int low) {
 
         for(int i=0; i<N; i++) {
             if(i!=root && inEdge[i]==inf)
-                return -1; // 除了 root 還有點沒有 in edge
+                return -1;//除了root 還有點沒有in edge
         }
-
+        
         int seq = inEdge[root] = 0;
         memset(idx, -1, sizeof(idx));
         memset(vis, -1, sizeof(vis));
