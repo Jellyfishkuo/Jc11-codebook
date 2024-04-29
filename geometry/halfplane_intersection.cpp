@@ -49,8 +49,8 @@ struct Line {
 };
 
 int n, m;
-Line narrow[maxn];      // 要判斷的直線
-Point poly[maxn];       // 能形成半平面交的凸包邊界點
+Line narrow[maxn];        // 要判斷的直線
+Point poly[maxn];         // 能形成半平面交的凸包邊界點
 
 // return true if point p is on the left of line l
 bool onLeft(Point p, Line l) {
@@ -59,10 +59,10 @@ bool onLeft(Point p, Line l) {
 
 int halfplaneIntersection() {
     int l, r;
-    Line L[maxn];   // 排序後的向量隊列
-    Point P[maxn];  // s[i] 跟 s[i-1] 的交點
+    Line L[maxn];         // 排序後的向量隊列
+    Point P[maxn];        // s[i] 跟 s[i-1] 的交點
 
-    L[l=r=0] = narrow[0];  // notice: narrow is sorted
+    L[l=r=0] = narrow[0]; // notice: narrow is sorted
     for(int i=1; i<n; i++) {
         while(l<r && !onLeft(P[r-1], narrow[i])) r--;
         while(l<r && !onLeft(P[l], narrow[i])) l++;
