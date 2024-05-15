@@ -1,7 +1,5 @@
-/*****************************************************
- * Q：平面上給定多個區域，由多個座標點所形成，再給定
- * 多點(x,y)，判斷有落點的區域(destroyed)的面積總和。
- ****************************************************/
+// Q：平面上給定多個區域，由多個座標點所形成，再給定
+// 多點(x,y)，判斷有落點的區域(destroyed)的面積總和。
 #include <bits/stdc++.h>
 using namespace std;
 
@@ -25,7 +23,7 @@ void scanAndSortPoints() {
         arr[i] = (Point){x, y};
         if(y < minY || (y == minY && x < minX)) {
     //  If there are floating points, use:
-    //  if(y<minY || (fabs(y-minY)<eps && x<minX)) {
+    //  if(y<minY || (abs(y-minY)<eps && x<minX)) {
             minX = x, minY = y;
         }
     }
