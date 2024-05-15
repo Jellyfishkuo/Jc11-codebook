@@ -49,8 +49,8 @@ struct Line {
 };
 
 int n, m;
-Line narrow[maxn];        // 要判斷的直線
-Point poly[maxn];         // 能形成半平面交的凸包邊界點
+Line narrow[maxn];    // 要判斷的直線
+Point poly[maxn];     // 能形成半平面交的凸包邊界點
 
 // return true if point p is on the left of line l
 bool onLeft(Point p, Line l) {
