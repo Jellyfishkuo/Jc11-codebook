@@ -1,9 +1,6 @@
 // Q: 給定一張凸包(已排序的點)，
 // 找出圖中離凸包外最遠的距離
 
-#include <bits/stdc++.h>
-using namespace std;
-
 const int maxn = 100 + 10;
 const double eps = 1e-7;
 
@@ -49,8 +46,8 @@ struct Line {
 };
 
 int n, m;
-Line narrow[maxn];        // 要判斷的直線
-Point poly[maxn];         // 能形成半平面交的凸包邊界點
+Line narrow[maxn];    // 要判斷的直線
+Point poly[maxn];     // 能形成半平面交的凸包邊界點
 
 // return true if point p is on the left of line l
 bool onLeft(Point p, Line l) {
