@@ -10,4 +10,12 @@
                     dp[i][j-1] \\ dp[i-1][j] \\ dp[i-1][j-1]
                 \end{array}\right \}+1 & \mbox{if} & S_1[i] \neq S_2[j] \\
         \end{array}\right .$
+
+\item Longest Palindromic Subsequence
+    \subitem $dp[l][r] = \left \{
+        \begin{array}{lrc}
+            dp[l+1][r-1] & \mbox{if} & S[l] = S[r] \\
+            \max\{dp[l+1][r], dp[l][r-1]\} & \mbox{if} & S[l] \neq S[r] \\
+        \end{array}\right .$
+
 \end{itemize}
