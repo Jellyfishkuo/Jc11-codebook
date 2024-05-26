@@ -1,0 +1,11 @@
+\begin{itemize}
+
+    \item Edit Distance
+        \item $S_1$ 經過增、刪或換字變成 $S_2$
+        \item $dp[i][j] = \left \{
+            \begin{array}{lrc}
+                dp[i-1][j-1] & \mbox{if} & S_1[i] = S_2[j] \\
+                \min\{ dp[i][j-1], dp[i-1][j], dp[i-1][j-1]\}+1 & \mbox{if} & S_1[i] \neq S_2[j] \\
+            \end{array}\right .$
+        
+    \end{itemize}
