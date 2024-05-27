@@ -3,7 +3,7 @@
 \item Edit distance
     \subitem $S_1$ 最少需要經過幾次增、刪或換字變成 $S_2$
     \subitem $dp[i][j] = \left \{
-        \begin{array}{lrc}
+        \begin{array}{crc}
             i+1 & \mbox{if} & j=-1 \\
             j+1 & \mbox{if} & i=-1 \\
             dp[i-1][j-1] & \mbox{if} & S_1[i] = S_2[j] \\
@@ -15,7 +15,7 @@
 
 \item Longest Palindromic Subsequence
     \subitem $dp[l][r] = \left \{
-        \begin{array}{lrc}
+        \begin{array}{crc}
             1 & \mbox{if} & l = r \\
             dp[l+1][r-1] & \mbox{if} & S[l] = S[r] \\
             \max\{dp[l+1][r], dp[l][r-1]\} & \mbox{if} & S[l] \neq S[r] \\
