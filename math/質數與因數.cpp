@@ -1,12 +1,3 @@
-埃氏篩法
-int n;
-vector<int> isprime(n+1,1);
-isprime[0]=isprime[1]=0;
-for(int i=2;i*i<=n;i++){
-    if(isprime[i])
-        for(int j=i*i;j<=n;j+=i) isprime[j]=0;
-}
-
 歐拉篩O(n)
 #define MAXN 47000 //sqrt(2^31)=46,340...
 bool isPrime[MAXN];

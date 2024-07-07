@@ -86,7 +86,7 @@ Vector vec[maxn];
 Vector normal[maxn];// normal[i] = vec[i] 的單位法向量
 
 double bsearch(double l=0.0, double r=1e4) {
-    if(abs(r-l) < 1e-7) return l;
+    if(abs(r-l) < eps) return l;
     
     double mid = (l + r) / 2;
 
