@@ -1,13 +1,10 @@
   題意
 給定兩射線方向和速度，問兩射線最近距離。
-
   題解
 假設 F(t) 為兩射線在時間 t 的距離，F(t) 為二次函數，
 可用三分搜找二次函數最小值。
-
 #include <bits/stdc++.h>
 using namespace std;
-
 struct Point{
     double x, y, z;
     Point() {}
@@ -37,7 +34,6 @@ struct Point{
         return res;
     }
 };
-
 int main(){
     ios::sync_with_stdio(false);
     cin.tie(0),cout.tie(0);

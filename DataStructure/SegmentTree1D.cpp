@@ -2,13 +2,11 @@
 int data[MAXN]; //原數據
 int st[4 * MAXN]; //線段樹
 int tag[4 * MAXN]; //懶標
-
 inline int pull(int l, int r) {
 // 隨題目改變sum、max、min
 // l、r是左右樹的index
     return st[l] + st[r];
 }
-
 void build(int l, int r, int i) {
 // 在[l, r]區間建樹，目前根的index為i
     if (l == r) {
@@ -20,7 +18,6 @@ void build(int l, int r, int i) {
     build(mid + 1, r, i * 2 + 1);
     st[i] = pull(i * 2, i * 2 + 1);
 }
-
 int query(int ql, int qr, int l, int r, int i) {
 // [ql, qr]是查詢區間,[l, r]是當前節點包含的區間
     if (ql <= l && r <= qr)
@@ -41,7 +38,6 @@ int query(int ql, int qr, int l, int r, int i) {
         sum += query(ql, qr, mid + 1, r, i*2+1);
     return sum;
 }
-
 void update(int ql,int qr,int l,int r,int i,int c) {
 // [ql, qr]是查詢區間,[l, r]是當前節點包含的區間
 // c是變化量

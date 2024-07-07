@@ -5,7 +5,6 @@
 #include <vector>
 using namespace std;
 /* 核心: 最大點獨立集 = |V| - |最大匹配數|，用匈牙利演算法找出最大匹配數 */
-
 struct Student {
     int height;
     char sex;

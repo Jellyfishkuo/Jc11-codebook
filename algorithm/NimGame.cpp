@@ -1,15 +1,10 @@
 //兩人輪流取銅板，每人每次需在某堆取一枚以上的銅板，
 //但不能同時在兩堆取銅板，直到最後，
 //將銅板拿光的人贏得此遊戲。
-
-#include <bits/stdc++.h>
 #define maxn 23+5
-using namespace std;
-
 int SG[maxn];
 int visited[1000+5];
 int pile[maxn],ans;
-
 void calculateSG(){
     SG[0]=0;
     for(int i=1;i<=maxn;i++){
@@ -21,7 +16,6 @@ void calculateSG(){
         SG[i]=cur;
     }
 }
-
 int main(){
     calculateSG();
     int Case=0,n;
@@ -53,7 +47,6 @@ int main(){
     }
     return 0;
 }
-
 /*
  input
 4  1 0 1 100

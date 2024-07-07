@@ -1,16 +1,9 @@
-#include <cstdio>
-#include <cmath>
-#include <algorithm>
-using namespace std;
-/*
-    利用prefix前綴XOR和
-    如果要求[x, y]的XOR和只要回答prefix[y] ^ prefix[x - 1]即可在O(1)回答
-    同時維護cnt[i]代表[x, y]XOR和 == i的個數
-    如此我們知道[l, r]可以快速知道[l - 1, r], [l + 1, r], [l, r - 1], [l, r + 1]的答案
-    就符合Mo's algorithm的思維O(N * sqrt(n))
-    每次轉移為O(1)
-    具體轉移方法在下面
-*/
+/*利用prefix前綴XOR和
+  如果要求[x, y]的XOR和只要回答prefix[y] ^ prefix[x - 1]即可在O(1)回答
+  同時維護cnt[i]代表[x, y]XOR和 == i的個數
+  如此我們知道[l, r]可以快速知道[l - 1, r], [l + 1, r], [l, r - 1], [l, r + 1]的答案
+  就符合Mo's algorithm的思維O(N * sqrt(n))
+  每次轉移為O(1)，具體轉移方法在下面*/
 #define maxn 100005
 //在此prefix[i]是[1, i]的XOR和
 int prefix[maxn];
@@ -21,11 +14,9 @@ int prefix[maxn];
 long long cnt[1 << 20];
 //塊大小 -> sqrt(n)
 int sqrtQ;
-struct Query
-{
+struct Query {
     int l, r, id;
-    bool operator < (const Query& other) const
-    {
+    bool operator < (const Query& other) const {
         if (this->l / sqrtQ != other.l / sqrtQ)
             return this->l < other.l;
         //奇偶排序(優化)
@@ -38,13 +29,11 @@ Query querys[maxn];
 long long ans[maxn];
 long long res = 0;
 int k;
-void add(int x)
-{
+void add(int x) {
     res += cnt[k ^ prefix[x]];
     ++cnt[prefix[x]];
 }
-void sub(int x)
-{
+void sub(int x) {
     --cnt[prefix[x]];
     res -= cnt[k ^ prefix[x]];
 }

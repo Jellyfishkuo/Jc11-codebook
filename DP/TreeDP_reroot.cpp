@@ -1,5 +1,4 @@
-/*
-Re-root經典題
+/*Re-root經典題
 1. 選0作為root
 2. 以0為root去求出所有節點的subtreeSize
 3. 觀察到re-root後的關係式
@@ -18,8 +17,7 @@ f(child) = f(parent) + n - 2 * subtreeSize(child)
     3. 以f(0)去求出re-root後的所有f(v), v != 0
 整體來說
 暴力解 O(n ^ 2)
-re-root dp on tree O(n + n + n) -> O(n)
-*/
+re-root dp on tree O(n + n + n) -> O(n)*/
 class Solution  {
 public:
     vector<int> sumOfDistancesInTree(int n, vector<vector<int>>& edges)  {

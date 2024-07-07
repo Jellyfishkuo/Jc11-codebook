@@ -1,6 +1,3 @@
-#include <bits/stdc++.h>
-using namespace std;
-
 vector<vector<int>> G;
 int N;
 int timer;
@@ -32,13 +29,10 @@ void tarjan(int u, int parent) {
     if (isCut)
         ++res;
 }
-
-int main()
-{
+int main() {
     char input[105];
     char* token;
-    while (scanf("%d", &N) != EOF && N)
-    {
+    while (scanf("%d", &N) != EOF && N) {
         G.assign(105, vector<int>());
         memset(visited, false, sizeof(visited));
         memset(low, 0, sizeof(low));
@@ -46,8 +40,7 @@ int main()
         timer = 0;
         res = 0;
         getchar(); // for \n
-        while (fgets(input, 105, stdin))
-        {
+        while (fgets(input, 105, stdin)) {
             if (input[0] == '0')
                 break;
             int size = strlen(input);
@@ -56,8 +49,7 @@ int main()
             token = strtok(input, " ");
             int u = atoi(token);
             int v;
-            while (token = strtok(NULL, " "))
-            {
+            while (token = strtok(NULL, " ")) {
                 v = atoi(token);
                 G[u].emplace_back(v);
                 G[v].emplace_back(u);

@@ -20,7 +20,6 @@ int binary_search(int target) {
     }
     return ok;
 }
-
 lower_bound(arr, arr + n, k);    //最左邊 ≥ k 的位置
 upper_bound(arr, arr + n, k);    //最左邊 > k 的位置
 upper_bound(arr, arr + n, k) - 1;//最右邊 ≤ k 的位置

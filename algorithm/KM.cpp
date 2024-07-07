@@ -2,8 +2,7 @@
 #include <cstring>
 #include <algorithm>
 using namespace std;
-/*題意:
-    給定一個W矩陣，現在分成row、column兩個1維陣列
+/*題意: 給定一個W矩陣，現在分成row、column兩個1維陣列
     W[i][j]=k即代表column[i] + row[j]要>=k
     求row[] 與 column[]的所有值在滿足矩陣W的要求之下
     row[] + column[]所有元素相加起來要最小
@@ -78,8 +77,7 @@ void KM()
         }
     }
 }
-int main()
-{
+int main() {
     while (scanf("%d", &n) != EOF) {
         for (int i = 0; i < n; ++i)
             for (int j = 0; j < n; ++j)

@@ -1,26 +1,20 @@
   定義
 有向圖上的最小生成樹（Directed Minimum Spanning Tree）
 稱為最小樹形圖。
-
 const int maxn = 60 + 10;
 const int inf = 0x3f3f3f3f;
-
 struct Edge {
     int s, t, cap, cost;
 }; // cap 為頻寬 (optional)
-
 int n, m, c;
 int inEdge[maxn], idx[maxn], pre[maxn], vis[maxn];
-
 // 對於每個點，選擇對它入度最小的那條邊
 // 找環，如果沒有則 return;
 // 進行縮環並更新其他點到環的距離。
 int dirMST(vector<Edge> edges, int low) {
     int result = 0, root = 0, N = n;
-
     while(true) {
         memset(inEdge, 0x3f, sizeof(inEdge));
-
         // 找所有點的 in edge 放進 inEdge
         // optional: low 為最小 cap 限制
         for(const Edge& e : edges) {
@@ -30,16 +24,13 @@ int dirMST(vector<Edge> edges, int low) {
                 pre[e.t] = e.s;
             }
         }
-
         for(int i=0; i<N; i++) {
             if(i!=root && inEdge[i]==inf)
                 return -1;//除了root 還有點沒有in edge
         }
-        
         int seq = inEdge[root] = 0;
         memset(idx, -1, sizeof(idx));
         memset(vis, -1, sizeof(vis));
-
         // 找所有的 cycle，一起編號為 seq
         for(int i=0; i<N; i++) {
             result += inEdge[i];
@@ -55,13 +46,10 @@ int dirMST(vector<Edge> edges, int low) {
                 idx[cur] = seq++;
             }
         }
-
         if(seq == 0) return result; // 沒有 cycle
-
         for(int i=0; i<N; i++)
             // 沒有被縮點的點
             if(idx[i] == -1) idx[i] = seq++;
-        
         // 縮點並重新編號
         for(Edge& e : edges) {
             if(idx[e.s] != idx[e.t])
@@ -73,20 +61,16 @@ int dirMST(vector<Edge> edges, int low) {
         root = idx[root];
     }
 }
-
 ======================================================
-
   Tarjan 的DMST 演算法
 Tarjan 提出了一種能夠在
 O(m+nlog n)時間內解決最小樹形圖問題的演算法。
-
   流程
 Tarjan 的演算法分為收縮與伸展兩個過程。
 接下來先介紹收縮的過程。
 我們要假設輸入的圖是滿足強連通的，
 如果不滿足那就加入 O(n) 條邊使其滿足，
 並且這些邊的邊權是無窮大的。
-
 我們需要一個堆存儲結點的入邊編號，入邊權值，
 結點總代價等相關信息，由於後續過程中會有堆的合併操作，
 這裡採用左偏樹 與並查集實現。
@@ -100,12 +84,10 @@ Tarjan 的演算法分為收縮與伸展兩個過程。
 那麼收縮過程就結束了。
 整個收縮過程結束後會得到一棵收縮樹，
 之後就會對它進行伸展操作。
-
 堆中的邊總是會形成一條路徑v0 <- v1<- ... <- vk，
 由於圖是強連通的，這個路徑必然存在，
 並且其中的 vi 可能是最初的單一結點，
 也可能是壓縮後的超級結點。
-
 最初有 v0=a，其中 a 是圖中任意的一個結點，
 每次都選擇一條最小入邊 vk <- u，
 如果 u 不是v0,v1,...,vk中的一個結點，
@@ -113,25 +95,20 @@ Tarjan 的演算法分為收縮與伸展兩個過程。
 如果 u 是他們其中的一個結點 vi，
 那麼就找到了一個關於 vi <- ... <- vk <- vi的環，
 再將他們收縮為一個超級結點c。
-
 向隊列 P 中放入所有的結點或超級結點，
 並初始選擇任一節點 a，只要佇列不為空，就進行以下步驟：
-
 選擇 a 的最小入邊，保證不存在自環，
 並找到另一頭的結點 b。
 如果結點b沒有被記錄過說明未形成環，
 令 a <- b，繼續目前操作尋找環。
-
 如果 b 被記錄過了，就表示出現了環。
 總結點數加一，並將環上的所有結點重新編號，對堆進行合併，
 以及結點/超級結點的總權值的更新。
 更新權值操作就是將環上所有結點的入邊都收集起來，
 並減去環上入邊的邊權。
-
 typedef long long ll;
 #define maxn 102
 #define INF 0x3f3f3f3f
-
 struct UnionFind {
   int fa[maxn << 1];
   UnionFind() { memset(fa, 0, sizeof(fa)); }
@@ -143,19 +120,15 @@ struct UnionFind {
   }
   int operator[](int x) { return find(x); }
 };
-
 struct Edge {
   int u, v, w, w0;
 };
-
 struct Heap {
   Edge *e;
   int rk, constant;
   Heap *lch, *rch;
-
   Heap(Edge *_e):
     e(_e),rk(1),constant(0),lch(NULL),rch(NULL){}
-
   void push() {
     if (lch) lch->constant += constant;
     if (rch) rch->constant += constant;
@@ -163,7 +136,6 @@ struct Heap {
     constant = 0;
   }
 };
-
 Heap *merge(Heap *x, Heap *y) {
   if (!x) return y;
   if (!y) return x;
@@ -179,20 +151,17 @@ Heap *merge(Heap *x, Heap *y) {
     x->rk = 1;
   return x;
 }
-
 Edge *extract(Heap *&x) {
   Edge *r = x->e;
   x->push();
   x = merge(x->lch, x->rch);
   return r;
 }
-
 vector<Edge> in[maxn];
 int n, m, fa[maxn << 1], nxt[maxn << 1];
 Edge *ed[maxn << 1];
 Heap *Q[maxn << 1];
 UnionFind id;
-
 void contract() {
   bool mark[maxn << 1];
   //將圖上的每一個節點與其相連的那些節點進行記錄
@@ -229,7 +198,6 @@ void contract() {
     }
   }
 }
-
 ll expand(int x, int r);
 ll expand_iter(int x) {
   ll r = 0;
@@ -241,7 +209,6 @@ ll expand_iter(int x) {
   }
   return r;
 }
-
 ll expand(int x, int t) {
   ll r = 0;
   for (; x != t; x = fa[x]) {
@@ -250,11 +217,9 @@ ll expand(int x, int t) {
   }
   return r;
 }
-
 void link(int u, int v, int w) { 
   in[v].push_back({u, v, w, w}); 
 }
-
 int main() {
   int rt;
   scanf("%d %d %d", &n, &m, &rt);

@@ -1,4 +1,3 @@
-// 差分
 用途：在區間 [l, r] 加上一個數字v。
 b[l] += v; (b[0~l] 加上v)
 b[r+1] -= v; (b[r+1~n] 減去v (b[r] 仍保留v) )
@@ -8,7 +7,6 @@ b[r+1] -= v; (b[r+1~n] 減去v (b[r] 仍保留v) )
 在 b[l] 加上 v，b[r+1] 減去 v，
 最後再從 0 跑到 n 使 b[i] += b[i-1]。
 這樣一來，b[] 是一個在某區間加上v的前綴和。
-
 #include <bits/stdc++.h>
 using namespace std;
 int a[1000], b[1000];

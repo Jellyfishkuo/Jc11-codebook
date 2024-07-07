@@ -1,17 +1,8 @@
-#include <cstdio>
-#include <cstring>
-#include <vector>
-#include <queue>
-#include <algorithm>
-using namespace std;
-/*
-    A*求k短路
-    f(x) = g(x) + h(x)
-    g(x) 是實際cost
-    h(x) 是估計cost
-    在此h(x)用所有點到終點的最短距離
-    則當用Astar找點
-    當該點cnt[u] == k時即得到該點的第k短路
+/*A*求k短路
+  f(x) = g(x) + h(x)
+  g(x) 是實際cost，h(x) 是估計cost
+  在此h(x)用所有點到終點的最短距離，則當用Astar找點
+  當該點cnt[u] == k時即得到該點的第k短路
 */
 #define maxn 105
 struct Edge {
@@ -36,8 +27,7 @@ int h[maxn];
 bool visited[maxn];
 int cnt[maxn];
 //用反向圖去求出每一點到終點的最短距離，並以此當作h(u)
-void dijkstra(int s, int t)
-{
+void dijkstra(int s, int t) {
     memset(visited, 0, sizeof(visited));
     priority_queue<Item_pqH> pq;
     pq.push({s, 0});
