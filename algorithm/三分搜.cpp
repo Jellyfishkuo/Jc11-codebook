@@ -3,8 +3,6 @@
   題解
 假設 F(t) 為兩射線在時間 t 的距離，F(t) 為二次函數，
 可用三分搜找二次函數最小值。
-#include <bits/stdc++.h>
-using namespace std;
 struct Point{
     double x, y, z;
     Point() {}
@@ -35,8 +33,7 @@ struct Point{
     }
 };
 int main(){
-    ios::sync_with_stdio(false);
-    cin.tie(0),cout.tie(0);
+    IOS;     //輸入優化
     int T;
     cin>>T;
     for(int ti=1;ti<=T;++ti){

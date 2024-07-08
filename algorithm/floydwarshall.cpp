@@ -1,6 +1,4 @@
-int w[n][n];
-int d[n][n];
-int p[n][n];	
+int w[n][n], d[n][n], p[n][n];	
 // 由i點到j點的路徑，其中繼點為 p[i][j]。
 void floyd_warshall(){ //O(V^3)
 	for(int i=0;i<n;i++)

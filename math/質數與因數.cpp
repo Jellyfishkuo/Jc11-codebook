@@ -35,8 +35,6 @@ void primeFactorization(int n){
 
 擴展歐幾里得算法
 //ax+by=GCD(a,b)
-#include <bits/stdc++.h>
-using namespace std;
 
 int ext_euc(int a,int b,int &x,int &y){
     if(b==0){
@@ -60,8 +58,6 @@ int main(){
 
 歌德巴赫猜想
 solution : 把偶數 N (6≤N≤10^6) 寫成兩個質數的和。
-#include <iostream>
-using namespace std;
 #define N 20000000
 int ox[N],p[N],pr;
 void PrimeTable(){
@@ -90,8 +86,6 @@ problem : 給定整數 N，
 如果 N 是偶數(不包含2)，則答案為 2 (強歌德巴赫猜想)。
 如果 N 是奇數且 N−2 是質數，則答案為 2 (2+質數)。
 其他狀況答案為 3 (弱歌德巴赫猜想)。
-#include<bits/stdc++.h>
-using namespace std;
 
 bool isPrime(int n){
     for(int i=2;i<n;++i){

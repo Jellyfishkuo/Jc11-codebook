@@ -9,13 +9,10 @@ int getWinner(int n, int k) {
 }
 int main() {
     int n;
-    while (scanf("%d", &n) != EOF && n)
-    {
+    while (scanf("%d", &n) != EOF && n){
         --n;
-        for (int k = 1; k <= n; ++k)
-        {
-            if (getWinner(n, k) == 11)
-            {
+        for (int k = 1; k <= n; ++k){
+            if (getWinner(n, k) == 11){
                 printf("%d\n", k);
                 break;
             }

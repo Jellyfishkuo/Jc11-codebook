@@ -1,16 +1,3 @@
-/*題意: 給定一個W矩陣，現在分成row、column兩個1維陣列
-    W[i][j]=k即代表column[i] + row[j]要>=k
-    求row[] 與 column[]的所有值在滿足矩陣W的要求之下
-    row[] + column[]所有元素相加起來要最小
-    利用KM求二分圖最大權匹配
-    Lx -> vertex labeling of X
-    Ly -> vertex labeling of y
-    一開始Lx[i] = max(W[i][j]), Ly = 0
-    Lx[i] + Ly[j] >= W[i][j]
-    要最小化全部的(Lx[i] + Ly[j])加總
-    不斷的調整vertex labeling去找到一條交錯邊皆滿足Lx[i] + Ly[j] == W[i][j]的增廣路
-    最後會得到正確的二分圖完美匹配中的最大權分配(先滿足最多匹配，再滿足最大權)
-    意義是將最大化所有匹配邊權重和的問題改成最小化所有點的權重和*/
 #define maxn 505
 int W[maxn][maxn];
 int Lx[maxn], Ly[maxn];
