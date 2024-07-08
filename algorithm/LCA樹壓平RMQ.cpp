@@ -5,8 +5,7 @@
 struct Edge {
 	int u, v, w;
 };
-int dep[maxn];
-int pos[maxn];
+int dep[maxn], pos[maxn];
 long long dis[maxn];
 int st[maxn * 2][32]; //sparse table
 int realLCA[maxn * 2][32]; //最小深度對應的節點，及真正的LCA
@@ -17,9 +16,7 @@ void calLog() {
 	Log[1] = 0;
 	Log[2] = 1;
 	for (int i = 3; i < maxn; ++i)
-	{
 		Log[i] = Log[i / 2] + 1;
-	}
 }
 void buildST() {
 	for (int j = 0; Log[tp]; ++j) {
@@ -49,8 +46,7 @@ void dfs(int u, int p) {//euler tour
 	++tp;
 	for (int i = 0; i < G[u].size(); ++i) {
 		Edge& edge = G[u][i];
-		if (edge.v == p)
-			continue;
+		if (edge.v == p) continue;
 		dep[edge.v] = dep[u] + 1;
 		dis[edge.v] = dis[edge.u] + edge.w;
 		dfs(edge.v, u);

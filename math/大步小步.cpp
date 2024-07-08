@@ -17,8 +17,7 @@ B^y≡N(B^(−m))^x (mod P)
 利用 map/unorder_map 存放 B^0,B^1,B^2,…,B^(m−1)，
 枚舉 x 查詢 map/unorder_map 是否有對應的 B^y，
 存放和查詢最多 2√P 次，時間複雜度為 O(√Plog√P)/O(√P)。
-#include <bits/stdc++.h>
-using namespace std;
+
 using LL = long long;
 LL B, N, P;
 LL fpow(LL a,LL b,LL c){
@@ -55,8 +54,7 @@ LL BSGS(LL a,LL b,LL p){
     return -1;
 }
 int main(){
-    ios::sync_with_stdio(false);
-    cin.tie(0),cout.tie(0);
+    IOS;   //輸入優化
     while(cin>>P>>B>>N){
         LL ans=BSGS(B,N,P);
         if(ans==-1)

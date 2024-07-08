@@ -1,8 +1,3 @@
-#include<bits/stdc++.h>
-#define maxn 50000+5
-#define INF 0x3f3f3f3f
-using namespace std;
-
 struct edge{
     int v,w;
 };

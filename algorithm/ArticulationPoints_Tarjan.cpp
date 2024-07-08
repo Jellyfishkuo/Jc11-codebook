@@ -1,6 +1,5 @@
 vector<vector<int>> G;
-int N;
-int timer;
+int N, timer;
 bool visited[105];
 int dfn[105]; // 第一次visit的時間
 int low[105]; 

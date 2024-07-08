@@ -1,8 +1,4 @@
-計算a^b
-#include<iostream>
-#define ll long long
-using namespace std;
-
+計算 a^b
 const ll MOD=1000000007;
 ll fp(ll a, ll b) {
     int ans=1;
@@ -12,10 +8,4 @@ ll fp(ll a, ll b) {
         b>>=1;
     }
     return ans;
-}
-
-int main() {
-	int a,b;
-	cin>>a>>b;
-	cout<<fp(a,b);
 }
