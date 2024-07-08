@@ -30,10 +30,24 @@
 \evensidemargin=0pt
 \hoffset=-42pt
 
-% \usepackage{sectsty}
+% 以下為改變section的行高
+\makeatletter
+\let\origsection\section
+\renewcommand\section{\@ifstar{\starsection}{\nostarsection}}
 
-% \sectionfont{\fontsize{8}{0}\linespread{0}\selectfont}
-% \subsectionfont{\fontsize{8}{0}\linespread{0}\selectfont}
+\newcommand\nostarsection[1]
+{\sectionprelude\origsection{#1}\sectionpostlude}
+
+\newcommand\starsection[1]
+{\sectionprelude\origsection*{#1}\sectionpostlude}
+
+\newcommand\sectionprelude{%
+  \vspace{-20pt} % 改這個數字
+}
+\newcommand\sectionpostlude{%
+  \vspace{-15pt} % 改這個數字
+}
+\makeatother
 
 %\renewcommand\listfigurename{圖目錄}
 %\renewcommand\listtablename{表目錄}
