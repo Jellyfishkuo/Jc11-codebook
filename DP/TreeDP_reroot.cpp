@@ -1,9 +1,4 @@
-/*Re-root經典題
-1. 選0作為root
-2. 以0為root去求出所有節點的subtreeSize
-3. 觀察到re-root後的關係式
-配合思考圖片
-f(0)與f(2)的關係
+/*f(0)與f(2)的關係
 f(2) = f(0) + a - b
 a = n - b, (subtree(2)以外的節點)
 b = subtreeSize(2), (subtree(2))
