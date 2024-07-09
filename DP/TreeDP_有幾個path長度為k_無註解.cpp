@@ -21,11 +21,12 @@ void dfs(int u, int p) {
     res += dp[u][k];
     long long cnt = 0;
     for (int v: G[u]) {
-        if (v == p)
-            continue; //重點算法
-        for (int x = 0; x <= k - 2; ++x) {
-            cnt += dp[v][x] * (dp[u][k - x - 1] - dp[v][k - x - 2]);
-        }
+      if (v == p)
+        continue; //重點算法
+      for (int x = 0; x <= k - 2; ++x) {
+        cnt += 
+          dp[v][x]*(dp[u][k-x-1]-dp[v][k-x-2]);
+      }
     }
     res += cnt / 2;
 }
