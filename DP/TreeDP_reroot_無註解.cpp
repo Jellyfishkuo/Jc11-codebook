@@ -24,11 +24,9 @@ private:
     //求subtreeSize
     int dfs(int u) {
         this->visited[u] = true;
-        for (int v: this->G[u]) {
-            if (!this->visited[v]) {
+        for (int v: this->G[u])
+            if (!this->visited[v])
                 this->subtreeSize[u] += this->dfs(v);
-            }
-        }
         //自己
         this->subtreeSize[u] += 1;
         return this->subtreeSize[u];
@@ -37,11 +35,9 @@ private:
     int dfs2(int u, int dis) {
         this->visited[u] = true;
         int sum = 0;
-        for (int v: this->G[u]) {
-            if (!visited[v]) {
+        for (int v: this->G[u])
+            if (!visited[v])
                 sum += this->dfs2(v, dis + 1);
-            }
-        }
         //要加上自己的距離
         return sum + dis;
     }
