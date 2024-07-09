@@ -1,20 +1,14 @@
 //Q：平面上給定多個區域，由多個座標點所形成，再給定
 //多點(x,y)，判斷有落點的區域(destroyed)的面積總和。
-#include <bits/stdc++.h>
-using namespace std;
-
 const int maxn = 500 + 10;
 const int maxCoordinate = 500 + 10;
-
 struct Point {
     int x, y;
 };
-
 int n;
 bool destroyed[maxn];
 Point arr[maxn];
 vector<Point> polygons[maxn];
-
 void scanAndSortPoints() {
     int minX = maxCoordinate, minY = maxCoordinate;
     for(int i=0; i<n; i++) {
@@ -70,14 +64,15 @@ bool inPolygon(vector<Point>& vec, Point p) {
     return true;
 }
 
-       1 | x1   x2   x3   x4   x5         xn |
-   A = - |    x    x    x    x    x ... x    |
-       2 | y1   y2   y3   y4   y5         yn |
+        1 | x1   x2   x3   x4   x5         xn |
+   A = -- |    x    x    x    x    x ... x    |
+        2 | y1   y2   y3   y4   y5         yn |
 double calculateArea(vector<Point>& v) {
-    v.push_back(v[0]);          // make v[n] = v[0]
+    v.push_back(v[0]); // make v[n] = v[0]
     double result = 0.0;
     for(int i=1; i<v.size(); i++)
-        result += v[i-1].x*v[i].y - v[i-1].y*v[i].x;
+        result += 
+          v[i-1].x*v[i].y - v[i-1].y*v[i].x;
     v.pop_back();
     return result / 2.0;
 }
@@ -88,19 +83,15 @@ int main() {
         scanAndSortPoints();
         polygons[p++] = convex_hull();
     }
-
     int x, y;
     double result = 0.0;
-    while(~scanf("%d%d", &x, &y)) {
-        for(int i=0; i<p; i++) {
+    while(~scanf("%d%d", &x, &y))
+        for(int i=0; i<p; i++)
             if(inPolygon(polygons[i], (Point){x, y}))
                 destroyed[i] = true;
-        }
-    }
-    for(int i=0; i<p; i++) {
+    for(int i=0; i<p; i++)
         if(destroyed[i])
             result += calculateArea(polygons[i]);
-    }
     printf("%.2lf\n", result);
     return 0;
 }
