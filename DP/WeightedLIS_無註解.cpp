@@ -12,8 +12,9 @@ void update(int p, int index, int l, int r, long long v) {
     if (p <= mid)
         update(p, (index << 1), l, mid, v);
     else
-        update(p, (index << 1) + 1, mid + 1, r, v);
-    st[index] = max(st[index << 1], st[(index << 1) + 1]);
+        update(p, (index << 1)+1,mid+1,r,v);
+    st[index] = 
+      max(st[index << 1], st[(index << 1) + 1]);
 }
 long long query(int index, int l, int r, int ql, int qr) {
     if (ql <= l && r <= qr)
@@ -21,9 +22,11 @@ long long query(int index, int l, int r, int ql, int qr) {
     int mid = (l + r) >> 1;
     long long res = -1;
     if (ql <= mid)
-        res = max(res, query(index << 1, l, mid, ql, qr));
+        res = 
+          max(res,query(index<<1,l,mid,ql,qr));
     if (mid < qr)
-        res = max(res, query((index << 1) + 1, mid + 1, r, ql, qr));
+        res = 
+          max(res,query((index<<1)+1,mid+1,r,ql,qr));
     return res;
 }
 int main() {
@@ -38,7 +41,8 @@ int main() {
     for (int i = 2; i <= n; ++i) {
         long long temp;
         if (height[i] - 1 >= 1)
-            temp = B[i] + query(1, 1, n, 1, height[i] - 1);
+            temp = 
+              B[i]+query(1,1,n,1,height[i]-1);
         else
             temp = B[i];
         update(height[i], 1, 1, n, temp);
