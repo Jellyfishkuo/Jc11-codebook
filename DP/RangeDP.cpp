@@ -1,6 +1,6 @@
 //區間dp
 int dp[55][55]; 
-// dp[i][j] -> [i,j]切割區間中最小的cost
+// dp[i][j] -> [i,j] 切割區間中最小的cost
 int cuts[55];
 int solve(int i, int j) {
     if (dp[i][j] != -1)
