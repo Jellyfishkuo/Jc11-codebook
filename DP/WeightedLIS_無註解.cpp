@@ -14,7 +14,7 @@ void update(int p, int index, int l, int r, long long v) {
     else
         update(p, (index << 1)+1,mid+1,r,v);
     st[index] = 
-      max(st[index << 1], st[(index << 1) + 1]);
+      max(st[index<<1],st[(index<<1)+1]);
 }
 long long query(int index, int l, int r, int ql, int qr) {
     if (ql <= l && r <= qr)
