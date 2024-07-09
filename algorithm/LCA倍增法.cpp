@@ -1,4 +1,5 @@
-//倍增法預處理O(nlogn)，查詢O(logn)，利用lca找樹上任兩點距離
+//倍增法預處理O(nlogn)，查詢O(logn)，
+//利用lca找樹上任兩點距離
 #define maxn 100005
 struct Edge {
 	int u, v, w;
@@ -10,7 +11,8 @@ int dep[maxn];//深度
 void dfs(int u, int p) {//預處理fa
     fa[u][0] = p; //因為u的第2^0 = 1的祖先就是p
     dep[u] = dep[p] + 1;
-    //第2^i的祖先是 (第2^(i - 1)個祖先)的第2^(i - 1)的祖先
+    //第2^i的祖先是(第2^(i - 1)個祖先)的
+    //第2^(i - 1)的祖先
     //ex: 第8個祖先是 (第4個祖先)的第4個祖先
     for (int i = 1; i < 31; ++i) {
         fa[u][i] = fa[fa[u][i - 1]][i - 1];
@@ -24,7 +26,8 @@ void dfs(int u, int p) {//預處理fa
         dfs(edge.v, u);
     }
 }
-long long lca(int x, int y) {//此函數是找lca同時計算x、y的距離 -> dis(x, lca) + dis(lca, y)
+long long lca(int x, int y) {
+    //此函數是找lca同時計算x、y的距離 -> dis(x, lca) + dis(lca, y)
     //讓y比x深
     if (dep[x] > dep[y])
         swap(x, y);

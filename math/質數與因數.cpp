@@ -1,18 +1,18 @@
 歐拉篩O(n)
 #define MAXN 47000 //sqrt(2^31)=46,340...
 bool isPrime[MAXN];
-int p[MAXN];  // prime array
-int pSize=0;
-void getPrimes() {
-  memset(isPrime, 1, sizeof(isPrime));
-  isPrime[0] = isPrime[1] = false;
-  for(int i=2; i<MAXN; i++){
-    if(isPrime[i]) p[pSize++]=i;
-    for(int j=0; j<pSize&&i*p[j]<=MAXN; ++j){
-      isPrime[i*p[j]] = false;
-      if(i%p[j] == 0) break;
+int prime[MAXN];
+int primeSize=0;
+void getPrimes(){
+    memset(isPrime,true,sizeof(isPrime));
+    isPrime[0]=isPrime[1]=false;
+    for(int i=2;i<MAXN;i++){
+        if(isPrime[i]) prime[primeSize++]=i;
+        for(int j=0;j<primeSize&&i*prime[j]<=MAXN;++j){
+            isPrime[i*prime[j]]=false;
+            if(i%prime[j]==0) break;
+        }
     }
-  }
 }
 
 最大公因數 O(log(min(a,b))) 

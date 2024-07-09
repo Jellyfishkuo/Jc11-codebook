@@ -54,6 +54,6 @@ int main(){
             else L=m1;
         }
         cout<<"Case "<<ti<<": ";
-        cout<<fixed<<setprecision(4)<<sqrt(ans)<<'\n';
+        cout << fixed << setprecision(4) << sqrt(ans) << '\n';
     }
 }

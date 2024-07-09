@@ -1,5 +1,5 @@
 //單調隊列
-"如果一個選手比你小還比你強，你就可以退役了。"--單調隊列
+"如果一個選手比你小還比你強，你就可以退役了。"
 
 example 
 
@@ -11,9 +11,8 @@ example
 using namespace std;
 int q[maxn], a[maxn];
 int n, k;
-
+//得到這個隊列裡的最小值，直接找到最後的就行了
 void getmin() {  
-    // 得到這個隊列裡的最小值，直接找到最後的就行了
     int head=0,tail=0;
     for(int i=1;i<k;i++) {
         while(head<=tail&&a[q[tail]]>=a[i]) tail--;
@@ -27,8 +26,8 @@ void getmin() {
     }
     cout<<endl;
 }
-
-void getmax() {  // 和上面同理
+// 和上面同理
+void getmax() {  
     int head=0,tail=0;
     for(int i=1;i<k;i++) {
         while(head<=tail&&a[q[tail]]<=a[i])tail--;
