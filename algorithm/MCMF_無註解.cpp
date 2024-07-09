@@ -50,7 +50,8 @@ bool SPFA(long long& maxFlow, long long& minCost) {
         return false;
     maxFlow += outFlow[t];
     minCost += dis[t] * outFlow[t];
-    //一路更新回去這次最短路流完後要維護的MaxFlow演算法相關(如反向邊等)
+    //一路更新回去這次最短路流完後要維護的
+    //MaxFlow演算法相關(如反向邊等)
     int curr = t;
     while (curr != s) {
         edges[parent[curr]].flow += outFlow[t];

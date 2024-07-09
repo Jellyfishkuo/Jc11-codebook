@@ -8,7 +8,7 @@ void getPrimes(){
     isPrime[0]=isPrime[1]=false;
     for(int i=2;i<MAXN;i++){
         if(isPrime[i]) prime[primeSize++]=i;
-        for(int j=0;j<primeSize&&i*prime[j]<=MAXN;++j){
+        for(int j=0; j<primeSize&&i*prime[j]<=MAXN; ++j){
             isPrime[i*prime[j]]=false;
             if(i%prime[j]==0) break;
         }
