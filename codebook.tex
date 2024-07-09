@@ -1,4 +1,4 @@
-\documentclass[6pt,twocolumn,oneside]{article}
+\documentclass[6pt,oneside]{article}
 \setlength{\columnsep}{18pt}                    %兩欄模式的間距
 \setlength{\columnseprule}{0pt}                 %兩欄模式間格線粗細
 
@@ -49,6 +49,10 @@
 }
 \makeatother
 
+% 設定column數
+\usepackage{multicol}
+\newcommand{\NumberOfColumn}{3}
+
 %\renewcommand\listfigurename{圖目錄}
 %\renewcommand\listtablename{表目錄}
 
@@ -67,7 +71,9 @@
     UprightFont={* Medium},
     BoldFont={* Bold}
 ]{Inconsolata}
-\setCJKmainfont{Noto Sans CJK TC}
+\setCJKmainfont[
+  SizeFeatures={Size=6}
+]{Noto Sans CJK TC}
 \XeTeXlinebreaklocale "zh"                      %中文自動換行
 \XeTeXlinebreakskip = 0pt plus 1pt              %設定段落之間的距離
 \setcounter{secnumdepth}{3}                     %目錄顯示第三層
