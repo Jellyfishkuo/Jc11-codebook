@@ -23,3 +23,14 @@ mat mpow(mat& M, int n) {
     mat v = mpow(M, n>>1);
     return (n & 1) ? v*v*M : v*v;
 }
+
+// 迴圈版本
+mat mpow(mat M, int n) {
+    mat res(M.size(), vector<ll>(M[0].size()));
+    for(int i=0; i<res.size(); i++) res[i][i] = 1;
+    for(; n; n>>=1) {
+        if(n & 1) res = res * M;
+        M = M * M;
+    }
+    return res;
+}
