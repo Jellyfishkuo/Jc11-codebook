@@ -1,17 +1,17 @@
 \begin{itemize}
 
-    $計算 \ x^{-1} \ mod \ m$
-    $\begin{array}{rcl}
-        x^{-1} mod \ m & = & \begin{cases} \begin{array}{cl}
-                        1, & \text{if} \ x=1 \\
-                        -\left \lfloor\frac{m}{x} \right\rfloor(m \ mod \ x)^{-1}, & \text{otherwise}
-                     \end{array} \end{cases} \ (mod \ m) \\
+\item $計算 \ x^{-1} \ mod \ m$
+\item $\begin{array}{rcl}
+            x^{-1} mod \ m & = & \begin{cases} \begin{array}{cl}
+                                 1, & \text{if} \ x=1 \\
+                                 -\left \lfloor\frac{m}{x} \right\rfloor(m \ mod \ x)^{-1}, & \text{otherwise}
+                                 \end{array} \end{cases} \ (mod \ m) \\
                & = & (m-\left \lfloor\frac{m}{x} \right\rfloor)(m \ mod \ x)^{-1} \ (mod \ m)
-     \end{array}$
+       \end{array}$
  
-    $若 \ p \in prime, 根據費馬小定理, 則$
-    $\because ax \equiv 1 \ (mod \ p)$
-    $\therefore ax \equiv a^{p-1} \ mod \ p$
-    $\therefore x \equiv a^{p-2} \ mod \ p$ 
+\item $若 \ p \in prime, 根據費馬小定理, 則$
+\item $\because ax \equiv 1 \ (mod \ p)$
+\item $\therefore ax \equiv a^{p-1} \ mod \ p$
+\item $\therefore x \equiv a^{p-2} \ mod \ p$ 
     
 \end{itemize}
