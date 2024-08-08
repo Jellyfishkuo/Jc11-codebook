@@ -6,3 +6,7 @@
 *.pdf
 *.toc
 *.synctex.gz
+*.fdb_latexmk
+*.fls
+*.synctex(busy)
+*.xdv

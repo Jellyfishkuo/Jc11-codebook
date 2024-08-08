@@ -2,9 +2,9 @@ using ll = long long;
 const int maxn = 2e5 + 10;
 const int mod = 1e9 + 7;
 
-int fact[maxn] = {1, 1};    // x! % mod
-int inv[maxn] = {1, 1};     // x^(-1) % mod
-int invFact[maxn] = {1, 1}; // (x!)^(-1) % mod
+int fact[maxn] = {1, 1};   // x! % mod
+int inv[maxn] = {1, 1};    // x^(-1) % mod
+int invFact[maxn] = {1, 1};// (x!)^(-1) % mod
 
 void build() {
   for(int x=2; x<maxn; x++) {
