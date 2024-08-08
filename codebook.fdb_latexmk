@@ -1,0 +1,22 @@
+# Fdb version 4
+["pdflatex"] 1723117841.17028 "c:/Users/ager3/Desktop/Coding/Visual Studio Code/Jc11-codebook/codebook.tex" "codebook.pdf" "codebook" 1723117842.06347 2
+  "c:/Users/ager3/Desktop/Coding/Visual Studio Code/Jc11-codebook/codebook.tex" 1721636826 4723 5ffd49b96092f86ff8f228bffd6cb823 ""
+  "c:/texlive/2024/texmf-dist/tex/latex/amscls/amsthm.sty" 1721585251 12594 0d51ac3a545aaaa555021326ff22a6cc ""
+  "c:/texlive/2024/texmf-dist/tex/latex/amsfonts/amsfonts.sty" 1721585266 5949 3f3fd50a8cc94c3d4cbf4fc66cd3df1c ""
+  "c:/texlive/2024/texmf-dist/tex/latex/amsfonts/amssymb.sty" 1721585266 13829 94730e64147574077f8ecfea9bb69af4 ""
+  "c:/texlive/2024/texmf-dist/tex/latex/base/article.cls" 1721637382 20144 67a5f8e0f9e445e8ec6834e595cebdc9 ""
+  "c:/texlive/2024/texmf-dist/tex/latex/base/size10.clo" 1721637383 8448 358bf3de18513f057a13bdc6e6770c41 ""
+  "c:/texlive/2024/texmf-dist/tex/latex/fontspec/fontspec.sty" 1721633880 3755 4872b99d810c024f9c09bb1c62ffee3b ""
+  "c:/texlive/2024/texmf-dist/tex/latex/l3backend/l3backend-pdftex.def" 1721637176 29785 9f93ab201fe5dd053afcc6c1bcf7d266 ""
+  "c:/texlive/2024/texmf-dist/tex/latex/l3kernel/expl3.sty" 1721637210 6565 9112779ee7624275fd04efaf61c82420 ""
+  "c:/texlive/2024/texmf-dist/tex/latex/l3packages/xparse/xparse.sty" 1721637252 9327 090c6c81eff433de1562ec6a5b1b31ee ""
+  "c:/texlive/2024/texmf-dist/web2c/texmf.cnf" 1721584534 42007 0b741a3c21a5ca32b40e3846e75b3548 ""
+  "c:/texlive/2024/texmf-var/web2c/pdftex/pdflatex.fmt" 1721645879 8239304 c03708650e21d5e7619858391fe993de ""
+  "c:/texlive/2024/texmf.cnf" 1721645073 713 e69b156964470283e0530f5060668171 ""
+  "codebook.aux" 1723117841 32 3985256e7290058c681f74d7a3565a19 "pdflatex"
+  "codebook.tex" 1721636826 4723 5ffd49b96092f86ff8f228bffd6cb823 ""
+  (generated)
+  "codebook.aux"
+  "codebook.log"
+  "codebook.pdf"
+  (rewritten before read)
