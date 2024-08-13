@@ -1,0 +1,39 @@
+\begin{itemize}
+    \item Faulhaber's formula
+\end{itemize}
+\[ \sum_{k=1}^{n} k^p = \frac{1}{p+1} \sum_{r=0}^{p} \binom{p+1}{r} B_rn^{p-r+1} \]
+\[ \text{where} \ B_0 = 1, \ B_r = 1-\sum_{i=0}^{r-1} \binom{r}{i} \frac{B_i}{r-i+1} \]
+\[ 也可用高斯消去法找deg(p+1)的多項式，例： \]
+\[ \sum_{k=1}^{n} k^2 = a_3n^3 + a_2n^2 + a_1n + a_0 \]
+\tiny\[
+    \begin{bmatrix}
+        0^3 & 0^2 & 0^1 & 0^0\\
+        1^3 & 1^2 & 1^1 & 1^0\\
+        2^3 & 2^2 & 2^1 & 2^0\\
+        3^3 & 3^2 & 3^1 & 3^0
+    \end{bmatrix}
+    \begin{bmatrix}
+        a_3 \\ a_2 \\ a_1 \\ a_0
+    \end{bmatrix} =
+    \begin{bmatrix}
+        0^2 \\ 0^2+1^2 \\ 0^2+1^2+2^2 \\ 0^2+1^2+2^2+3^2
+    \end{bmatrix}
+\]
+\tiny\[
+    \begin{bmatrix}
+        0 & 0 & 0 & 1 & 0 \\
+        1 & 1 & 1 & 1 & 1 \\
+        8 & 4 & 2 & 1 & 5 \\
+        27 & 9 & 3 & 1 & 14
+    \end{bmatrix}
+  \Rightarrow \begin{bmatrix}
+        1 & 1 & 1 & 1 & 1 \\
+        0 & 4 & 6 & 7 & 3 \\
+        0 & 0 & 6 & 11 & 1 \\
+        0 & 0 & 0 & 1 & 0
+    \end{bmatrix}, 
+    A = \begin{bmatrix}
+        1/3 \\ 1/2 \\ 1/6 \\ 0 
+    \end{bmatrix}
+\]
+\[ \sum_{k=1}^{n} k^2 = \frac{1}{3}n^3 + \frac{1}{2}n^2 + \frac{1}{6}n \]

@@ -1,22 +1,22 @@
 \[
     \begin{array}{l}
         x^{-1} mod \ m \\
-        \tiny{
+        \begin{tiny}
             = \begin{cases}
                 \begin{array}{cl}
-                        1, & \text{if} \ x=1 \\
-                        -\left \lfloor\frac{m}{x} \right\rfloor(m \ mod \ x)^{-1}, & \text{otherwise}
+                    1, & \text{if} \ x=1 \\
+                    -\left \lfloor\frac{m}{x} \right\rfloor(m \ mod \ x)^{-1}, & \text{otherwise}
                 \end{array}
             \end{cases}(mod \ m)
-        } \\
-        \tiny{
+        \end{tiny} \\
+        \begin{tiny}
             = \begin{cases}
                 \begin{array}{cl}
-                        1, & \text{if} \ x=1 \\
-                        (m-\left \lfloor\frac{m}{x} \right\rfloor)(m \ mod \ x)^{-1}, & \text{otherwise}
+                    1, & \text{if} \ x=1 \\
+                    (m-\left \lfloor\frac{m}{x} \right\rfloor)(m \ mod \ x)^{-1}, & \text{otherwise}
                 \end{array}
             \end{cases}(mod \ m)
-        }
+        \end{tiny}
     \end{array}
 \]
 
@@ -24,9 +24,9 @@
     \(若 \ p \in prime, 根據費馬小定理, 則 \) \par
     \(
         \begin{array}{rrcl}
-                \because & ax & \equiv & 1 \ (mod \ p) \\
-                \therefore & ax & \equiv & a^{p-1} \ (mod \ p) \\
-                \therefore & x & \equiv & a^{p-2} \ (mod \ p)
+            \because & ax & \equiv & 1 \ (mod \ p) \\
+            \therefore & ax & \equiv & a^{p-1} \ (mod \ p) \\
+            \therefore & x & \equiv & a^{p-2} \ (mod \ p)
         \end{array}
     \) \par
 }
