@@ -4,12 +4,6 @@ using Polygon = vector<Point>;
 
 const int maxn = 5e4 + 10;
 
-Point intersection(Line a, Line b) {
-  Vector u = a.p - b.p;
-  DBL t = 1.0*cross(b.v, u)/cross(a.v, b.v);
-  return a.p + a.v*t;
-}
-
 // Return: 能形成半平面交的凸包邊界點
 Polygon halfplaneIntersect(vector<Line>&nar){
   sort(nar.begin(), nar.end());
