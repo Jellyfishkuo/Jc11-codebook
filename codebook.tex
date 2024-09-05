@@ -116,21 +116,7 @@
 }
 
 \begin{document}
-\begin{multicols}{\NumberOfColumn}
-\pagestyle{fancy}
-\fancyfoot{}
-%\fancyfoot[R]{\includegraphics[width=20pt]{ironwood.jpg}}
-\fancyhead[C]{FJCU}
-\fancyhead[L]{Jc11}
-\fancyhead[R]{\thepage}
-\renewcommand{\headrulewidth}{0.4pt}
-\renewcommand{\contentsname}{Contents}
-
-\scriptsize
-\tableofcontents
-
-\end{multicols}
-\begin{multicols}{\NumberOfColumn}
+  \begin{multicols}{\NumberOfColumn}
   \pagestyle{fancy}
   \fancyfoot{}
   %\fancyfoot[R]{\includegraphics[width=20pt]{ironwood.jpg}}
@@ -139,15 +125,13 @@
   \fancyhead[R]{\thepage}
   \renewcommand{\headrulewidth}{0.4pt}
   \renewcommand{\contentsname}{Contents}
-  
+
   \scriptsize
-  \raggedcolumns
+  \tableofcontents
+  
+  \raggedcolumns          % 換欄縮減
   \input{content.tex}
   \clearpage
 
   \end{multicols}
 \end{document}
-
-% 20240904 commit
-% - codebook.tex 新增 Line 131-144: 更改目錄格式並新增 \raggedcolumns 以修飾換欄
-% -  content.tex 新增 \columbreak: 用來強制換欄
