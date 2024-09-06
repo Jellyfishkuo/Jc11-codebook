@@ -1,6 +1,7 @@
 #define maxn 5005
 //LCA，用來練習樹鍊剖分
-//題意: 給定樹，找任兩點的中點，若中點不存在(路徑為even)，就是中間的兩個點
+//題意: 給定樹，找任兩點的中點，
+//若中點不存在(路徑為even)，就是中間的兩個點
 int dfn[maxn];
 int parent[maxn];
 int depth[maxn];
