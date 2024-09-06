@@ -17,7 +17,8 @@ set<Node>::iterator split(long long pos) {
     if (it != chthollyTree.end() && it->l == pos)
         return it;
     //到這邊代表找到的是第一個左端點大於pos的區間
-    //it - 1即可找到左端點等於pos的區間(不會是別的，因為沒有重疊的區間)
+    //it - 1即可找到左端點等於pos的區間
+    //(不會是別的，因為沒有重疊的區間)
     --it;
     long long l = it->l, r = it->r;
     long long val = it->val;
@@ -28,7 +29,8 @@ set<Node>::iterator split(long long pos) {
 }
 //區間賦值
 void assign(long long l, long long r, long long val) {
-    //<注意> end與begin的順序不能調換，因為end的split可能會改變begin的區間
+    //<注意>
+    //end與begin的順序不能調換，因為end的split可能會改變begin的區間
     //因為end可以在原本begin的區間中
     set<Node>::iterator end = split(r + 1), begin = split(l);
     //begin到end全部刪掉
