@@ -1,0 +1,51 @@
+設三角形頂點為$A(x_1, y_1), B(x_2, y_2), C(x_3, y_3)$ \par
+點$A, B, C$的對邊長分別為$a, b, c$ \par
+三角形面積為$\Delta$ \par
+重心為$(G_x, G_y)$，內心為$(I_x, I_y)$， \par
+外心為$(O_x, O_y)$和垂心為$(H_x, H_y)$ \par
+\[
+    \Delta = \frac{1}{2}
+    \begin{vmatrix}
+        x_1 & y_1 & 1\\
+        x_2 & y_2 & 1\\
+        x_3 & y_3 & 1
+    \end{vmatrix}
+\]
+\[
+    G_x = \frac{x_1+x_2+x_3}{3}, G_y = \frac{y_1+y_2+y_3}{3}
+\]
+\[
+    I_x = \frac{ax_1+bx_2+cx_3}{a+b+c}, I_y = \frac{ay_1+by_2+cy_3}{a+b+c}
+\]
+\[
+    O_x = \frac{\begin{vmatrix}
+        x_1^2+y_1^2 & y_1 & 1\\
+        x_2^2+y_2^2 & y_2 & 1\\
+        x_3^2+y_3^2 & y_3 & 1
+      \end{vmatrix}}{4\Delta},
+    O_y = \frac{\begin{vmatrix}
+        x_1 & x_1^2+y_1^2 & 1\\
+        x_2 & x_2^2+y_2^2 & 1\\
+        x_3 & x_3^2+y_3^2 & 1
+      \end{vmatrix}}{4\Delta}
+\]
+\[
+    H_x = -\frac{\begin{vmatrix}
+        x_2x_3+y_2y_3 & y_1 & 1\\
+        x_1x_3+y_1y_3 & y_2 & 1\\
+        x_1x_2+y_1y_2 & y_3 & 1
+      \end{vmatrix}}{2\Delta}
+\]
+\[
+    H_y = -\frac{\begin{vmatrix}
+        x_1 & x_2x_3+y_2y_3 & 1\\
+        x_2 & x_1x_3+y_1y_3 & 1\\
+        x_3 & x_1x_2+y_1y_2 & 1
+      \end{vmatrix}}{2\Delta}
+\]
+
+任意三角形，重心、外心、垂心共線 \par
+\[
+      G_x = \frac{2}{3}O_x+\frac{1}{3}H_x, 
+      G_y = \frac{2}{3}O_y+\frac{1}{3}H_y
+\]
