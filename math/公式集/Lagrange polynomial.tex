@@ -1,0 +1,8 @@
+拉格朗日插值法：找出 n 次多項函數 $f(x)$ 的點 \par
+$(x_0, y_0), (x_1, y_1),\dots, (x_n, y_n)$
+\[
+    L(x)=\sum_{j=0}^{n} y_jl_j(x)
+\]
+\[
+    l_j(x)=\prod_{i=0,i\ne j}^{n} \frac{x-x_i}{x_j-x_i}
+\]

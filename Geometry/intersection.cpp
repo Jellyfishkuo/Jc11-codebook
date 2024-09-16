@@ -25,3 +25,9 @@ Point intersection(Line a, Line b) {
   DBL t = 1.0*cross(b.v, u)/cross(a.v, b.v);
   return a.p + a.v*t;
 }
+
+// 返回 p 在 l 上的垂足(投影點)
+Point getPedal(Line l, Point p) {
+  DBL len = dot(p-l.p, l.v) / dot(l.v, l.v);
+  return l.p + l.v * len;
+}
