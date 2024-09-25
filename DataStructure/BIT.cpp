@@ -5,25 +5,26 @@ private:
 	vector<T> arr;
 
 public:
-	BIT(int sz=0): size(sz), bit(sz+1), arr(sz) {}
+	BIT(int sz=0):
+    size(sz), bit(sz+1), arr(sz) {}
 
 	/** Sets the value at index idx to val. */
 	void set(int idx, T val) {
-        add(idx, val - arr[idx]);
-    }
+    add(idx, val - arr[idx]);
+  }
 
 	/** Adds val to the element at index idx. */
 	void add(int idx, T val) {
 		arr[idx] += val;
 		for (++idx; idx<=size; idx+=(idx & -idx))
-            bit[idx] += val;
+      bit[idx] += val;
 	}
 
-	/** @return The sum of all values in [0, idx]. */
+	/** The sum of all values in [0, idx]. */
 	T pre_sum(int idx) {
 		T total = 0;
 		for (++idx; idx>0; idx-=(idx & -idx))
-            total += bit[idx];
+      total += bit[idx];
 		return total;
 	}
 };

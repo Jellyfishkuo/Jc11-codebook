@@ -1,0 +1,7 @@
+\begin{itemize}
+    \item val[x] 為 x 到 p[x] 的距離(隨題目變化更改)
+    \item merge(u, v, w)
+        \subitem $u \stackrel{w}{\longrightarrow} v$
+        \subitem $pu=pv$ 時，$val[v]-val[u] \ne w$ 代表有誤
+    \item 若 $[l, r]$的總和為$w$，則應呼叫 merge(l-1, r, w)
+\end{itemize}
