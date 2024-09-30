@@ -1,14 +1,11 @@
 //單調隊列
 "如果一個選手比你小還比你強，你就可以退役了。"
 
-example 
-
+example:
 給出一個長度為 n 的數組，
 輸出每 k 個連續的數中的最大值和最小值。
 
-#include <bits/stdc++.h>
 #define maxn 1000100
-using namespace std;
 int q[maxn], a[maxn];
 int n, k;
 //得到這個隊列裡的最小值，直接找到最後的就行了
@@ -41,11 +38,9 @@ void getmax() {
     }
     cout<<endl;
 }
-
 int main(){
     cin>>n>>k;  //每k個連續的數 
     for(int i=1;i<=n;i++) cin>>a[i];
     getmin();
     getmax();
-    return 0;
 }

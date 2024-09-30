@@ -27,8 +27,7 @@ bool match(int i) {
 //能不能產生出新的增廣路
 //(KM的增廣路要求Lx[i] + Ly[j] == W[i][j])
 //在這裡優先從最小的diff調調看，才能保證最大權重匹配
-void update()
-{
+void update() {
     int diff = 0x3f3f3f3f;
     for (int i = 0; i < n; ++i) {
         if (S[i]) {
@@ -43,8 +42,7 @@ void update()
         if (T[i]) Ly[i] += diff;
     }
 }
-void KM()
-{
+void KM() {
     for (int i = 0; i < n; ++i) {
         L[i] = -1;
         Lx[i] = Ly[i] = 0;
@@ -55,10 +53,8 @@ void KM()
         while(1) {
             memset(S, false, sizeof(S));
             memset(T, false, sizeof(T));
-            if (match(i))
-                break;
-            else
-                update(); //去調整vertex labeling以增加增廣路徑
+            if (match(i)) break;
+            else update(); //去調整vertex labeling以增加增廣路徑
         }
     }
 }

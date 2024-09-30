@@ -21,8 +21,7 @@ void maxMatch(int n) {
     int res = 0;
     for (int i = 0; i < boys.size(); ++i) {
         memset(used, false, sizeof(used));
-        if (match(i))
-            ++res;
+        if (match(i)) ++res;
     }
     cout << n - res << '\n';
 }

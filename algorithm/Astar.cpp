@@ -5,9 +5,7 @@
   當該點cnt[u] == k時即得到該點的第k短路
 */
 #define maxn 105
-struct Edge {
-    int u, v, w;
-};
+struct Edge { int u, v, w; };
 struct Item_pqH {
     int u, w;
     bool operator <(const Item_pqH& other) const {

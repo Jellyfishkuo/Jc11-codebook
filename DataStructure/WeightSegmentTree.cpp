@@ -5,13 +5,11 @@ int nums[maxn];
 int getArr[maxn];
 int id[maxn];
 int st[maxn << 2];
-void update(int index, int l, int r, int qx) {
-    if (l == r)
-    {
+void update(int index, int l, int r, int qx){
+    if (l == r) {
         ++st[index];
         return;
     }
-
     int mid = (l + r) / 2;
     if (qx <= mid)
         update(index * 2, l, mid, qx);
@@ -21,8 +19,7 @@ void update(int index, int l, int r, int qx) {
 }
 //找區間第k個小的
 int query(int index, int l, int r, int k) {
-    if (l == r)
-        return id[l];
+    if (l == r) return id[l];
     int mid = (l + r) / 2;
     //k比左子樹小
     if (k <= st[index * 2])
@@ -35,10 +32,8 @@ int main() {
     cin >> t;
     bool first = true;
     while (t--) {
-        if (first)
-            first = false;
-        else
-            puts("");
+        if (first) first = false;
+        else puts("");
         memset(st, 0, sizeof(st));
         int m, n;
         cin >> m >> n;
@@ -50,8 +45,7 @@ int main() {
             cin >> getArr[i];
         //離散化
         //防止m == 0
-        if (m)
-            sort(id + 1, id + m + 1);
+        if (m) sort(id + 1, id + m + 1);
         int stSize = unique(id + 1, id + m + 1) - (id + 1);
         for (int i = 1; i <= m; ++i) {
             nums[i] = lower_bound(id + 1, id + stSize + 1, nums[i]) - id;
@@ -71,5 +65,4 @@ int main() {
             }
         }
     }
-    return 0;
 }

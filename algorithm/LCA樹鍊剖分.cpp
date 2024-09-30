@@ -100,8 +100,7 @@ int main() {
                 if (depth[u] == depth[v]) {
                     int x = getK_parent(u, dis / 2);
                     int y = getK_parent(v, dis / 2);
-                    if (x > y)
-                        swap(x, y);
+                    if (x > y) swap(x, y);
                     printf("The fleas jump forever between %d and %d.\n", x, y);
                 }
                 else {
@@ -111,8 +110,7 @@ int main() {
                     //主要是往下不好找，所以改用深的點用parent往上
                     int y = getK_parent(v, dis / 2);
                     int x = getK_parent(y, 1);
-                    if (x > y)
-                        swap(x, y);
+                    if (x > y) swap(x, y);
                     printf("The fleas jump forever between %d and %d.\n", x, y);
                 }
             }

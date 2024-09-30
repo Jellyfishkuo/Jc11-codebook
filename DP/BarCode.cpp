@@ -20,5 +20,4 @@ int main() {
         memset(dp, -1, sizeof(dp));
         printf("%lld\n", dfs(N, K));
     }
-    return 0;
 }

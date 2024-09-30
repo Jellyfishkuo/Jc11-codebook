@@ -27,11 +27,9 @@ int period[maxn];
 
 int qpow(int a, unsigned long long b, int mod)
 {
-  if (b == 0)
-    return a;
+  if (b == 0) return a;
   long long res = 1;
-  while (b)
-  {
+  while (b) {
     if (b & 1)
       res = ((a % mod) * (res % mod)) % mod;
     a = ((a % mod) * (a % mod)) % mod;

@@ -4,7 +4,7 @@ struct Node {
     mutable long long val;
     Node(long long l, long long r, long long val)
         : l(l), r(r), val(val){}
-    bool operator < (const Node& other) const{
+    bool operator<(const Node& other) const {
         return this->l < other.l;
     }
 };
@@ -23,7 +23,7 @@ set<Node>::iterator split(long long pos) {
     long long l = it->l, r = it->r;
     long long val = it->val;
     chthollyTree.erase(it);
-    chthollyTree.insert(Node(l, pos - 1, val));
+    chthollyTree.insert(Node(l, pos-1, val));
     //回傳左端點是pos的區間iterator
     return chthollyTree.insert(Node(pos, r, val)).first;
 }
@@ -57,8 +57,7 @@ long long getKthSmallest(long long l, long long r, long long k) {
     sort(vec.begin(), vec.end());
     for (const pair<long long, long long>& p: vec) {
         k -= p.second;
-        if (k <= 0)
-            return p.first;
+        if (k <= 0) return p.first;
     }
     //不應該跑到這
     return -1;
@@ -67,10 +66,8 @@ long long getKthSmallest(long long l, long long r, long long k) {
 long long qpow(long long x, long long n, long long mod) {
     long long res = 1;
     x %= mod;
-    while (n)
-    {
-        if (n & 1)
-            res = res * x % mod;
+    while (n) {
+        if (n & 1) res = res * x % mod;
         n >>= 1;
         x = x * x % mod;
     }
@@ -81,9 +78,8 @@ long long sumOfPow(long long l, long long r, long long n, long long mod) {
     long long total = 0;
     set<Node>::iterator end = split(r + 1);
     set<Node>::iterator begin = split(l);
-    for (set<Node>::iterator it = begin; it != end; ++it)
-    {
-        total = (total + qpow(it->val, n, mod) * (it->r - it->l + 1)) % mod;
+    for (set<Node>::iterator it = begin; it != end; ++it) {
+        total = (total+qpow(it->val,n,mod) * (it->r-it->l+1))%mod;
     }
     return total;
 }

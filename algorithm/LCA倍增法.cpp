@@ -1,9 +1,7 @@
 //倍增法預處理O(nlogn)，查詢O(logn)，
 //利用lca找樹上任兩點距離
 #define maxn 100005
-struct Edge {
-	int u, v, w;
-};
+struct Edge { int u, v, w; };
 vector<vector<Edge>> G; // tree
 int fa[maxn][31]; //fa[u][i] -> u的第2^i個祖先
 long long dis[maxn][31];
@@ -20,8 +18,7 @@ void dfs(int u, int p) {//預處理fa
     }
     //遍歷子節點
     for (Edge& edge: G[u]) {
-        if (edge.v == p) 
-            continue;
+        if (edge.v == p) continue;
         dis[edge.v][0] = edge.w;
         dfs(edge.v, u);
     }
@@ -69,5 +66,4 @@ int main() {
             printf("%lld%c", lca(u + 1, v + 1), (q) ? ' ' : '\n');
         }
 	}
-	return 0;
 }
