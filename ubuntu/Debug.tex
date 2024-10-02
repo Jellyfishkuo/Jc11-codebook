@@ -2,6 +2,7 @@
     \hline
     command             & 功能 \\
     \hline
+    \verb|[enter]|      & 同上一個指令 \\
     \verb|[b]|          & 在當前這行放中斷點 \\
     \verb|[bt]|         & 印出堆疊 \\
     \verb|[b fn]|       & 在函式 fn 的開頭放中斷點 \\
@@ -10,14 +11,18 @@
     \verb|[c]|          & 繼續執行程式直到下一個中斷點或錯誤 \\
     \verb|[call fn]|    & 呼叫函式 fn \\
     \verb|[d]|          & 刪除所有中斷點 \\
-    \verb|[d N]|        & 刪除編號 N 的中斷點 \\
-    \verb|[display x]|  & 像 [p], 但每一次下一步都會印出 x \\
+    \verb|[d N]|        & 刪除編號為 N 的中斷點 \\
+    \verb|[disp x]|     & 像 [p], 但每一次下一步都會印出 x \\
     \verb|[f]|          & 執行程式直到跑完當前函式 \\
-    \verb|[info break]| & 列出所有中斷點 \\
+    \verb|[i]|          & 顯示資訊 \\
+    \verb|[i b]|        & 列出所有中斷點資訊 \\
+    \verb|[i disp]|     & 列出所有監看變數資訊 \\
     \verb|[l]|          & 印出 10 行程式碼  \\
     \verb|[l N]|        & 印出包含第 N 行的程式碼  \\
     \verb|[l fn]|       & 印出包含函式 fn 的程式碼 \\
+    \verb|[l var]|      & 印出包含變數 var 的程式碼 \\
     \verb|[n]|          & 像 [s], 但不進入函數 \\
+    \verb|[n x]|        & 執行 [n] 一共 x 次 \\
     \verb|[p var]|      & 印出 var \\
     \verb|[q]|          & 結束 gdb \\
     \verb|[r]|          & 執行程式 \\
@@ -26,8 +31,8 @@
     \verb|[s]|          & 執行下一行 \\
     \verb|[s N]|        & 執行下 N 行 \\
     \verb|[set x=y]|    & 將 x 設定為 y \\
-    \verb|[u]|          & 網上一層堆疊 \\
-    \verb|[undisplay x]| & 取消 display x \\
+    \verb|[u]|          & 往上一層堆疊 \\
+    \verb|[undisp x]|   & 取消編號為 x 的 display \\
     \verb|[watch x==3]| & 執行程式直到符合條件時暫停 \\
     \hline
 \end{tabular}
