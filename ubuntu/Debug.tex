@@ -1,0 +1,30 @@
+\begin{tabular}[c]{|l|l|}
+    \hline
+    command             & 功能 \\
+    \hline
+    \verb|[b]|          & 在當前這行放中斷點 \\
+    \verb|[bt]|         & 印出堆疊 \\
+    \verb|[b fn]|       & 在函式 fn 的開頭放中斷點 \\
+    \verb|[b N]|        & 在第 N 行放中斷點 \\
+    \verb|[b +N]|       & 從目前這行屬往下 N 行都放中斷點 \\
+    \verb|[c]|          & 繼續執行程式直到下一個中斷點或錯誤 \\
+    \verb|[call fn]|    & 呼叫函式 fn \\
+    \verb|[d]|          & 刪除所有中斷點 \\
+    \verb|[d N]|        & 刪除編號 N 的中斷點 \\
+    \verb|[display x]|  & 像 [p], 但每一次下一步都會印出 x \\
+    \verb|[f]|          & 執行程式直到跑完當前函式 \\
+    \verb|[info break]| & 列出所有中斷點 \\
+    \verb|[n]|          & 像 [s], 但不進入函數 \\
+    \verb|[p var]|      & 印出 var \\
+    \verb|[q]|          & 結束 gdb \\
+    \verb|[r]|          & 執行程式直到下一個中斷點或錯誤 \\
+    \verb|[return]|     & 從當前函式 return \\
+    \verb|[r < file1]|  & 像 [r], 且以 file1 為輸入 \\
+    \verb|[s]|          & 執行下一行 \\
+    \verb|[s N]|        & 執行下 N 行 \\
+    \verb|[set x=y]|    & 將 x 設定為 y \\
+    \verb|[u]|          & 網上一層堆疊 \\
+    \verb|[undisplay x]| & 取消 display x \\
+    \verb|[watch x==3]| & 執行程式直到符合條件時暫停 \\
+    \hline
+\end{tabular}
