@@ -1,6 +1,6 @@
-\begin{enumerate}
-    \item Breakpoints \par
-    \begin{tabular}[c]{|p{2.28cm}|p{2.68cm}|}
+\begin{center}
+    \underbar{\small{Breakpoints}} \\
+    \begin{tabular}{|p{2.28cm}|p{2.68cm}|}
         \hline
         command                         & 功能 \\
         \hline
@@ -17,21 +17,26 @@
         \verb|[en N]|                   & 使編號為 N 的中斷點有效 \\
         \verb|[watch x==3]|             & 執行到符合條件時暫停 \\
         \hline
-    \end{tabular}
-    \item Data \par
-    \begin{tabular}[c]{|p{2.28cm}|p{2.68cm}|}
+    \end{tabular} \\
+    \hspace{\fill} \\
+    \hspace{\fill} \\
+
+    \underbar{\small{Data}} \\
+    \begin{tabular}{|p{2.28cm}|p{2.68cm}|}
         \hline
         command                         & 功能 \\
         \hline
         \verb|[call fn]|                & 呼叫函式 fn \\
         \verb|[display x] [disp x]|     & 每執行一步都印出 x \\
         \verb|[print var] [p var]|      & 印出 var \\
-        \verb|[set x=y]|                & 將 x 設定為 y \\
         \verb|[undisp x]|               & 取消編號為 x 的 disp \\
         \hline
-    \end{tabular}
-    \item Files \par
-    \begin{tabular}[c]{|p{2.28cm}|p{2.68cm}|}
+    \end{tabular} \\
+    \hspace{\fill} \\
+    \hspace{\fill} \\
+
+    \underbar{\small{Files}} \\
+    \begin{tabular}{|p{2.28cm}|p{2.68cm}|}
         \hline
         command                         & 功能 \\
         \hline
@@ -40,47 +45,62 @@
         \verb|[l fn]|                   & 印出包含函式 fn 的程式碼 \\
         \verb|[l var]|                  & 印出包含變數 var 的程式碼 \\
         \hline
-    \end{tabular}
-    \item Running \par
-    \begin{tabular}[c]{|p{2.28cm}|p{2.68cm}|}
+    \end{tabular} \\
+    \hspace{\fill} \\
+    \hspace{\fill} \\
+
+    \underbar{\small{Running}} \\
+    \begin{tabular}{|p{2.28cm}|p{2.68cm}|}
         \hline
         command                         & 功能 \\
         \hline
         \verb|[continue] [c]|           & 執行到下個中斷點或錯誤 \\
         \verb|[finish] [fin]|           & 執行到跳出堆疊框 \\
-        \verb|[kill]|                   & 終止程式 \\
+        \verb|[kill] [ki]|              & 終止程式 \\
         \verb|[next] [n]|               & 執行下一行(不進入函式) \\
         \verb|[n N]|                    & 執行 [n] 一共 N 次 \\
         \verb|[run] [r]|                & 執行程式 \\
         \verb|[r < file1]|              & 像 [r], 但輸入為 file1 \\
+        \verb|[start]|                  & 開始執行，停在第一步 \\
         \verb|[step] [s]|               & 執行下一步(進入函式) \\
         \verb|[s N]|                    & 執行 [s] 一共 N 次 \\
         \verb|[until N] [u N]|          & 執行到第 N 行停下來 \\
         \hline
-    \end{tabular}
-    \item Stack \par
-    \begin{tabular}[c]{|p{2.28cm}|p{2.68cm}|}
+    \end{tabular} \\
+    \hspace{\fill} \\
+    \hspace{\fill} \\
+
+    \underbar{\small{Stack}} \\
+    \begin{tabular}{|p{2.28cm}|p{2.68cm}|}
         \hline
         command                         & 功能 \\
         \hline
-        \verb|[backtrace] [bt]|         & 印出堆疊 \\
-        \verb|[frame] [f]|              & 執行程式直到跑完當前函式 \\
+        \verb|[backtrace] [bt]|         & 印出所有堆疊 \\
+        \verb|[frame] [f]|              & 印出當前堆疊 \\
         \verb|[return] [ret]|           & 從當前函式 return \\
         \verb|[up]|                     & 印出上一層堆疊 \\
         \hline
-    \end{tabular}
-    \item Status \par
-    \begin{tabular}[c]{|p{2.28cm}|p{2.68cm}|}
+    \end{tabular} \\
+    \hspace{\fill} \\
+    \hspace{\fill} \\
+
+    \underbar{\small{Status}} \\
+    \begin{tabular}{|p{2.28cm}|p{2.68cm}|}
         \hline
         command                         & 功能 \\
         \hline
         \verb|[info] [i]|               & 顯示資訊 \\
         \verb|[i b]|                    & 列出所有中斷點資訊 \\
         \verb|[i disp]|                 & 列出所有監看變數資訊 \\
+        \verb|[i local] [i lo]|         & 列出所有區域變數資訊 \\
+        \verb|[i var]|                  & 列出所有變數 \\
         \hline
-    \end{tabular}
-    \item Support \par
-    \begin{tabular}[c]{|p{2.28cm}|p{2.68cm}|}
+    \end{tabular} \\
+    \hspace{\fill} \\
+    \hspace{\fill} \\
+
+    \underbar{\small{Support}} \\
+    \begin{tabular}{|p{2.28cm}|p{2.68cm}|}
         \hline
         command                         & 功能 \\
         \hline
@@ -88,4 +108,4 @@
         \verb|[quit] [q]|               & 結束 gdb \\
         \hline
     \end{tabular}
-\end{enumerate}
+\end{center}
