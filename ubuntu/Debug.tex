@@ -1,6 +1,6 @@
 \begin{center}
     \underbar{\small{Breakpoints}} \\
-    \begin{tabular}{|p{2.28cm}|p{2.68cm}|}
+    \begin{tabular}{|p{2.7cm}|p{2.7cm}|}
         \hline
         command                         & 功能 \\
         \hline
@@ -8,6 +8,7 @@
         \verb|[b fn]|                   & 在函式 fn 的開頭放中斷點 \\
         \verb|[b N]|                    & 在第 N 行放中斷點 \\
         \verb|[clear N] [cl N]|         & 刪除第 N 行的中斷點 \\
+        \verb|[cond N i==3]|            & 編號 N 的中斷點i=3再停 \\
         \verb|[delete] [d]|             & 刪除所有中斷點 \\
         \verb|[d N]|                    & 刪除編號為 N 的中斷點 \\
         \verb|[disable] [dis]|          & 使所有中斷點無效 \\
@@ -22,13 +23,22 @@
     \hspace{\fill} \\
 
     \underbar{\small{Data}} \\
-    \begin{tabular}{|p{2.28cm}|p{2.68cm}|}
+    \begin{tabular}{|p{2.7cm}|p{2.7cm}|}
         \hline
         command                         & 功能 \\
         \hline
         \verb|[call fn]|                & 呼叫函式 fn \\
         \verb|[display x] [disp x]|     & 每執行一步都印出 x \\
         \verb|[print var] [p var]|      & 印出 var \\
+        \verb|[set print] [set p]|      & 設定 print \\
+        \verb|[set p array]|            & array 印出漂亮格式 \\
+        \verb|[set p array off]|        & 取消 array 印出漂亮格式 \\
+        \verb|[set p array-i]|          & array 印出索引 \\
+        \verb|[set p array-i off]|      & 取消 array 印出索引 \\
+        \verb|[set p el N]|             & array 最多印 N 個元素 \\
+        \verb|[set p pre]|              & struct 印出漂亮格式 \\
+        \verb|[set p pre off]|          & 取消 struct 印出漂亮格式 \\
+        \verb|[set var N=3]|            & 將 N 設為 3 \\
         \verb|[undisp x]|               & 取消編號為 x 的 disp \\
         \hline
     \end{tabular} \\
@@ -36,7 +46,7 @@
     \hspace{\fill} \\
 
     \underbar{\small{Files}} \\
-    \begin{tabular}{|p{2.28cm}|p{2.68cm}|}
+    \begin{tabular}{|p{2.7cm}|p{2.7cm}|}
         \hline
         command                         & 功能 \\
         \hline
@@ -49,16 +59,31 @@
     \hspace{\fill} \\
     \hspace{\fill} \\
 
+    \underbar{\small{Obscure}} \\
+    \begin{tabular}{|p{2.7cm}|p{2.7cm}|}
+        \hline
+        command                         & 功能 \\
+        \hline
+        \verb|[record] [rec]|           & 開始記錄 \\
+        \verb|[rec s]|                  & 停止記錄 \\
+        \hline
+    \end{tabular} \\
+    \hspace{\fill} \\
+    \hspace{\fill} \\
+
     \underbar{\small{Running}} \\
-    \begin{tabular}{|p{2.28cm}|p{2.68cm}|}
+    \begin{tabular}{|p{2.7cm}|p{2.7cm}|}
         \hline
         command                         & 功能 \\
         \hline
         \verb|[continue] [c]|           & 執行到下個中斷點或錯誤 \\
         \verb|[finish] [fin]|           & 執行到跳出堆疊框 \\
-        \verb|[kill] [ki]|              & 終止程式 \\
+        \verb|[kill] [k]|               & 終止程式 \\
         \verb|[next] [n]|               & 執行下一行(不進入函式) \\
         \verb|[n N]|                    & 執行 [n] 一共 N 次 \\
+        \verb|[reverse-continue] [rc]|  & 反向的 [c] \\
+        \verb|[rn]|                     & 反向的 [n] \\
+        \verb|[rs]|                     & 反向的 [s] \\
         \verb|[run] [r]|                & 執行程式 \\
         \verb|[r < file1]|              & 像 [r], 但輸入為 file1 \\
         \verb|[start]|                  & 開始執行，停在第一步 \\
@@ -67,11 +92,11 @@
         \verb|[until N] [u N]|          & 執行到第 N 行停下來 \\
         \hline
     \end{tabular} \\
-    \hspace{\fill} \\
-    \hspace{\fill} \\
+    \verb|#|[reverse] 要先執行 record(rec)，但存不了幾步就沒空間了
+    \columnbreak
 
     \underbar{\small{Stack}} \\
-    \begin{tabular}{|p{2.28cm}|p{2.68cm}|}
+    \begin{tabular}{|p{2.7cm}|p{2.7cm}|}
         \hline
         command                         & 功能 \\
         \hline
@@ -85,7 +110,7 @@
     \hspace{\fill} \\
 
     \underbar{\small{Status}} \\
-    \begin{tabular}{|p{2.28cm}|p{2.68cm}|}
+    \begin{tabular}{|p{2.7cm}|p{2.7cm}|}
         \hline
         command                         & 功能 \\
         \hline
@@ -100,12 +125,27 @@
     \hspace{\fill} \\
 
     \underbar{\small{Support}} \\
-    \begin{tabular}{|p{2.28cm}|p{2.68cm}|}
+    \begin{tabular}{|p{2.7cm}|p{2.7cm}|}
         \hline
         command                         & 功能 \\
         \hline
         \verb|[help] [h]|               & 協助 \\
+        \verb|[b N if i==2]|            & 當 i=2 時停在第 N 行 \\
         \verb|[quit] [q]|               & 結束 gdb \\
+        \hline
+    \end{tabular} \\
+    \hspace{\fill} \\
+    \hspace{\fill} \\
+
+    \underbar{\small{Text User Interface}} \\
+    \begin{tabular}{|p{2.7cm}|p{2.7cm}|}
+        \hline
+        command                         & 功能 \\
+        \hline
+        \verb|[refresh] [ref]|          & 刷新終端機布置 \\
+        \verb|[tui d]|                  & 取消使用 TUI \\
+        \verb|[tui e]|                  & 使用 TUI \\
+        \verb|[update] [upd]|           & 更新視窗以顯示當前程式碼 \\
         \hline
     \end{tabular}
 \end{center}
