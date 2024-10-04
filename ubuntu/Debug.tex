@@ -8,6 +8,7 @@
         \verb|[b fn]|                   & 在函式 fn 的開頭放中斷點 \\
         \verb|[b N]|                    & 在第 N 行放中斷點 \\
         \verb|[clear N] [cl N]|         & 刪除第 N 行的中斷點 \\
+        \verb|[command N] [comm N]|     & 設定編號 N 的中斷點的指令 \\
         \verb|[cond N i==3]|            & 編號 N 的中斷點i=3再停 \\
         \verb|[delete] [d]|             & 刪除所有中斷點 \\
         \verb|[d N]|                    & 刪除編號為 N 的中斷點 \\
@@ -16,7 +17,8 @@
         \verb|[dp a, "%d\n", c]|        & 碰到第 a 行時印出 c \\
         \verb|[enable] [en]|            & 使所有中斷點有效 \\
         \verb|[en N]|                   & 使編號為 N 的中斷點有效 \\
-        \verb|[watch x==3]|             & 執行到符合條件時暫停 \\
+        \verb|[tbreak N] [tb N]|        & 只停一次的 [b N] \\
+        \verb|[watch x==3] [wa x==3]|   & 執行到符合條件時停止 \\
         \hline
     \end{tabular} \\
     \hspace{\fill} \\
@@ -91,8 +93,7 @@
         \verb|[s N]|                    & 執行 [s] 一共 N 次 \\
         \verb|[until N] [u N]|          & 執行到第 N 行停下來 \\
         \hline
-    \end{tabular} \\
-    \verb|#|[reverse] 要先執行 record(rec)，但存不了幾步就沒空間了
+    \end{tabular}
     \columnbreak
 
     \underbar{\small{Stack}} \\
@@ -101,7 +102,9 @@
         command                         & 功能 \\
         \hline
         \verb|[backtrace] [bt]|         & 印出所有堆疊 \\
+        \verb|[down] [do]|              & 印出下一層堆疊 \\
         \verb|[frame] [f]|              & 印出當前堆疊 \\
+        \verb|[f N]|                    & 印出往上第 N 層堆疊 \\
         \verb|[return] [ret]|           & 從當前函式 return \\
         \verb|[up]|                     & 印出上一層堆疊 \\
         \hline
@@ -147,5 +150,13 @@
         \verb|[tui e]|                  & 使用 TUI \\
         \verb|[update] [upd]|           & 更新視窗以顯示當前程式碼 \\
         \hline
-    \end{tabular}
+    \end{tabular} \\
+    \hspace{\fill} \\
+    \hspace{\fill} \\
+
+    \underbar{\small{Others}} \\
+    \begin{itemize}
+        \item <enter> 鍵可以執行上一動
+        \item 執行 reverse (像是 rc, rn, rs) 前，要先執行 record (rec)，但存不了幾步就沒空間了
+    \end{itemize}
 \end{center}

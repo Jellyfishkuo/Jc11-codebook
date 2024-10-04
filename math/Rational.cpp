@@ -4,10 +4,12 @@ using ll = long long;
 
 struct Rational {
 	ll p, q;
+  
 	Rational(ll a=0, ll b=1) {
 		p = a, q = b;
     reduce();
 	}
+  
 	Rational(string s) {
 		if(s.find(sep) == string::npos) {
 			p = stoll(s);
@@ -18,6 +20,7 @@ struct Rational {
 		}
 		reduce();
 	}
+  
 	void reduce() {
 		ll t = abs(__gcd(p, q));
     if(t == 0) {
@@ -28,6 +31,7 @@ struct Rational {
 		if(q < 0) p = -p, q = -q;
 		return;
 	}
+  
 	string toString() {
 		if(q == 0) {
 			div0 = true;
@@ -36,6 +40,7 @@ struct Rational {
 		if(p%q == 0) return to_string(p/q);
 		return to_string(p) + sep + to_string(q);
 	}
+  
 	friend istream& operator>>(
 		istream& i, Rational& r) {
 		string s;
@@ -43,6 +48,7 @@ struct Rational {
     r = Rational(s);
 		return i;
 	}
+  
 	friend ostream& operator<<(
 		ostream& o, Rational r) {
     o << r.toString();
@@ -56,12 +62,15 @@ Rational operator+(Rational x, Rational y) {
 	return Rational(
 		y.q/t*x.p + x.q/t*y.p, x.q/t*y.q);
 }
+
 Rational operator-(Rational x, Rational y) {
 	return x + Rational(-y.p, y.q);
 }
+
 Rational operator*(Rational x, Rational y) {
 	return Rational(x.p*y.p, x.q*y.q);
 }
+
 Rational operator/(Rational x, Rational y) {
 	return x * Rational(y.q, y.p);
 }
