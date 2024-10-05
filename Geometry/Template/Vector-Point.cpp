@@ -8,17 +8,13 @@ using Point = Vector;
 using Polygon = vector<Point>;
 
 Vector operator+(Vector a, Vector b) {
-  return Vector(a.x+b.x, a.y+b.y);
-}
+  return Vector(a.x+b.x, a.y+b.y); }
 Vector operator-(Vector a, Vector b) {
-  return Vector(a.x-b.x, a.y-b.y);
-}
+  return Vector(a.x-b.x, a.y-b.y); }
 Vector operator*(Vector a, DBL b) {
-  return Vector(a.x*b, a.y*b);
-}
+  return Vector(a.x*b, a.y*b); }
 Vector operator/(Vector a, DBL b) {
-  return Vector(a.x/b, a.y/b);
-}
+  return Vector(a.x/b, a.y/b); }
 
 TP dot(Vector a, Vector b) {
   return a.x*b.x + a.y*b.y;
