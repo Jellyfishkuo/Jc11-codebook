@@ -32,7 +32,7 @@ Polygon convex_hull(Point* p, int n) {
   });
 
   int m = 1;     // stack size
-  Point st[n] = {p[n]=p[0]};
+  Point st[n] = {p[n] = p[0]};
   for(int i=1; i<=n; i++) {
     for(;m>1&&rmv(st[m-2],st[m-1],p[i]);m--);
     st[m++] = p[i];
