@@ -1,3 +1,14 @@
+\begin{description}
+    \item 計算 $AX = B$
+    \item 傳入： \\
+        $M=$ 增廣矩陣 $[A|B]$ \\
+        $equ=$ 有幾個 equation \\
+        $var=$ 有幾個 variable
+    \item 回傳：$X = (x_0,\dots, x_{n-1})$ 的解集
+    \item ＞＞無法判斷無解或無限多組解＜＜
+\end{description}
+
+\begin{lstlisting}
 using DBL = double;
 using mat = vector<vector<DBL>>;
 
@@ -39,3 +50,4 @@ vector<DBL> Gauss(mat& M, int equ, int var) {
   }
   return X;
 }
+\end{lstlisting}

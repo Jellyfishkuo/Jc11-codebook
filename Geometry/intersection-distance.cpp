@@ -2,7 +2,6 @@ int dcmp(DBL a, DBL b=0.0) {
   if(abs(a-b) < eps) return 0;
   return a<b ? -1 : 1;
 }
-
 bool hasIntersection(Point p, Segment s) {
   if(dcmp(cross(s.s-p, s.e-p))) return false;
   return dcmp(dot(s.s-p, s.e-p)) <= 0;
@@ -28,7 +27,6 @@ bool hasIntersection(Segment a, Segment b) {
       && dcmp(a1) * dcmp(a2) <= 0
       && dcmp(b1) * dcmp(b2) <= 0;
 }
-
 Point intersection(Segment a, Segment b) {
   Vector v = b.s - a.s;
   DBL c1 = cross(a.v, b.v);
@@ -47,7 +45,9 @@ Point intersection(Line a, Line b) {
   DBL t = 1.0*cross(b.v, u)/cross(a.v, b.v);
   return a.p + a.v*t;
 }
-
+DBL dis(Point a, Point b) {
+  return sqrt(dot(a-b, a-b));
+}
 DBL dis(Point p, Line l) {
   return abs(cross(p-l.p, l.v))/l.v.length();
 }
@@ -68,9 +68,8 @@ DBL dis(Line a, Line b) {
   if(dcmp(cross(a.v, b.v)) == 0) return 0;
   return dis(a.p, b);
 }
-
-// 返回 p 在 l 上的垂足(投影點)
 Point getPedal(Line l, Point p) {
+// 返回 p 在 l 上的垂足(投影點)
   DBL len = dot(p-l.p, l.v) / dot(l.v, l.v);
   return l.p + l.v * len;
 }

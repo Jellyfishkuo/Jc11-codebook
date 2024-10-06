@@ -1,17 +1,29 @@
+\begin{center}
+\underbar{Template}
+\begin{lstlisting}
 using DBL = double;
-using TP = DBL;   // 存點的型態
-using Polygon = vector<Point>;
-
+using Tp = DBL;                 // 存點的型態
 const int maxn = 5e4 + 10;
-
+const DBL eps = 1e-9;
+struct Vector;
+using Point = Vector;
+using Polygon = vector<Point>;
+Vector operator+(Vector, Vector);
+Vector operator-(Vector, Vector);
+Vector operator*(Vector, DBL);
+Tp cross(Vector, Vector);
+struct Line;
+Point intersection(Line, Line);
+int dcmp(DBL, DBL);             // 不見得會用到
+\end{lstlisting}
+\underbar{Halfplane Intersection}
+\begin{lstlisting}
 // Return: 能形成半平面交的凸包邊界點
 Polygon halfplaneIntersect(vector<Line>&nar){
   sort(nar.begin(), nar.end());
-  // DBL 跟 0 比較, 沒符點數不用
-  auto dblcmp=[](DBL v){return (v>0)-(v<0);};
   // p 是否在 l 的左半平面
   auto lft = [&](Point p, Line l) {
-    return dblcmp(cross(l.v, p-l.p)) > 0;
+    return dcmp(cross(l.v, p-l.p)) > 0;
   };
 
   int ql = 0, qr = 0;
@@ -22,7 +34,7 @@ Polygon halfplaneIntersect(vector<Line>&nar){
     for(; ql<qr&&!lft(P[qr-1],nar[i]); qr--);
     for(; ql<qr&&!lft(P[ql],nar[i]); ql++);
     L[++qr] = nar[i];
-    if(dblcmp(cross(L[qr].v,L[qr-1].v))==0) {
+    if(dcmp(cross(L[qr].v,L[qr-1].v))==0) {
       if(lft(nar[i].p,L[--qr])) L[qr]=nar[i];
     }
     if(ql < qr)
@@ -33,3 +45,5 @@ Polygon halfplaneIntersect(vector<Line>&nar){
   P[qr] = intersection(L[qr], L[ql]);
   return Polygon(P+ql, P+qr+1);
 }
+\end{lstlisting}
+\end{center}

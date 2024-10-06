@@ -1,5 +1,5 @@
 const char sep = '/';     // 分數的分隔符
-bool div0;      // 要記得適時歸零
+bool div0;      					// 要記得適時歸零
 using ll = long long;
 
 struct Rational {

@@ -1,0 +1,31 @@
+\begin{description}
+    \item [s:] 增長為兩倍的字串，以\verb|'@'|為首，以\verb|'$'|為間隔，以\verb|'0'|為尾
+    \item [p:] 以 s[i] 為中心，半徑為 p[i] 是回文
+\end{description}
+
+\begin{lstlisting}
+const int maxn = 11e4 + 10;
+
+char s[maxn<<1] = "@$";
+int p[maxn<<1];
+
+int manacher(char* str, int n) {
+    for(int i=1; i<=n; i++) {
+        s[i<<1] = str[i-1];
+        s[i<<1|1] = '$';
+    }
+
+    int cur = 0, r = 0, res = 0;
+    n = (n+1) << 1;
+    for(int i=1; i<n; i++) {
+    p[i] = (i>r) ? 1 : min(p[cur*2-i], r-i);
+    for(; s[i-p[i]]==s[i+p[i]]; p[i]++);
+        if(i+p[i] > r) {
+            r = i+p[i];
+            cur = i;
+        }
+        res = max(res, p[i]);
+    }
+    return res - 1;
+}
+\end{lstlisting}
