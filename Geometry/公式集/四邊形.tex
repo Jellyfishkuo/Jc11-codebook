@@ -1,0 +1,18 @@
+任意凸四邊形$ABCD$的四邊長分別為$a,b,c,d$
+且已知$\angle A+\angle C$，則四邊形$ABCD$的面積為
+\[
+    \sqrt{(s-a)(s-b)(s-c)(s-d)-\Delta}
+\]
+where
+\[
+    s=\frac{a+b+c+d}{2}
+\]
+\[
+    \Delta=abcd\cos^2\left(\frac{A+C}{2}\right)
+\]
+特例：$ABCD$為圓內接四邊形，則$\Delta=0$ \par
+若只知道其中一角，則可用餘弦定理
+\[
+    c^2 = a^2+b^2-2ab\cos(\angle C)
+\]
+求出對角線長，再用海龍計算兩個三角形面積即可。
