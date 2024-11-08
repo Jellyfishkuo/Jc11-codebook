@@ -1,0 +1,65 @@
+\begin{itemize}
+  \item $O(n\log(n))$
+  \item SA：後綴數組
+  \item HA：相鄰後綴的共同前綴長度 \par
+        (Longest Common Prefix)
+  \item maxc：可用字元的最大ASCII值
+  \item maxn >= maxc
+  \item 記得先取 n 的值(strlen(s))
+\end{itemize}
+\begin{lstlisting}
+const int maxn = 2e5 + 10;
+const int maxc = 256 + 10;
+
+int n;
+int SA[maxn], HA[maxn];
+int rk[maxn], cnt[maxn], tmp[maxn];
+char s[maxn];
+
+void getSA() {
+  int mx = maxc;
+  for(int i=0; i<mx; cnt[i++]=0);
+
+  // 第一次 stable counting sort，編 rank 和 sa
+  for(int i=0; i<n; i++) cnt[rk[i]=s[i]]++;
+  for(int i=1; i<mx; i++) cnt[i] += cnt[i-1];
+  for(int i=n-1;i>=0;i--) SA[--cnt[s[i]]]=i;
+
+  // 倍增法運算
+  for(int k=1, r=0; k<n; k<<=1, r=0) {
+    for(int i=0; i<mx; cnt[i++]=0);
+    for(int i=0; i<n; i++) cnt[rk[i]]++;
+    for(int i=1; i<mx; i++) cnt[i]+=cnt[i-1];
+    for(int i=n-k; i<n; i++) tmp[r++] = i;
+    for(int i=0; i<n; i++) {
+      if(SA[i] >= k) tmp[r++] = SA[i] - k;
+    }
+
+    // 計算本回 SA
+    for(int i=n-1; i>=0; i--) {
+      SA[--cnt[rk[tmp[i]]]] = tmp[i];
+    }
+
+    // 計算本回 rank
+    tmp[SA[0]] = r = 0;
+    for(int i=1; i<n; i++) {
+      if((SA[i-1]+k >= n) ||
+         (rk[SA[i-1]] != rk[SA[i]]) ||
+         (rk[SA[i-1]+k] != rk[SA[i]+k])) r++;
+      tmp[SA[i]] = r;
+    }
+    for(int i=0; i<n; i++) rk[i] = tmp[i];
+    if((mx=r+1) == n) break;
+  }
+}
+
+void getHA() {    // HA[0] = 0
+  for(int i=0; i<n; i++) rk[SA[i]] = i;
+  for(int i=0, k=0; i<n; i++) {
+    if(!rk[i]) continue;
+    if(k) k--;
+    while(s[i+k] == s[SA[rk[i]-1]+k]) k++;
+    HA[rk[i]] = k;
+  }
+}
+\end{lstlisting}
