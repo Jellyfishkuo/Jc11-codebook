@@ -72,4 +72,4 @@ ACTrie ac;      // 建構，初始化
 ac.insert(s);   // 加字典單字
 // 加完字典後
 ac.build();     // !!! 建 failure link !!!
-ac.match(s);    // 多模式匹配(加vec存編號)
+ac.match(s);    // 多模式匹配(傳入vec可以存編號)
