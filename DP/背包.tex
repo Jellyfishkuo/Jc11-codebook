@@ -1,0 +1,223 @@
+\begin{center}
+  \underline{  \centering{0-1 背包}  }
+\end{center}
+\begin{description}
+  \item[複雜度：] $O(NW)$
+  \item[已知：] 第$i$個物品重量為$w_i$，價值$v_i$；背包總容量$W$
+  \item[意義：] dp[前i個物品][重量] = 最高價值
+  \item[maxn:] 物品數量
+  \item[maxw:] 背包最大容量
+\end{description}
+\begin{lstlisting}
+int W;
+int w[maxn], v[maxn];
+int dp[maxw];
+
+memset(dp, 0, sizeof(dp));
+for(int i=1; i<=n; i++) {
+  for(int j=W; j>=w[i]; j--) {
+    dp[j] = max(dp[j], dp[j-w[i]]+v[i]);
+  }
+}
+\end{lstlisting}
+
+\begin{center}
+  \underline{  \centering{價值為主的 0-1 背包}  }
+\end{center}
+\begin{description}
+  \item[複雜度：] $O(NV)$
+  \item[已知：] 第$i$個物品重量為$w_i$，價值$v_i$；物品最大總價值$V$
+  \item[意義：] dp[前i個物品][價值] = 最小重量
+  \item[maxn:] 物品數量
+  \item[maxv:] 物品最大總價值
+  \item[$V=\Sigma v_i$] 
+\end{description}
+\begin{lstlisting}
+int w[maxn], v[maxn];
+int dp[maxv];
+
+memset(dp, 0x3f, sizeof(dp));
+dp[0] = 0;
+for(int i=0; i<n; i++) {
+  for(int j=V; j>=v[i]; j--) {
+    dp[j] = min(dp[j], dp[j-v[i]]+w[i]);
+  }
+}
+
+int res = 0;
+for(int val=V; val>=0; val--) {
+  if(dp[val] <= w) {
+    res = val;
+    break;
+  }
+}
+\end{lstlisting}
+
+\begin{center}
+  \underline{  \centering{完全背包(無限背包)}  }
+\end{center}
+\begin{description}
+  \item[複雜度：] $O(NW)$
+  \item[已知：] 第$i$個物品重量為$w_i$，價值$v_i$；背包總容量$W$
+  \item[意義：] dp[前i個物品][重量] = 最高價值
+  \item[maxn:] 物品數量
+  \item[maxw:] 背包最大容量
+\end{description}
+\begin{lstlisting}
+int W;
+int w[maxn], v[maxn];
+int dp[maxw];
+
+memset(dp, 0, sizeof(dp));
+for(int i=1; i<=n; i++) {
+  for(int j=w[i]; j<=W; j++) {
+    dp[j] = max(dp[j], dp[j-w[i]]+v[i]);
+  }
+}
+\end{lstlisting}
+
+\begin{center}
+  \underline{  \centering{多重背包}  }
+\end{center}
+\begin{description}
+  \item[複雜度：] $O(W\Sigma cnt_i)$
+  \item[已知：] 第$i$個物品重量為$w_i$，價值$v_i$，有$cnt_i$個；\par
+                背包總容量$W$
+  \item[意義：] dp[前i個物品][重量] = 最高價值
+  \item[maxn:] 物品數量
+  \item[maxw:] 背包最大容量
+\end{description}
+\begin{lstlisting}
+int W;
+int w[maxn], v[maxn], cnt[maxn];
+int dp[maxw];
+
+memset(dp, 0, sizeof(dp));
+for(int i=1; i<=n; i++) {
+  for(int j=W; j>=w[i]; j--) {
+    for(int k=1; k*w[i]<=j&&k<=cnt[i]; k++) {
+      dp[j] = max(dp[j],dp[j-k*w[i]]+k*v[i]);
+    }
+  }
+}
+\end{lstlisting}
+\begin{description}
+  \item[優化：] 二進位分組
+  \item[複雜度：] $O(W\Sigma \log_2(cnt_i))$
+  \item[已知：] 第$i$個物品重量為$w_i$，價值$v_i$，有$cnt_i$個；\par
+                背包總容量$W$
+  \item[意義：]
+  \item[maxn:] 物品數量
+  \item[maxw:] 背包最大容量
+\end{description}
+\begin{lstlisting}
+int W;
+int w[maxn], v[maxn], cnt[maxn];
+int dp[maxw];
+
+memset(dp, 0, sizeof(dp));
+\end{lstlisting}
+\begin{description}
+  \item[優化：] 單調隊列
+  \item[複雜度：] $O(NW)$
+  \item[已知：] 第$i$個物品重量為$w_i$，價值$v_i$，有$cnt_i$個；\par
+                背包總容量$W$
+  \item[意義：]
+  \item[maxn:] 物品數量
+  \item[maxw:] 背包最大容量
+\end{description}
+\begin{lstlisting}
+int W;
+int w[maxn], v[maxn], cnt[maxn];
+int dp[maxw];
+
+memset(dp, 0, sizeof(dp));
+\end{lstlisting}
+
+\begin{center}
+  \underline{  \centering{混合背包(0-1/完全/多重)}  }
+\end{center}
+\begin{description}
+  \item[複雜度：] $O(W\Sigma cnt_i)$
+  \item[已知：] 第$i$個物品重量為$w_i$，價值$v_i$，有$cnt_i$個；\par
+                背包總容量$W$
+  \item[意義：] dp[前i個物品][重量] = 最高價值
+  \item[maxn:] 物品數量
+  \item[maxw:] 背包最大容量
+  \item[$cnt_i=0$] 代表無限 
+\end{description}
+\begin{lstlisting}
+int W;
+int w[maxn], v[maxn], cnt[maxn];
+int dp[maxw];
+
+memset(dp, 0, sizeof(dp));
+for(int i=1; i<=n; i++) {
+  if(cnt[i]) {
+    for(int j=W; j>=w[i]; j--) {
+      for(int k=1;k*w[i]<=j&&k<=cnt[i];k++) {
+        dp[j]=max(dp[j],dp[j-k*w[i]]+k*v[i]);
+      }
+    }
+  } else {
+    for(int j=w[i]; j<=W; j++) {
+      dp[j] = max(dp[j], dp[j-w[i]]+v[i]);
+    }
+  }
+}
+\end{lstlisting}
+
+\begin{center}
+  \underline{  \centering{二維費用背包}  }
+\end{center}
+\begin{description}
+  \item[複雜度：] $O(NCT)$
+  \item[已知：] 第$i$個任務需要花費$c_i$元，耗時$t_i$分鐘；\par
+               總經費$C$，總耗時$T$
+  \item[意義：] dp[前i個任務][花費][耗時] = 最多任務數
+  \item[maxc:] 最大花費
+  \item[maxt:] 最大耗時
+\end{description}
+\begin{lstlisting}
+int C, T;
+int c[maxn], t[maxn];
+int dp[maxc][maxt];
+
+memset(dp, 0, sizeof(dp));
+for(int k=1; k<=n; k++) {
+  for(int i=C; i>=c[k]; i--) {
+    for(int j=T; j>=t[k]; j--) {
+      dp[i][j] = max(
+        dp[i][j], dp[i-c[k]][j-t[k]] + 1
+      );
+    }
+  }
+}
+\end{lstlisting}
+
+\begin{center}
+  \underline{  \centering{分組背包}  }
+\end{center}
+\begin{lstlisting}
+int main() {
+
+}
+\end{lstlisting}
+
+\begin{center}
+  \underline{  \centering{有依賴的背包}  }
+\end{center}
+\begin{lstlisting}
+int main() {
+
+}
+\end{lstlisting}
+
+\begin{center}
+  \underline{  \centering{泛化物品的背包}  }
+\end{center}
+\begin{lstlisting}
+int main() {
+
+}
+\end{lstlisting}

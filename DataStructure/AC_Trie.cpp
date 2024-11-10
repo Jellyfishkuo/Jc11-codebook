@@ -18,7 +18,7 @@ struct ACTrie {
   }
 
   int newNode() {
-    for(int i=0; i<maxc; i++) trie[seq][i]=0;
+    for(int i=0; i<maxc; trie[seq][i++]=0);
     val[seq] = cnt[seq] = fail[seq] = 0;
     return seq++;
   }
