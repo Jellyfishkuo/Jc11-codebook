@@ -37,9 +37,9 @@ bool bfs() {
     return ~level[T];
 }
 int dfs(int cur, int lim) {
-    if(cur==T || lim==0) return lim;
+    if(cur==T || lim<=0) return lim;
     int result = 0;
-    for(int& i=dfs_idx[cur]; i<G[cur].size() && lim; i++) {
+    for(int& i=dfs_idx[cur]; i<G[cur].size() && lim>0; i++) {
         Edge& e = E[G[cur][i]];
         if(level[e.s]+1 != level[e.t]) continue;
         int flow = dfs(e.t, min(lim, e.cap-e.flow));
