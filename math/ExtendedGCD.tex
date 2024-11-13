@@ -1,22 +1,20 @@
 題目要求:解 $ax+by=n, a、b \in \mathbb{Z}^{0+}$
 
-已知題幹 $ax+by=n$ 滿足丟番圖方程式\
-同時利用貝祖等式 $ax_1 + by_1 = gcd(a, b)$\
-觀察兩式可知將 $ax_1 + by_1 = gcd(a, b)$ 兩邊乘上 $\frac{n}{gcd(a, b)}$\
-得 $a\frac{nx_1}{gcd(a, b)} + b\frac{ny_1}{gcd(a, b)} = n$\
-此時可看成 $x = \frac{nx_1}{gcd(a, b)}$，$y = \frac{ny_1}{gcd(a, b)}$\
-可以找出一通解
+已知題幹 $ax+by=n$ 滿足丟番圖方程式\\
+同時利用貝祖等式 $ax_1 + by_1 = gcd(a, b)$\\
+觀察兩式可知將 $ax_1 + by_1 = gcd(a, b)$ 兩邊乘上 $\frac{n}{gcd(a, b)}$\\
+得 $a\frac{nx_1}{gcd(a, b)} + b\frac{ny_1}{gcd(a, b)} = n$\\
+此時可看成 $x = \frac{nx_1}{gcd(a, b)}$，$y = \frac{ny_1}{gcd(a, b)}$\\
+可以找出一通解\\
 $$x = \frac{nx_1}{gcd(a, b)} + k \times \frac{b}{gcd(a, b)}$$
 $$y = \frac{ny_1}{gcd(a, b)} - k \times \frac{a}{gcd(a, b)}$$
 $$k \in \mathbb{Z}$$
-(以上通解帶回 $ax + by = n$會發現$k$會被消除)\
-$由於x \geq 0，y \geq 0$
-
-所以$$x = \frac{nx_1}{gcd(a, b)} + k \times \frac{b}{gcd(a, b)}$$
+(以上通解帶回 $ax + by = n$會發現$k$會被消除)\\
+$由於x \geq 0，y \geq 0$所以
+$$x = \frac{nx_1}{gcd(a, b)} + k \times \frac{b}{gcd(a, b)}$$
 $$y = \frac{ny_1}{gcd(a, b)} - k \times \frac{a}{gcd(a, b)}$$
 經過移項運算可得
 $$\frac{-nx_1}{b} \leq k \leq \frac{ny_1}{a}$$
-
 \begin{lstlisting}
 ll exgcd(ll a, ll b, ll& x, ll& y) {
     if (b == 0) {
