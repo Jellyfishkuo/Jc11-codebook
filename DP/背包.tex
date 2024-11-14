@@ -1,5 +1,5 @@
 \begin{center}
-  \underline{  \centering{0-1 背包}  }
+  \underline{  \bf\centering{0-1 背包}  }
 \end{center}
 \begin{description}
   \item[複雜度：] $O(NW)$
@@ -22,7 +22,7 @@ for(int i=1; i<=n; i++) {
 \end{lstlisting}
 
 \begin{center}
-  \underline{  \centering{價值為主的 0-1 背包}  }
+  \underline{  \bf\centering{價值為主的 0-1 背包}  }
 \end{center}
 \begin{description}
   \item[複雜度：] $O(NV)$
@@ -54,7 +54,7 @@ for(int val=V; val>=0; val--) {
 \end{lstlisting}
 
 \begin{center}
-  \underline{  \centering{完全背包(無限背包)}  }
+  \underline{  \bf\centering{完全背包(無限背包)}  }
 \end{center}
 \begin{description}
   \item[複雜度：] $O(NW)$
@@ -77,7 +77,7 @@ for(int i=1; i<=n; i++) {
 \end{lstlisting}
 
 \begin{center}
-  \underline{  \centering{多重背包}  }
+  \underline{  \bf\centering{多重背包}  }
 \end{center}
 \begin{description}
   \item[複雜度：] $O(W\Sigma cnt_i)$
@@ -100,7 +100,7 @@ for(int i=1; i<=n; i++)
 \end{lstlisting}
 
 \begin{center}
-  \underline{  \centering{混合背包(0-1/完全/多重)}  }
+  \underline{  \bf\centering{混合背包(0-1/完全/多重)}  }
 \end{center}
 \begin{description}
   \item[複雜度：] $O(W\Sigma cnt_i)$
@@ -133,7 +133,7 @@ for(int i=1; i<=n; i++) {
 \end{lstlisting}
 
 \begin{center}
-  \underline{  \centering{二維費用背包}  }
+  \underline{  \bf\centering{二維費用背包}  }
 \end{center}
 \begin{description}
   \item[複雜度：] $O(NCT)$
@@ -157,7 +157,7 @@ for(int k=1; k<=n; k++)
 \end{lstlisting}
 
 \begin{center}
-  \underline{  \centering{分組背包}  }
+  \underline{  \bf\centering{分組背包}  }
 \end{center}
 \begin{description}
   \item[複雜度：] $O(W\Sigma M)$
@@ -193,11 +193,56 @@ for(int i=0; i<n; i++)
 \end{description}
 
 \begin{center}
-  \bf\underline{  \centering{背包變化}  }
+  \underline{  \bf\centering{背包變化}  }
 \end{center}
-\begin{enumerate}
-  \item[1] 求最大價值的方法總數
-  \item[2] 求最大價值的一組方案
-  \item[3] 求最大價值的字典序最小的一組方案
-  \item[4] 求次大價值的解 / 第$K$大價值的解
-\end{enumerate}
+
+\begin{description}
+  \item[1.] 求最大價值的方法總數c
+\end{description}
+\begin{lstlisting}
+for(int i=1; i<=n; i++) {
+  for(int j=W; j>=w[i]; j--) {
+    if(dp[j] < dp[j-w[i]]+v[i]) {
+      dp[j] = dp[j-w[i]] + v[i];
+      c[j] = c[j-w[i]];
+    } else if(dp[j] == dp[j-w[i]]+v[i]) {
+      c[j] += c[j-w[i]];
+    }
+  }
+}
+\end{lstlisting}
+
+\begin{description}
+  \item[2.] 求最大價值的一組方案p
+\end{description}
+\begin{lstlisting}
+memset(p, 0, sizeof(p));
+for(int i=1; i<=n; i++) {
+  for(int j=W; j>=w[i]; j--) {
+    if(dp[i][j] < dp[i-1][j-w[i]]+v[i]) {
+      dp[i][j] = dp[i-1][j-w[i]] + v[i];
+      p[i] = 1;
+    } else {
+      p[i] = 0;
+    }
+  }
+}
+\end{lstlisting}
+
+\begin{description}
+  \item[3.] 求最大價值的字典序最小的一組方案p
+\end{description}
+\begin{lstlisting}
+// reverse(item), 要把物品順序倒過來
+memset(p, 0, sizeof(p));
+for(int i=1; i<=n; i++) {
+  for(int j=W; j>=w[i]; j--) {
+    if(dp[i][j] <= dp[i-1][j-w[i]]+v[i]) {
+      dp[i][j] = dp[i-1][j-w[i]] + v[i];
+      p[i] = 1;
+    } else {
+      p[i] = 0;
+    }
+  }
+}
+\end{lstlisting}
