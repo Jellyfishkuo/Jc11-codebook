@@ -183,15 +183,21 @@ for(int i=0; i<n; i++)
 \end{lstlisting}
 
 \begin{center}
-  \underline{  \centering{依賴背包}  }
+  \underline{  \bf\centering{依賴背包}  }
 \end{center}
-\begin{lstlisting}
-
-\end{lstlisting}
+\begin{description}
+  \item[已知：] 第$j$個物品在第$i$個物品沒選的情況下不能選
+  \item[做法：] 樹DP，有爸爸才有小孩。轉化為分組背包。
+  \item[意義：] dp[選物品i為根][重量] = 最高價值
+  \item[過程：] 對所有$u \rightarrow v$，dfs 計算完$v$後更新$u$
+\end{description}
 
 \begin{center}
-  \underline{  \centering{泛化物品的背包}  }
+  \bf\underline{  \centering{背包變化}  }
 \end{center}
-\begin{lstlisting}
-
-\end{lstlisting}
+\begin{enumerate}
+  \item[1] 求最大價值的方法總數
+  \item[2] 求最大價值的一組方案
+  \item[3] 求最大價值的字典序最小的一組方案
+  \item[4] 求次大價值的解 / 第$K$大價值的解
+\end{enumerate}
