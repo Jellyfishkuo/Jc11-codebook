@@ -1,5 +1,4 @@
 //權值線段樹 + 離散化 解決區間第k小問題
-//其他網路上的解法: 2個heap，Treap，AVL tree
 #define maxn 30005
 int nums[maxn];
 int getArr[maxn];
