@@ -1,8 +1,6 @@
 const int maxn = 1e5 + 10;
 const int inf = 0x3f3f3f3f;
-struct Edge {
-    int s, t, cap, flow;
-};
+struct Edge { int s, t, cap, flow; };
 int n, m, S, T;
 int level[maxn], dfs_idx[maxn];
 vector<Edge> E;
@@ -37,21 +35,21 @@ bool bfs() {
     return ~level[T];
 }
 int dfs(int cur, int lim) {
-    if(cur==T || lim<=0) return lim;
-    int result = 0;
-    for(int& i=dfs_idx[cur]; i<G[cur].size() && lim>0; i++) {
-        Edge& e = E[G[cur][i]];
-        if(level[e.s]+1 != level[e.t]) continue;
-        int flow = dfs(e.t, min(lim, e.cap-e.flow));
-        if(flow <= 0) continue;
-        e.flow += flow;
-        result += flow;
-        E[G[cur][i]^1].flow -= flow;
-        lim -= flow;
-    }
-    return result;
+  if(cur==T || lim<=0) return lim;
+  int result = 0;
+  for(int& i=dfs_idx[cur]; i<G[cur].size() && lim>0; i++) {
+    Edge& e = E[G[cur][i]];
+    if(level[e.s]+1 != level[e.t]) continue;
+    int flow = dfs(e.t, min(lim, e.cap-e.flow));
+    if(flow <= 0) continue;
+    e.flow += flow;
+    result += flow;
+    E[G[cur][i]^1].flow -= flow;
+    lim -= flow;
+  }
+  return result;
 }
-int dinic() {// O((V^2)E)
+int dinic() {   // O((V^2)E)
     int result = 0;
     while(bfs()) {
         memset(dfs_idx, 0, sizeof(dfs_idx));

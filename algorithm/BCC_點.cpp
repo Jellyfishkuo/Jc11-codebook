@@ -5,15 +5,13 @@
 constexpr int N = 5e5 + 5, M = 2e6 + 5;
 int n, m;
 
-struct edge {
-  int to, nt;
-} e[M << 1];
+struct edge { int to, nt; } e[M << 1];
 
 int hd[N], tot = 1;
 
 void add(int u, int v) { e[++tot] = edge{v, hd[u]}, hd[u] = tot; }
 
-void uadd(int u, int v) { add(u, v), add(v, u); }
+void uadd(int u, int v) {add(u,v),add(v,u);}
 
 int ans;
 int dfn[N], low[N], bcc_cnt;
@@ -23,7 +21,7 @@ vector<int> dcc[N];
 int root;
 
 void tarjan(int u) {
-  dfn[u] = low[u] = ++bcc_cnt, sta[++top] = u;
+  dfn[u]=low[u] = ++bcc_cnt, sta[++top] = u;
   if (u == root && hd[u] == 0) {
     dcc[++cnt].push_back(u);
     return;
@@ -35,7 +33,8 @@ void tarjan(int u) {
       tarjan(v);
       low[u] = min(low[u], low[v]);
       if (low[v] >= dfn[u]) {
-        if (++f > 1 || u != root) cut[u] = true;
+        if (++f > 1 || u != root)
+          cut[u] = true;
         cnt++;
         do dcc[cnt].push_back(sta[top--]);
         while (sta[top + 1] != v);

@@ -10,37 +10,37 @@ int q[maxn], a[maxn];
 int n, k;
 //得到這個隊列裡的最小值，直接找到最後的就行了
 void getmin() {  
-    int head=0,tail=0;
-    for(int i=1;i<k;i++) {
-        while(head<=tail&&a[q[tail]]>=a[i]) tail--;
-        q[++tail]=i;
-    }
-    for(int i=k; i<=n;i++) {
-        while(head<=tail&&a[q[tail]]>=a[i]) tail--;
-        q[++tail]=i;
-        while(q[head]<=i-k) head++;
-        cout<<a[q[head]]<<" ";
-    }
-    cout<<endl;
+  int head=0, tail=0;
+  for(int i=1;i<k;i++) {
+    while(head<=tail&&a[q[tail]]>=a[i])tail--;
+    q[++tail]=i;
+  }
+  for(int i=k; i<=n;i++) {
+    while(head<=tail&&a[q[tail]]>=a[i])tail--;
+    q[++tail]=i;
+    while(q[head]<=i-k) head++;
+    cout<<a[q[head]]<<" ";
+  }
+  cout<<endl;
 }
 // 和上面同理
 void getmax() {  
-    int head=0,tail=0;
-    for(int i=1;i<k;i++) {
-        while(head<=tail&&a[q[tail]]<=a[i])tail--;
-        q[++tail]=i;
-    }
-    for(int i=k;i<=n;i++) {
-        while(head<=tail&&a[q[tail]]<=a[i])tail--;
-        q[++tail]=i;
-        while(q[head]<=i-k) head++;
-        cout<<a[q[head]]<<" ";
-    }
-    cout<<endl;
+  int head=0,tail=0;
+  for(int i=1;i<k;i++) {
+    while(head<=tail&&a[q[tail]]<=a[i])tail--;
+    q[++tail]=i;
+  }
+  for(int i=k;i<=n;i++) {
+    while(head<=tail&&a[q[tail]]<=a[i])tail--;
+    q[++tail]=i;
+    while(q[head]<=i-k) head++;
+    cout<<a[q[head]]<<" ";
+  }
+  cout<<endl;
 }
 int main(){
-    cin>>n>>k;  //每k個連續的數 
-    for(int i=1;i<=n;i++) cin>>a[i];
-    getmin();
-    getmax();
+  cin>>n>>k;  //每k個連續的數 
+  for(int i=1;i<=n;i++) cin>>a[i];
+  getmin();
+  getmax();
 }

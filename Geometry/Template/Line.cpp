@@ -7,7 +7,6 @@ struct Line {
     v = _v;
     ang = atan2(v.y, v.x);
   }
-  bool operator<(const Line& l) const {
-    return ang < l.ang;
-  }
+  bool operator<(const Line& l) const
+  {return ang < l.ang;}
 };

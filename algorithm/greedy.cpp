@@ -78,8 +78,8 @@ int main(){
 struct Line{
     int L,R;
     bool operator<(const Line &rhs)const{
-         return R<rhs.R; 
-        }
+        return R<rhs.R; 
+    }
 };
 int main(){
     int t;
@@ -113,7 +113,7 @@ struct Work{
     int t, d;
     bool operator<(const Work &rhs)const{
         return d<rhs.d;
-        }
+    }
 };
 int main(){
     int n;

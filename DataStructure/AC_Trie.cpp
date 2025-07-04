@@ -11,18 +11,15 @@ bool vis[maxn*maxl];        // 同單字不重複
 
 struct ACTrie {
   int seq, root;
-
   ACTrie() {
     seq = 0;
     root = newNode();
   }
-
   int newNode() {
     for(int i=0; i<maxc; trie[seq][i++]=0);
     val[seq] = cnt[seq] = fail[seq] = 0;
     return seq++;
   }
-
   void insert(char* s, int wordId=0) {
     int p = root;
     for(; *s; s++) {
@@ -33,7 +30,6 @@ struct ACTrie {
     val[p] = wordId;
     cnt[p]++;
   }
-
   void build() {
     queue<int> q({root});
     while(!q.empty()) {
@@ -50,7 +46,6 @@ struct ACTrie {
       }
     }
   }
-
   // 要存 wordId 才要 vec
   // 同單字重複match要把所有vis取消掉
   int match(char* s, vector<int>& vec) {

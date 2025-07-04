@@ -45,8 +45,7 @@ void dfs(int u) {
             else if (minCost == cost[v]) {
                 ++currWays;
             }
-            if (v == u)
-                break;
+            if (v == u) break;
         }
         totalCost += minCost;
         ways = (ways * currWays) % MOD;
