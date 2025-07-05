@@ -31,6 +31,4 @@ void dfs(int u, int p) {
 int main() {
   ...
   dfs(1, -1);
-  printf("%lld\n", res);
-  return 0;
 }
