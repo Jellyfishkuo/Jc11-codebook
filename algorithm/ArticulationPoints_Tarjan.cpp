@@ -28,32 +28,3 @@ void tarjan(int u, int parent) {
     isCut = true;
   if (isCut) ++res;
 }
-int main() {
-  char input[105];
-  char* token;
-  while (scanf("%d", &N) != EOF && N) {
-    G.assign(105, vector<int>());
-    memset(visited, false, sizeof(visited));
-    memset(low, 0, sizeof(low));
-    memset(dfn, 0, sizeof(visited));
-    timer = 0;
-    res = 0;
-    getchar(); // for \n
-    while (fgets(input, 105, stdin)) {
-      if (input[0] == '0') break;
-      int size = strlen(input);
-      input[size-1] = '\0';
-      --size;
-      token = strtok(input, " ");
-      int u = atoi(token), v;
-      while (token = strtok(NULL, " ")) {
-        v = atoi(token);
-        G[u].emplace_back(v);
-        G[v].emplace_back(u);
-      }
-    }
-    tarjan(1, -1);
-    printf("%d\n", res);
-  }
-  return 0;
-}

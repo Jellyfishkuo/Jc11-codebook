@@ -1,6 +1,5 @@
 const int maxc = 26;        // 單字字符數
 const char minc = 'a';      // 首個 ASCII
-
 struct TrieNode {
   int cnt;
   TrieNode* child[maxc];
@@ -10,7 +9,6 @@ struct TrieNode {
       node = nullptr;
   }
 };
-
 struct Trie {
   TrieNode* root;
   Trie() { root = new TrieNode(); }

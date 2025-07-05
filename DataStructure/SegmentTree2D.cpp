@@ -1,5 +1,4 @@
-//純2D segment tree 區間查詢單點修改最大最小值
-#define maxn 2005 //500 * 4 + 5
+#define maxn 2005 //500 * 4 + 5 //純2D segment tree 區間查詢單點修改最大最小值
 int maxST[maxn][maxn], minST[maxn][maxn];
 int N;
 void modifyY(int index, int l, int r,int val,
@@ -18,7 +17,6 @@ void modifyY(int index, int l, int r,int val,
       modifyY(index*2, l, mid, val, yPos, xIndex, xIsLeaf);
     else
       modifyY(index*2 + 1, mid + 1, r, val, yPos, xIndex, xIsLeaf);
-
     maxST[xIndex][index] = max(maxST[xIndex][index*2], maxST[xIndex][index*2 + 1]);
     minST[xIndex][index] = min(minST[xIndex][index*2], minST[xIndex][index*2 + 1]);
   }

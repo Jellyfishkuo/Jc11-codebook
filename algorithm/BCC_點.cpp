@@ -44,22 +44,3 @@ void tarjan(int u) {
       low[u] = min(low[u], dfn[v]);
   }
 }
-
-int main() {
-  cin.tie(nullptr)->sync_with_stdio(false);
-  cin >> n >> m;
-  int u, v;
-  for (int i = 1; i <= m; i++) {
-    cin >> u >> v;
-    if (u != v) uadd(u, v);
-  }
-  for (int i = 1; i <= n; i++)
-    if (!dfn[i]) root = i, tarjan(i);
-  cout << cnt << '\n';
-  for (int i = 1; i <= cnt; i++) {
-    cout << dcc[i].size() << ' ';
-    for (int j = 0; j < dcc[i].size(); j++) cout << dcc[i][j] << ' ';
-    cout << '\n';
-  }
-  return 0;
-}
