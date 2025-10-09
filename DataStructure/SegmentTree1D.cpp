@@ -2,6 +2,7 @@
 int data[MAXN]; //原數據
 int st[4 * MAXN]; //線段樹
 int tag[4 * MAXN]; //懶標
+
 inline int pull(int l, int r) {
 // 隨題目改變sum、max、min
 // l、r是左右樹的index
@@ -56,8 +57,10 @@ void update(
         tag[i*2+1] += tag[i];//下傳懶標至右節點
         tag[i] = 0;
     }
-    if (ql <= mid) update(ql, qr, l, mid, i * 2, c);
-    if (qr > mid) update(ql, qr, mid+1, r, i*2+1, c);
+    if (ql <= mid)
+        update(ql, qr, l, mid, i * 2, c);
+    if (qr > mid)
+        update(ql, qr, mid+1, r, i*2+1, c);
     st[i] = pull(i * 2, i * 2 + 1);
 }
 //如果是直接改值而不是加值，query與update中的tag與st的

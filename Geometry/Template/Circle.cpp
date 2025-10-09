@@ -14,7 +14,5 @@ struct Circle {
     o = Point(dx, dy) / cross(u, v);
     r = dis(o, a);
   }
-  bool cover(Point p) {
-    return dis(o, p) <= r;
-  }
+  bool cover(Point p) {return dis(o,p) <= r;}
 };

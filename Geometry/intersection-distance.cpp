@@ -6,9 +6,8 @@ bool hasIntersection(Point p, Segment s) {
   if(dcmp(cross(s.s-p, s.e-p))) return false;
   return dcmp(dot(s.s-p, s.e-p)) <= 0;
 }
-bool hasIntersection(Point p, Line l) {
-  return dcmp(cross(p-l.p, l.v)) == 0;
-}
+bool hasIntersection(Point p, Line l)
+{return dcmp(cross(p-l.p, l.v)) == 0;}
 bool hasIntersection(Segment a, Segment b) {
   // 判斷在 X 軸 Y 軸的投影是否相交
   auto intr1D=[](DBL w, DBL x, DBL y, DBL z){
@@ -45,12 +44,10 @@ Point intersection(Line a, Line b) {
   DBL t = 1.0*cross(b.v, u)/cross(a.v, b.v);
   return a.p + a.v*t;
 }
-DBL dis(Point a, Point b) {
-  return sqrt(dot(a-b, a-b));
-}
-DBL dis(Point p, Line l) {
-  return abs(cross(p-l.p, l.v))/l.v.length();
-}
+DBL dis(Point a, Point b)
+{return sqrt(dot(a-b, a-b));}
+DBL dis(Point p, Line l)
+{return abs(cross(p-l.p, l.v))/l.v.length();}
 DBL dis(Point p, Segment s) {
   Vector u = p - s.s, v = p - s.e;
   if(dcmp(dot(s.v, u))<=0) return u.length();

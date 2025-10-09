@@ -31,9 +31,7 @@ int josephus(int n, int k) {
   if (k > n) return (josephus(n-1,k)+k)%n;
   int res = josephus(n - n / k, k);
   res -= n % k;
-  if (res < 0)
-    res += n;  // mod n
-  else
-    res += res / (k - 1);  // 还原位置
+  if (res < 0) res += n;  // mod n
+  else res += res / (k - 1);  // 还原位置
   return res;
 }

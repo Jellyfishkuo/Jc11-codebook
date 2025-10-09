@@ -20,29 +20,25 @@ B^y≡N(B^(−m))^x (mod P)
 
 using LL = long long;
 LL B, N, P;
-LL fpow(LL a,LL b,LL c){
+LL fpow(LL a, LL b, LL c){
     LL res=1;
     for(;b;b >>=1){
-        if(b&1)
-            res=(res*a)%c;
+        if(b&1) res=(res*a)%c;
         a=(a*a)%c;
     }
     return res;
 }
 LL BSGS(LL a,LL b,LL p){
     a%=p,b%=p;
-    if(a==0)
-        return b==0?1:-1;
-    if(b==1)
-        return 0;
+    if(a==0) return b==0?1:-1;
+    if(b==1) return 0;
     map<LL, LL> tb;
     LL sq=ceil(sqrt(p-1));
     LL inv=fpow(a,p-sq-1,p);
     tb[1]=sq;
     for(LL i=1,tmp=1;i<sq;++i){
         tmp=(tmp*a)%p;
-        if(!tb.count(tmp))
-            tb[tmp]=i;
+        if(!tb.count(tmp)) tb[tmp]=i;
     }
     for(LL i=0;i<sq;++i){
         if(tb.count(b)){
@@ -57,9 +53,7 @@ int main(){
     IOS;   //輸入優化
     while(cin>>P>>B>>N){
         LL ans=BSGS(B,N,P);
-        if(ans==-1)
-            cout<<"no solution\n";
-        else
-            cout<<ans<<'\n';
+        if(ans==-1) cout<<"no solution\n";
+        else cout<<ans<<'\n';
     }
 }

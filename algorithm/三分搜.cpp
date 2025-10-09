@@ -1,30 +1,25 @@
-  題意
-給定兩射線方向和速度，問兩射線最近距離。
+  題意：給定兩射線方向和速度，問兩射線最近距離。
   題解
-假設 F(t) 為兩射線在時間 t 的距離，F(t) 為二次函數，
-可用三分搜找二次函數最小值。
+    假設 F(t) 為兩射線在時間 t 的距離，
+    F(t) 為二次函數，可用三分搜找二次函數最小值。
 struct Point{
     double x, y, z;
     Point() {}
-    Point(double _x,double _y,double _z):
+    Point(double _x, double _y, double _z):
         x(_x),y(_y),z(_z){}
     friend istream& operator>>(istream& is, Point& p) {
         is >> p.x >> p.y >> p.z;
         return is;
     }
-    Point operator+(const Point &rhs) const{
-        return Point(x+rhs.x,y+rhs.y,z+rhs.z);
-    }
-    Point operator-(const Point &rhs) const{
-        return Point(x-rhs.x,y-rhs.y,z-rhs.z);
-    }
-    Point operator*(const double &d) const{
-        return Point(x*d,y*d,z*d);
-    }
-    Point operator/(const double &d) const{
-        return Point(x/d,y/d,z/d);
-    }
-    double dist(const Point &rhs) const{
+    Point operator+(const Point &rhs) const
+    {return Point(x+rhs.x,y+rhs.y,z+rhs.z);}
+    Point operator-(const Point &rhs) const
+    {return Point(x-rhs.x,y-rhs.y,z-rhs.z);}
+    Point operator*(const double &d) const
+    { return Point(x*d, y*d, z*d); }
+    Point operator/(const double &d) const
+    { return Point(x/d, y/d, z/d); }
+    double dist(const Point &rhs) const {
         double res = 0;
         res+=(x-rhs.x)*(x-rhs.x);
         res+=(y-rhs.y)*(y-rhs.y);
