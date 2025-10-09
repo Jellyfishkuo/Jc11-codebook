@@ -195,51 +195,51 @@ for(int i=0; i<n; i++)
 \end{center}
 
 \begin{description}
-  \item[1.] 求最大價值的方法總數 cnt
+  \item[1.] 求最大價值的方法總數c
 \end{description}
 \begin{lstlisting}
 for(int i=1; i<=n; i++) {
   for(int j=W; j>=w[i]; j--) {
     if(dp[j] < dp[j-w[i]]+v[i]) {
       dp[j] = dp[j-w[i]] + v[i];
-      cnt[j] = cnt[j-w[i]];
+      c[j] = c[j-w[i]];
     } else if(dp[j] == dp[j-w[i]]+v[i]) {
-      cnt[j] += cnt[j-w[i]];
+      c[j] += c[j-w[i]];
     }
   }
 }
 \end{lstlisting}
 
 \begin{description}
-  \item[2.] 求最大價值的一組方案pick
+  \item[2.] 求最大價值的一組方案p
 \end{description}
 \begin{lstlisting}
-memset(pick, 0, sizeof(pick));
+memset(p, 0, sizeof(p));
 for(int i=1; i<=n; i++) {
   for(int j=W; j>=w[i]; j--) {
     if(dp[i][j] < dp[i-1][j-w[i]]+v[i]) {
       dp[i][j] = dp[i-1][j-w[i]] + v[i];
-      pick[i] = 1;
+      p[i] = 1;
     } else {
-      pick[i] = 0;
+      p[i] = 0;
     }
   }
 }
 \end{lstlisting}
 
 \begin{description}
-  \item[3.] 求最大價值的字典序最小的一組方案pick
+  \item[3.] 求最大價值的字典序最小的一組方案p
 \end{description}
 \begin{lstlisting}
 // reverse(item), 要把物品順序倒過來
-memset(pick, 0, sizeof(pick));
+memset(p, 0, sizeof(p));
 for(int i=1; i<=n; i++) {
   for(int j=W; j>=w[i]; j--) {
     if(dp[i][j] <= dp[i-1][j-w[i]]+v[i]) {
       dp[i][j] = dp[i-1][j-w[i]] + v[i];
-      pick[i] = 1;
+      p[i] = 1;
     } else {
-      pick[i] = 0;
+      p[i] = 0;
     }
   }
 }
