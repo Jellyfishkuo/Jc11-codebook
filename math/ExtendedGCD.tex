@@ -1,45 +1,125 @@
 \begin{lstlisting}
-ll exgcd(ll a, ll b, ll& x, ll& y) {
-    if (b == 0) {
-        x = 1, y = 0;
+
+/*
+    ax = b (mod m)
+    此式若同除 gcd(a, m)
+    則
+    (a / gcd(a, m))x = (b / gcd(a, m)) (mod (m / gcd(a, m)))
+    x有唯一解
+    使用ex_gcd(a / gcd(a, m), m / gcd(a, m))可以得到x_0
+    此時x的通解為
+    x = x_0 + (m / gcd(a, m)) * t
+    
+    通解怎麼來的?
+    已經得到特解 ax_0 = b (mod m)
+    => ax_0 = b + k_0 m
+    假設還有一個x1滿足
+    ax_1 = b (mod m)
+    => ax_1 = b + k_1 m
+    兩式相減
+    a(x_1 - x_0) = (k_1 - k_0) m
+    可以觀察到
+    a(x_1 - x_0) = 0 (mod m)
+    兩邊同除gcd(a, m)
+    => a / gcd(a, m) (x_1 - x_0) = 0 (mod (m / gcd(a, m)) )
+    因為 (a / gcd(a, m)) 與 (m / gcd(a, m))一定互質
+    所以只有可能
+    x_1 - x_0 = 0 (mod (m / gcd(a, m)) ) 才能使前式成立
+    至此就能夠得到通解
+    x_1 = x_0 + t * (m / gcd(a, m)), t 是 正整數
+    
+    利用ex_gcd得到的通解可以得到k'_1
+    此時可以帶回去前面的等式
+    k'_1 * P - r_1 = r
+    
+    k'_1用算得拿到
+    r_1已知 (題目有給)
+    則P我們可以用枚舉的
+*/
+
+/*
+    解ax + by = gcd(a, b) [貝祖等式]
+    因為gcd(a, b) = gcd(b, a mod b)
+
+    邊界條件:
+        b = 0時
+        ax + by = a * 1 + 0 * 0 = a = gcd
+    然後
+    將gcd(a, b) = gcd(b, a mod b)帶入ax + by = gcd(a, b)
+    => bx' + (a mod b) y' = gcd(b, a mod b)
+    根據除法定理
+    a = b * 下高斯[a / b] + (a mod b)
+    移項
+    (a mod b) = a - b * 下高斯[a / b]
+    帶入 bx' + (a mod b) y' = gcd(b, a mod b)
+    => bx' + (a - b * 下高斯[a / b]) y' = gcd(a, b)
+    整理
+    => ay' + b(x' - 下高斯[a / b] y') = gcd(a, b)
+    對應回ax + by = gcd(a, b)
+    得到
+    x = y', y = x' - 下高斯[a / b] * y'
+*/
+
+long long ex_gcd(long long a, long long b, long long& x, long long& y)
+{
+    if (b == 0)
+    {
+        x = 1;
+        y = 0;
         return a;
     }
-    ll gcd = exgcd(b, a % b, x, y);
-    ll y1 = y;
-    y = x - (a / b) * y;
-    x = y1;
+
+    long long gcd = ex_gcd(b, a % b, x, y);
+    long long temp = x;
+    x = y;
+    y = temp - a / b * y;
+
     return gcd;
 }
-int main() {
-    ll n;
-    ll x, y;
-    ll c1, c2, a, b;
-    while (~scanf("%lld", &n) && n) {
-        scanf("%lld %lld", &c1, &a);
-        scanf("%lld %lld", &c2, &b);
-        ll gcd = exgcd(a, b, x, y);
-        if (n % gcd != 0) {
-            printf("failed\n");
-            continue;
+
+// 對應   ax = b (mod m)
+// 又對回 P * k'_1 = 2r_1 (mod Q)
+void solve(long long a, long long b, long long m)
+{
+    long long x, y;
+    long long gcd = ex_gcd(a, m, x, y);
+
+    // ax = b (mod m)有解的條件是 gcd(a, m) | b
+    if (b % gcd == 0)
+    {
+        // ex_gcd得到 ax + my = gcd(a, m)的基本解
+        // 兩邊同乘 b / gcd(a, m)
+        // 得到 a (x * (b / gcd(a, m))) + m (y * (b / gcd(a, m))) = b
+        // 在mod m的情況下
+        // 得到   a (x * (b / gcd(a, m))) = b (mod m)
+        // 對應回 ax_0 = b (mod m)
+        // 所以取 x_0 = x * b / gcd(a, m)  [前兩個式子直接對應出 x_0 = x * b / gcd]
+        long long x_0 = x * b / gcd; // 特解
+
+        // 由於當前知道 ax_0 = b (mod m)
+        // 通解是: x = x_0 + t * (m / gcd(a, m))
+        // 為了讓x_0是通解裡面最小的正整數
+        // 要 x_0 去 mod (m / gcd(a, m))
+        // 但是因為現在x_0可能是負的
+        // 所以mod (m / gcd(a, m))的時候要 加上 (m / gcd(a, m))
+        x_0 = (x_0 % (m / gcd) + (m / gcd)) % (m / gcd);
+
+        // 由於之前 r = k'_1 * P - r_1
+        // 且求得k'_1 = x_0 + t * (m / gcd(a, m))
+        // 代入可得
+        // r = P( x_0 + t * (m / gcd(a, m)) ) - r_1
+        // 對應回來 a = P, b = 2 * r_1
+        // 則 r = a (x_0 + t * (m / gcd(a, m))) - b / 2
+        // => r = ax_0 + t * (am / gcd(a, m)) - b / 2
+        // => r = ax_0 + t * lcm(a, m) - b / 2
+        // 所以下方利用累加lcm做到枚舉t的效果
+        long long r = a * x_0 - b / 2;
+        long long lcm = a / gcd * m;
+        for (; r < N; r += lcm)
+        {
+            if (r >= 0 && (r * r) % N == X)
+                res.insert(r);
         }
-        ll l = ceil((double)(-n) * x / b);
-        ll r = floor((double)(n) * y / a);
-        if (l > r) {
-            printf("failed\n");
-            continue;
-        }
-        if (c1 * b < c2 * a) { //斜率正or負
-            //斜率負，帶入k的上界
-            x = n * x / gcd + b / gcd * r;
-            y = n * y / gcd - a / gcd * r;
-        }
-        else {
-            //斜率正，帶入k的下界
-            x = n * x / gcd + b / gcd * l;
-            y = n * y / gcd - a / gcd * l;
-        }
-        printf("%lld %lld\n", x, y);
     }
-    return 0;
 }
 \end{lstlisting}
